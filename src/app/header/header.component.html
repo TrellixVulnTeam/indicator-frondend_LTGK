@@ -15,22 +15,22 @@
             >Admin Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/admin"
+            <a class="nav-link active" aria-current="page" routerLink="/preInvoice/index"
             *ngIf="userService.roleMatch(['Admin'])"
             >PreInvoice</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/admin"
+            <a class="nav-link active" aria-current="page" routerLink="/order/index"
             *ngIf="userService.roleMatch(['Admin'])"
             >Order</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/admin"
+            <a class="nav-link active" aria-current="page" routerLink="/carInformation/index"
             *ngIf="userService.roleMatch(['Admin'])"
             >Car information</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/admin"
+            <a class="nav-link active" aria-current="page" routerLink="/freightRate/index"
             *ngIf="userService.roleMatch(['Admin'])"
             >Freight Rate</a>
           </li>
