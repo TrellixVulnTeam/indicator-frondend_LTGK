@@ -1,0 +1,67 @@
+
+
+<mat-toolbar >
+    <span class="fill-remaining-space">درخواست</span>
+  </mat-toolbar>
+  
+  <div class="container" *ngIf="!post; else forminfo" novalidate> 
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+  
+      <mat-form-field class="form-element">
+        <input matInput placeholder="شماره درخواست" formControlName="documentNo">
+        <mat-error *ngIf="!formGroup.controls['documentNo'].valid && formGroup.controls['documentNo'].touched">
+          {{ getErrorDocumentNo() }}
+        </mat-error>
+      </mat-form-field>
+ 
+ 
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="شماره فایل" formControlName="fileNo">
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="تعداد" formControlName="preOrderUnitValue">
+      </mat-form-field>
+
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="تاریخ" formControlName="vchDate">
+      </mat-form-field>
+  <!--
+      <mat-form-field class="form-element">
+        <input matInput placeholder="شماره فایل" formControlName="fileNo">
+        <mat-error *ngIf="!fileNo.valid && fileNo.touched">
+          {{ requiredAlert }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="تعداد" formControlName="preOrderUnitValue">
+        <mat-error *ngIf="!preOrderUnitValue.valid && preOrderUnitValue.touched">
+          {{ requiredAlert }}
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="تعداد" formControlName="vchDate">
+        <mat-error *ngIf="!vchDate.valid && vchDate.touched">
+          {{ requiredAlert }}
+        </mat-error>
+      </mat-form-field>
+   -->
+   
+   
+      <div class="form-element">
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Submit Form</button>
+      </div>
+  
+    </form>
+  </div>
+  
+  <ng-template #forminfo>
+    <div class="container">
+      {{ post | json }}
+    </div>
+  </ng-template>

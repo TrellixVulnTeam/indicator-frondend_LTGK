@@ -1,48 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Indicator</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/admin"
-            *ngIf="userService.roleMatch(['Admin'])"
-            >Admin Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/preInvoice/index"
-            *ngIf="userService.roleMatch(['Admin'])"
-            >PreInvoice</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/order/index"
-            *ngIf="userService.roleMatch(['Admin'])"
-            >Order</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/carInformation/index"
-            *ngIf="userService.roleMatch(['Admin'])"
-            >Car information</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/freightRate/index"
-            *ngIf="userService.roleMatch(['Admin'])"
-            >Freight Rate</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/user"
-            *ngIf="userService.roleMatch(['User'])"
-            >User Dashboard</a>
-          </li>
-         
-        </ul>
-        <button *ngIf="! isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login</button>
-        <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()" >Logout</button>
-      </div>
-    </div>
-  </nav>
+
+
+  <p>
+
+<mat-toolbar color="primary" >
+  <span class="fill-remaining-space">سیستم ثبت اندیکاتور</span>
+</mat-toolbar>
+    <mat-toolbar >
+
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style"> 
+          <mat-button-toggle  routerLink="/preInvoice" *ngIf="userService.roleMatch(['Admin'])" >درخواست</mat-button-toggle>
+          <mat-button-toggle  routerLink="/order" *ngIf="userService.roleMatch(['Admin'])" >سفارش</mat-button-toggle>
+          <mat-button-toggle  routerLink="/preInvoice/index" *ngIf="userService.roleMatch(['Admin'])" >کوتاژ</mat-button-toggle>
+          <mat-button-toggle  routerLink="/preInvoice/index" *ngIf="userService.roleMatch(['Admin'])" >مشتری</mat-button-toggle>
+          <mat-button-toggle  routerLink="/preInvoice/index" *ngIf="userService.roleMatch(['Admin'])" >شاسی</mat-button-toggle>
+  
+        </mat-button-toggle-group>
+  
+      <span class="example-spacer"></span>
+
+
+      <button *ngIf="! isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login</button>
+      <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()" >Logout</button>
+
+ 
+    </mat-toolbar>
+  </p>
