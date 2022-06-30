@@ -1,5 +1,3 @@
-import { NumberSymbol } from "@angular/common"
-
 export class Preinvoice {
     id: number | undefined
     documentNo: string = ""
