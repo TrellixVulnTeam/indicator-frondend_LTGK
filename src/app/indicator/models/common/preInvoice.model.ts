@@ -1,7 +1,7 @@
 import { NumberSymbol } from "@angular/common"
 
 export class Preinvoice {
-    id: number | undefined
+    id: number | undefined |any
     documentNo: string = ""
     fileNo: string = ""
     preOrderUnitValue: number | undefined
