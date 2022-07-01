@@ -2,10 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
+import { defaultTheme, IActiveDate, IDatepickerTheme } from 'ng-persian-datepicker';
 import { Observable } from 'rxjs';
+import { JalaliMomentDateAdapter } from 'src/app/framework/utilities/datetimepicker/mat-core/jalali-moment-date-adapter';
 import { AlertService } from '../../../framework/utilities/alert/alert-service.service';
 import { Preinvoice } from '../../models/common/preInvoice.model';
 import { PreInvoiceService } from '../../services/pre-invoice.service';
+import * as jmoment from 'jalali-moment';
 
 @Component({
   selector: 'app-pre-invoice',
@@ -20,12 +23,49 @@ export class PreInvoiceComponent implements OnInit {
 
   loading = false;
 
+
+
+  uiIsVisible: boolean = false;
+  uiTheme: IDatepickerTheme = defaultTheme;
+  uiYearView: boolean = true;
+  uiMonthView: boolean = true;
+  uiHideAfterSelectDate: boolean = false;
+  uiHideOnOutsideClick: boolean = false;
+  uiTodayBtnEnable: boolean = true;
+
+  timeEnable: boolean = true;
+  timeShowSecond: boolean = true;
+  timeMeridian: boolean = false;
+
+
+  private _theme: string = 'default';
+
+  get theme(): string {
+    return this._theme;
+  }
+
+  onSelect(date: IActiveDate) {
+    console.log(date);
+  }
+
+
+//
+
+
+
+//
+
+
+
+
+  
   constructor(private formBuilder: FormBuilder,
     private preInvoiceService: PreInvoiceService,
     private alertService: AlertService) { }
 
   ngOnInit() {
-    this.createForm();
+    this.createForm(); 
+
   }
 
   onSubmit(formGroup) {

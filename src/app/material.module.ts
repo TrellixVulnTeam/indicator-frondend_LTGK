@@ -29,7 +29,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatStepperModule } from '@angular/material/stepper'; 
-import { MatSliderModule } from '@angular/material/slider'; 
+import { MatSliderModule } from '@angular/material/slider';  
+import { DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { JalaliMomentDateAdapter } from './framework/utilities/datetimepicker/mat-core/jalali-moment-date-adapter';
+import { JALALI_MOMENT_FORMATS } from './framework/utilities/datetimepicker/mat-core/jalali_moment_formats';
 
 @NgModule({
   imports: [ 
@@ -40,6 +43,7 @@ import { MatSliderModule } from '@angular/material/slider';
     MatCheckboxModule,
     MatChipsModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatDialogModule,
     MatExpansionModule,
     MatGridListModule,
@@ -61,6 +65,7 @@ import { MatSliderModule } from '@angular/material/slider';
     MatToolbarModule,
     MatTooltipModule,
     MatStepperModule,
+
   ],
   exports: [
     MatAutocompleteModule,
@@ -91,7 +96,14 @@ import { MatSliderModule } from '@angular/material/slider';
     MatToolbarModule,
     MatTooltipModule,
     MatStepperModule,
-  ]    
+ 
+  
+  ]  ,
+  providers: [
+    { provide: DateAdapter, useClass: JalaliMomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: JALALI_MOMENT_FORMATS },
+  ]
+   
 })
 
 export class MaterialModule {}

@@ -23,8 +23,7 @@ import { UserComponent } from './framework/user/user.component';
 import { ForbiddenComponent } from './framework/forbidden/forbidden.component';
 import { LoginComponent } from './framework/login/login.component';
 import { UserService } from './framework/_services/user.service';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { CustomDateAdapter, PERSIAN_DATE_FORMATS } from './framework/utilities/datetimepicker/CustomDateAdapter';
+import { NgPersianDatepickerModule } from 'ng-persian-datepicker';
 
 @NgModule({
   declarations: [
@@ -51,7 +50,11 @@ import { CustomDateAdapter, PERSIAN_DATE_FORMATS } from './framework/utilities/d
 
     ReactiveFormsModule, 
     MaterialModule ,
-    AgGridModule
+    AgGridModule,
+
+
+    NgPersianDatepickerModule,
+
   ],
   providers: [
     AuthGuard,
@@ -62,7 +65,7 @@ import { CustomDateAdapter, PERSIAN_DATE_FORMATS } from './framework/utilities/d
     },
     UserService,
 
-
+   
  
   ],
   bootstrap: [AppComponent]
