@@ -23,7 +23,10 @@ import { UserComponent } from './framework/user/user.component';
 import { ForbiddenComponent } from './framework/forbidden/forbidden.component';
 import { LoginComponent } from './framework/login/login.component';
 import { UserService } from './framework/_services/user.service';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { CustomDateAdapter, PERSIAN_DATE_FORMATS } from './framework/utilities/datetimepicker/CustomDateAdapter';
 
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +61,16 @@ import { UserService } from './framework/_services/user.service';
       useClass:AuthInterceptor,
       multi:true
     },
-    UserService
+    UserService,
+
+
+    { provide: DateAdapter, useClass: CustomDateAdapter ,deps: [MAT_DATE_LOCALE]    },
+    { provide: MAT_DATE_LOCALE, useValue: "fa" }, // en-GB  fr
+    {provide: MAT_DATE_FORMATS, useValue: PERSIAN_DATE_FORMATS, deps: [MAT_DATE_LOCALE]},
+      
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }
+    
+
   ],
   bootstrap: [AppComponent]
 })
