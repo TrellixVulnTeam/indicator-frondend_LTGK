@@ -4,17 +4,18 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Preinvoice } from '../models/common/preInvoice.model';
 
-const  baseUrl = environment.PATH_OF_API+'/api/preInvoice';
+const  baseUrl = environment.PATH_OF_API+'/api/preinvoice/';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PreInvoiceService {
-
- baseUrl = environment.PATH_OF_API+'/api/preInvoice';
+ 
 
   constructor(private http: HttpClient) { }
+
   getAll(): Observable<Preinvoice[]> {
+    console.log(baseUrl);
     return this.http.get<Preinvoice[]>(baseUrl);
   }
   get(id: any): Observable<any> {

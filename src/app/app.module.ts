@@ -3,20 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AdminComponent } from './admin/admin.component';
-import { UserComponent } from './user/user.component';
-import { LoginComponent } from './login/login.component';
-import { HeaderComponent } from './header/header.component';
-import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { HeaderComponent } from './framework/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { AuthGuard } from './_auth/auth.guard';
-import { AuthInterceptor } from './_auth/auth.interceptor';
-import { UserService } from './_services/user.service';
-import { PreInvoiceIndexComponent } from './indicator/invoice/preInvoice/pre-invoice-index/pre-invoice-index.component';
-import { PreInvoiceEditableComponent } from './indicator/invoice/preInvoice/pre-invoice-editable/pre-invoice-editable.component';
+import { AuthGuard } from './framework/_auth/auth.guard';
+import { AuthInterceptor } from './framework/_auth/auth.interceptor';
 import { OrderEditableComponent } from './indicator/invoice/order/order-editable/order-editable.component';
 import { OrderIndexComponent } from './indicator/invoice/order/order-index/order-index.component';
 import { FreightRateIndexComponent } from './indicator/common/freightRate/freight-rate-index/freight-rate-index.component';
@@ -24,6 +16,13 @@ import { FreightRateEditableComponent } from './indicator/common/freightRate/fre
 import { PreInvoiceComponent } from './indicator/invoice/pre-invoice/pre-invoice.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { AgGridModule } from 'ag-grid-angular';
+import { HomeComponent } from './framework/home/home.component';
+import { AdminComponent } from './framework/admin/admin.component';
+import { UserComponent } from './framework/user/user.component';
+import { ForbiddenComponent } from './framework/forbidden/forbidden.component';
+import { LoginComponent } from './framework/login/login.component';
+import { UserService } from './framework/_services/user.service';
 
 @NgModule({
   declarations: [
@@ -34,8 +33,6 @@ import { MaterialModule } from './material.module';
     LoginComponent,
     HeaderComponent,
     ForbiddenComponent,
-    PreInvoiceIndexComponent,
-    PreInvoiceEditableComponent,
     OrderEditableComponent,
     OrderIndexComponent,
     FreightRateIndexComponent,
@@ -51,7 +48,8 @@ import { MaterialModule } from './material.module';
     BrowserAnimationsModule,
 
     ReactiveFormsModule, 
-    MaterialModule  
+    MaterialModule ,
+    AgGridModule
   ],
   providers: [
     AuthGuard,
