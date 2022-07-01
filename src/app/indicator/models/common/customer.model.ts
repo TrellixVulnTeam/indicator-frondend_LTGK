@@ -1,4 +1,5 @@
 export class Customer {
+    id: number | undefined
     firstName: string = ""
     lastName: string = ""
     phone: string = ""
@@ -6,16 +7,18 @@ export class Customer {
     insertDateTime: Date = new Date()
 
 
-  constructor(
-    firstName: string ="", 
-    lastName: string ="", 
-    phone: string ="", 
-    address: string ="", 
-) {
-    this.firstName = firstName
-    this.lastName = lastName
-    this.phone = phone
-    this.address = address
-  }
+    constructor(
+        id?: number,
+        firstName: string = "",
+        lastName: string = "",
+        phone: string = "",
+        address: string = "",
+    ) {
+        this.id = id
+        this.firstName = firstName
+        this.lastName = lastName
+        this.phone = phone
+        this.address = address
+    }
 
 }

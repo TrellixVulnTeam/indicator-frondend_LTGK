@@ -25,6 +25,11 @@
             >Order</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/customer/index"
+            *ngIf="userService.roleMatch(['Admin'])"
+            >Customer</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/carInformation/index"
             *ngIf="userService.roleMatch(['Admin'])"
             >Car information</a>

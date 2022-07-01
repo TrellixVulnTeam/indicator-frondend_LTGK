@@ -1,0 +1,29 @@
+<form class="needs-validation" style="padding: 20px 0;" novalidate>
+    <div class="container">
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="firstName" [(ngModel)]="customer.firstName" type="text" class="form-control" id="firstName" placeholder="firstName" required>
+                <label for="firstName">First Name</label>
+            </div>
+            <div class="col form-floating mb-3">
+                <input name="lastName" [(ngModel)]="customer.lastName" type="text" class="form-control" id="lastName" placeholder="lastName" required>
+                <label for="lastName">Last Name</label>
+                <div class="valid-feedback">
+                </div>
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input name="phone" [(ngModel)]="customer.phone" type="number" class="form-control" id="phone" placeholder="phone">
+            <label for="phone">Phone</label>
+        </div>
+        <div class="form-floating mb-3">
+            <textarea name="address" [(ngModel)]="customer.address" class="form-control" id="address" placeholder="address"></textarea>
+            <label for="address">Address</label>
+        </div>
+        <div class="row">
+            <button (click)="create()" type="submit" class="col-2 btn btn-primary">Create</button>
+            <span class="col-8"></span>
+            <button (click)="backToList()" type="submit" class="col-2 btn btn-secondary">Back To list</button>
+        </div>
+    </div>
+</form>
