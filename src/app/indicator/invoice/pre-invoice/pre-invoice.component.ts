@@ -32,17 +32,15 @@ export class PreInvoiceComponent implements OnInit {
   }
 
   onSubmit(formGroup) {
-
     // reset alerts on submit
     this.alertService.clear();
 
     // stop here if form is invalid
-    /*
     if (this.formGroup.invalid) {
-      console.log("for is invalid");
+      console.log("form is invalid");
       return;
     }
-    */
+    
     this.loading = true;
     if (!this.formGroup.controls.id.value) {
         this.create();
@@ -52,6 +50,7 @@ export class PreInvoiceComponent implements OnInit {
   }
 
   private create() {
+    console.log("create");
     this.preInvoiceService.create(new Preinvoice(this.formGroup.value))
         .subscribe((data) => {
           console.log(data);
@@ -60,49 +59,47 @@ export class PreInvoiceComponent implements OnInit {
         })
         .add(() => this.loading = false);
 }
-
 private update() {
+  console.log("update");
     this.preInvoiceService.update(this.formGroup.controls.id.value, this.formGroup.value)
         .subscribe(() => {
             this.alertService.success('preInvoice updated');
         })
         .add(() => this.loading = false);
 }
-
-
-getAll(){
+private getAll(){
     
   this.preInvoiceService.getAll().subscribe((result) => {
     this.preInvoiceList = result ? result['data'] : [];
   });
 }
-delete(){
+public delete(){
   var id=this.formGroup.controls.id.value;
   var result = confirm("آیا از حذف ردیف مطین هستید؟");
+  debugger;
   if(id && result){
-    
+
     const pi = this.preInvoiceList.findIndex( (preinvoice) => {preinvoice.id === id});
    
     if (pi != -1){
-    this.preInvoiceList.splice(pi, 1);
+  console.log("delete1");
+
+      this.preInvoiceService.delete(id).subscribe(() => {
+  console.log("delete2");
+
+        this.preInvoiceList.splice(pi, 1);
+        this.reset();
+        alert('حذف انجام شد.');
+      });
     }
 
-    this.preInvoiceService.delete(id).subscribe(() => {
-      this.reset();
-      alert('حذف انجام شد.');
-    });
   }
 }
-
 reset(){
   this.formGroup.reset();
-  this.formGroup.controls.is_active.setValue(1);
 
 }
-
-
-
-  createForm() {
+createForm() {
     this.formGroup = this.formBuilder.group({
       'id': [null],
       'documentNo': [null, [Validators.required]],
@@ -112,7 +109,7 @@ reset(){
     });
   }
 
-  get name() {
+  get getDocumentNo() {
     return this.formGroup.get('documentNo') as FormControl
   } 
 
@@ -141,7 +138,8 @@ public defaultColDef: ColDef = {
 };
 
 // Data that gets displayed in the grid
-public rowData$!: Observable<any[]>;
+//public rowData$!: Observable<any[]>;
+public rowData!: any[];
 
 // For accessing the Grid's API
 //@ViewChild(AgGridAngular) agGrid!: AgGridAngular;
@@ -151,14 +149,20 @@ private agGrid!: GridApi;
  // Example load data from sever
  onGridReady(params: GridReadyEvent) {
   this.agGrid = params.api;
-
-  this.rowData$ = this.preInvoiceService.getAll();
+  this.preInvoiceService.getAll().subscribe((data)=>{
+    this.rowData=data;
+    console.log(data);
+    this.preInvoiceList= data;  
+ });
 }
 
+
 // Example of consuming Grid Event
- 
 onSelectionChanged(event: SelectionChangedEvent) {
   console.log(event.api.getSelectedRows());
+  let pi=new Preinvoice(event.api.getSelectedRows()[0]);
+  console.log(pi);
+  this.formGroup.patchValue(pi);
 }
 
 

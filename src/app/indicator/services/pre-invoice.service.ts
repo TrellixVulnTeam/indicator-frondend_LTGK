@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Preinvoice } from '../models/common/preInvoice.model';
 
-const  baseUrl = environment.PATH_OF_API+'/api/preinvoice/';
+const  baseUrl = environment.PATH_OF_API+'/api/preinvoice';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +16,14 @@ export class PreInvoiceService {
 
   getAll(): Observable<Preinvoice[]> {
     console.log(baseUrl);
-    return this.http.get<Preinvoice[]>(baseUrl);
+    return this.http.get<Preinvoice[]>(`${baseUrl}/`);
   }
   get(id: any): Observable<any> {
     return this.http.get(`${baseUrl}/${id}`);
   }
   create(data: Preinvoice): Observable<any> {
     console.log(data);
-    return this.http.post(baseUrl, data);
+    return this.http.post(`${baseUrl}/`, data);
   }
   update(id: any, data: any): Observable<any> {
     return this.http.put(`${baseUrl}/${id}`, data);

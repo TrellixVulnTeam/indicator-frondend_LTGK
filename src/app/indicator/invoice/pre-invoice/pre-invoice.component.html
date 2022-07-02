@@ -10,7 +10,7 @@
   
       <mat-form-field class="form-element">
         <input matInput placeholder="شماره درخواست" formControlName="documentNo">
-        <mat-error *ngIf="!formGroup.controls['documentNo'].valid && formGroup.controls['documentNo'].touched">
+        <mat-error *ngIf="getDocumentNo.invalid && getDocumentNo.touched">
           {{ getErrorDocumentNo() }}
         </mat-error>
       </mat-form-field>
@@ -59,8 +59,9 @@
    
    
       <div class="form-element"> 
-        <button mat-raised-button   type="submit" >ذخیره</button>
-        <button mat-raised-button   (click)="delete()">حذف</button>
+        <button mat-raised-button   type="submit" [disabled]="formGroup.invalid" >ذخیره</button>
+        <button mat-raised-button   (click)="delete()" [disabled]="formGroup.invalid">حذف</button>
+        <button mat-raised-button   (click)="reset()">جدید</button>
       </div>
   
     </form>
@@ -72,7 +73,8 @@
       class="ag-theme-alpine"
       [columnDefs]="columnDefs"
       [defaultColDef]="defaultColDef"
-      [rowData]="rowData$ | async"
+      [rowData]="rowData"
+       
       [rowSelection]="'multiple'"
       [animateRows]="true"
       [enableRtl]="true" 

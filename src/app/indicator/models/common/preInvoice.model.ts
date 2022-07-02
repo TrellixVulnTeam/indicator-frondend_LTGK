@@ -1,4 +1,5 @@
 import { NumberSymbol } from "@angular/common"
+import { FormGroup } from "@angular/forms"
 
 export class Preinvoice {
     id?: number 
@@ -10,4 +11,6 @@ export class Preinvoice {
     public constructor(init?: Partial<Preinvoice>) {
         Object.assign(this, init);
     }
+
+     
 }
