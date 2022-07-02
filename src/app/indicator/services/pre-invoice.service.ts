@@ -21,7 +21,8 @@ export class PreInvoiceService {
   get(id: any): Observable<any> {
     return this.http.get(`${baseUrl}/${id}`);
   }
-  create(data: any): Observable<any> {
+  create(data: Preinvoice): Observable<any> {
+    console.log(data);
     return this.http.post(baseUrl, data);
   }
   update(id: any, data: any): Observable<any> {

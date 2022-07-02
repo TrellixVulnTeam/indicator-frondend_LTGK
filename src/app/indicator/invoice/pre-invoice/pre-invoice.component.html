@@ -27,28 +27,8 @@
 
 
       <mat-form-field class="form-element">
-        <!--
-        <ng-persian-datepicker (dateOnSelect)="onSelect($event)"
-                              [dateFormat]="'YYYY/MM/DD'"
-                              [dateGregorianFormat]="'YYYY-MM-DD'"
-                              [(uiIsVisible)]="uiIsVisible"
-                              [uiTheme]="uiTheme"
-                              [uiYearView]="uiYearView"
-                              [uiMonthView]="uiMonthView"
-                              [uiHideAfterSelectDate]="true"
-                              [uiHideOnOutsideClick]="true"
-                              [uiTodayBtnEnable]="true"
-                              [timeEnable]="false"
-                              [timeShowSecond]="timeShowSecond"
-                              [timeMeridian]="timeMeridian">
-                             
-                             >
-        <div class="input-field">
-        <input matInput placeholder="تاریخ" formControlName="vchDate">
-        </div>
-      </ng-persian-datepicker>
--->
-        <input matInput [matDatepicker]="picker1" placeholder="Choose a date">
+        
+        <input matInput [matDatepicker]="picker1" formControlName="vchDate" placeholder="تاریخ">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
 
@@ -79,8 +59,8 @@
    
    
       <div class="form-element"> 
-        <button mat-raised-button   type="submit" [disabled]="!formGroup.valid">Submit Form</button>
-        <button mat-raised-button   (click)="delete()">delete</button>
+        <button mat-raised-button   type="submit" >ذخیره</button>
+        <button mat-raised-button   (click)="delete()">حذف</button>
       </div>
   
     </form>
@@ -95,6 +75,8 @@
       [rowData]="rowData$ | async"
       [rowSelection]="'multiple'"
       [animateRows]="true"
+      [enableRtl]="true" 
+
       (gridReady)="onGridReady($event)"
-      (cellClicked)="onCellClicked($event)"
+      (selectionChanged)="onSelectionChanged($event)"
 ></ag-grid-angular>
