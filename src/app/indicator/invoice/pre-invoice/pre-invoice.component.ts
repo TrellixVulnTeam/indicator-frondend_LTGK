@@ -53,8 +53,13 @@ export class PreInvoiceComponent implements OnInit {
     console.log("create");
     this.preInvoiceService.create(new Preinvoice(this.formGroup.value))
         .subscribe((data) => {
-          console.log(data);
-          //this.preInvoiceList.add(data);
+
+          this.rowData.push(data);
+          this.agGrid.applyTransaction({
+            add: [data]
+          })!;
+
+          this.reset();
           this.alertService.success('preInvoice added');
         })
         .add(() => this.loading = false);
@@ -62,8 +67,13 @@ export class PreInvoiceComponent implements OnInit {
 private update() {
   console.log("update");
     this.preInvoiceService.update(this.formGroup.controls.id.value, this.formGroup.value)
-        .subscribe(() => {
+        .subscribe((data) => {
             this.alertService.success('preInvoice updated');
+
+            this.rowData.push(data);
+            const res = this.agGrid.applyTransaction({ update: data })!;
+
+
         })
         .add(() => this.loading = false);
 }
@@ -74,20 +84,20 @@ private getAll(){
   });
 }
 public delete(){
-  var id=this.formGroup.controls.id.value;
+  var id1=this.formGroup.controls.id.value;
   var result = confirm("آیا از حذف ردیف مطین هستید؟");
-  debugger;
-  if(id && result){
+  if(id1 && result){
 
-    const pi = this.preInvoiceList.findIndex( (preinvoice) => {preinvoice.id === id});
+    //const pi = this.preInvoiceList.findIndex( preinvoice => preinvoice.id === id);
+    const pi= this.rowData.findIndex( preinvoice => preinvoice.id === id1);
    
     if (pi != -1){
-  console.log("delete1");
+      this.preInvoiceService.delete(id1).subscribe(() => {
+        this.rowData.splice(pi, 1);
 
-      this.preInvoiceService.delete(id).subscribe(() => {
-  console.log("delete2");
+        const selectedData = this.agGrid.getSelectedRows();
+        this.agGrid.applyTransaction({ remove: selectedData })!;
 
-        this.preInvoiceList.splice(pi, 1);
         this.reset();
         alert('حذف انجام شد.');
       });
