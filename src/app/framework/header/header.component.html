@@ -1,9 +1,16 @@
 
-
-  <p>
+  <p> 
 
 <mat-toolbar color="primary" >
   <span class="fill-remaining-space">سیستم ثبت اندیکاتور</span>
+
+  <span class="example-spacer"></span>
+
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style"> 
+    <mat-button-toggle  *ngIf="! isLoggedIn()" type="button" mat-raised-button  routerLink="/login" >Login</mat-button-toggle>
+    <mat-button-toggle  *ngIf="isLoggedIn()" type="button" mat-raised-button  (click)="logout()" >Logout</mat-button-toggle>
+  </mat-button-toggle-group>
+
 </mat-toolbar>
     <mat-toolbar >
 
@@ -16,11 +23,6 @@
   
         </mat-button-toggle-group>
   
-      <span class="example-spacer"></span>
-
-
-      <button *ngIf="! isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login</button>
-      <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()" >Logout</button>
 
  
     </mat-toolbar>
