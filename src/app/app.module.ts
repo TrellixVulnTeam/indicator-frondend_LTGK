@@ -8,9 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './framework/_auth/auth.guard';
-import { AuthInterceptor } from './framework/_auth/auth.interceptor';
-import { OrderEditableComponent } from './indicator/invoice/order/order-editable/order-editable.component';
-import { OrderIndexComponent } from './indicator/invoice/order/order-index/order-index.component';
+import { AuthInterceptor } from './framework/_auth/auth.interceptor'; 
 import { FreightRateIndexComponent } from './indicator/common/freightRate/freight-rate-index/freight-rate-index.component';
 import { FreightRateEditableComponent } from './indicator/common/freightRate/freight-rate-editable/freight-rate-editable.component';
 import { PreInvoiceComponent } from './indicator/invoice/pre-invoice/pre-invoice.component';
@@ -24,6 +22,10 @@ import { ForbiddenComponent } from './framework/forbidden/forbidden.component';
 import { LoginComponent } from './framework/login/login.component';
 import { UserService } from './framework/_services/user.service';
 import { NgPersianDatepickerModule } from 'ng-persian-datepicker';
+import { OrderComponent } from './indicator/invoice/order/order.component';
+import { CarInfoComponent } from './indicator/invoice/car-info/car-info.component';
+import { AgentComponent } from './indicator/invoice/agent/agent.component';
+import { CustomerComponent } from './indicator/invoice/customer/customer.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +35,16 @@ import { NgPersianDatepickerModule } from 'ng-persian-datepicker';
     UserComponent,
     LoginComponent,
     HeaderComponent,
-    ForbiddenComponent,
-    OrderEditableComponent,
-    OrderIndexComponent,
+    ForbiddenComponent, 
     FreightRateIndexComponent,
     FreightRateEditableComponent,
-    PreInvoiceComponent
+
+
+    PreInvoiceComponent,
+    OrderComponent,
+    CarInfoComponent,
+    AgentComponent,
+    CustomerComponent,
   ],
   imports: [
     BrowserModule,

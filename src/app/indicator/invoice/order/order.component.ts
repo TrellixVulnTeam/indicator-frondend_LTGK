@@ -2,22 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ColDef, GridApi, GridReadyEvent, SelectionChangedEvent } from 'ag-grid-community';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
-import { Preinvoice } from '../../models/preInvoice.model';
-import { PreInvoiceService } from '../../services/pre-invoice.service';
+import { OrderHdr } from '../../models/order-hdr.model';
+import { Preinvoice } from '../../models/preInvoice.model'; 
+import { OrderHdrService } from '../../services/order-hdr.service';
 
 @Component({
-  selector: 'app-pre-invoice',
-  templateUrl: './pre-invoice.component.html',
-  styleUrls: ['./pre-invoice.component.css']
+  selector: 'app-order',
+  templateUrl: './order.component.html',
+  styleUrls: ['./order.component.css']
 })
-export class PreInvoiceComponent implements OnInit {
+export class OrderComponent implements OnInit {
 
   formGroup: FormGroup;
 
   loading = false;
 
   constructor(private formBuilder: FormBuilder,
-    private preInvoiceService: PreInvoiceService) { }
+    private orderHdrService: OrderHdrService,
+    ) { }
 
   ngOnInit() {
     this.createForm();
@@ -40,7 +42,7 @@ export class PreInvoiceComponent implements OnInit {
   }
 
   private create() {
-    this.preInvoiceService.create(new Preinvoice(this.formGroup.value))
+    this.orderHdrService.create(new OrderHdr(this.formGroup.value))
       .subscribe((data) => {
         this.rowData.push(data);
         this.agGrid.applyTransaction({
@@ -55,7 +57,7 @@ export class PreInvoiceComponent implements OnInit {
   }
   private update() {
     var id = this.formGroup.controls.id.value;
-    this.preInvoiceService.update(id, this.formGroup.value)
+    this.orderHdrService.update(id, this.formGroup.value)
       .subscribe((data) => {
         const pi = this.rowData.findIndex(itm => itm.id === id);
         if (pi != -1) {
@@ -77,7 +79,7 @@ export class PreInvoiceComponent implements OnInit {
     if (id1 && result) {
       const pi = this.rowData.findIndex(preinvoice => preinvoice.id === id1);
       if (pi != -1) {
-        this.preInvoiceService.delete(id1).subscribe(() => {
+        this.orderHdrService.delete(id1).subscribe(() => {
           this.rowData.splice(pi, 1);
 
           const selectedData = this.agGrid.getSelectedRows();
@@ -134,11 +136,21 @@ export class PreInvoiceComponent implements OnInit {
   // Each Column Definition results in one Column.
   public columnDefs: ColDef[] = [
     { field: 'id', hide: true },
-    { field: 'documentNo', headerName: 'شماره درخواست' },
-    { field: 'fileNo', headerName: 'شماره فایل' },
-    { field: 'preOrderUnitValue', headerName: 'تعداد' },
+    { field: 'documentNo', headerName: 'شماره سفارش' },
+    { field: 'invoiceNo', headerName: 'شماره اینویس' },
+    { field: 'reagentName', headerName: 'معرف' },
+    { field: 'reagentName', headerName: 'معرف' },
     { field: 'vchDate', headerName: 'تاریخ' }
   ];
+
+  id?: number 
+  reagentName: string = ""
+  customerName: string = ""
+  customerId: number | undefined
+  invoiceValue: number | undefined
+  preInvoiceNo: string =""    
+  preInvoiceId: number | undefined
+  vchDate: Date = new Date()
 
   // DefaultColDef sets props common to all Columns
   public defaultColDef: ColDef = {
@@ -153,13 +165,13 @@ export class PreInvoiceComponent implements OnInit {
   onGridReady(params: GridReadyEvent) {
     this.agGrid = params.api;
     this.agColumnApi = params.columnApi;
-    this.preInvoiceService.getAll().subscribe((data) => {
+    this.orderHdrService.getAll().subscribe((data) => {
       this.rowData = data;
     });
   }
 
   refresh() {
-    this.preInvoiceService.getAll().subscribe((data) => {
+    this.orderHdrService.getAll().subscribe((data) => {
       this.rowData = data;
     });
   }

@@ -2,26 +2,26 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Preinvoice } from '../models/preInvoice.model';
+import { CarInfo } from '../models/car-info.model';
 
-const  baseUrl = environment.PATH_OF_API+'/api/preinvoice';
+const  baseUrl = environment.PATH_OF_API+'/api/carinformation';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PreInvoiceService {
+export class CarInfoService {
  
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Preinvoice[]> {
+  getAll(): Observable<CarInfo[]> {
     console.log(baseUrl);
-    return this.http.get<Preinvoice[]>(`${baseUrl}/`);
+    return this.http.get<CarInfo[]>(`${baseUrl}/`);
   }
   get(id: any): Observable<any> {
     return this.http.get(`${baseUrl}/${id}`);
   }
-  create(data: Preinvoice): Observable<any> {
+  create(data: CarInfo): Observable<any> {
     console.log(data);
     return this.http.post(`${baseUrl}/`, data);
   }
@@ -34,7 +34,7 @@ export class PreInvoiceService {
   deleteAll(): Observable<any> {
     return this.http.delete(baseUrl);
   }
-  findByTitle(title: any): Observable<Preinvoice[]> {
-    return this.http.get<Preinvoice[]>(`${baseUrl}?title=${title}`);
+  findByTitle(title: any): Observable<CarInfo[]> {
+    return this.http.get<CarInfo[]>(`${baseUrl}?title=${title}`);
   }
 }
