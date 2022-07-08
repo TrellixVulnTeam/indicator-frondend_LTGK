@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ColDef, GridApi, GridReadyEvent, SelectionChangedEvent } from 'ag-grid-community';
+import { CustomerGridComponent } from 'src/app/indicator/invoice/customer/customer-grid.componnent';
 import { DialogData } from './dialog-data';
 
 @Component({
@@ -11,7 +12,7 @@ import { DialogData } from './dialog-data';
 export class MyDialogBoxComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<MyDialogBoxComponent>,
+    public dialogRef: MatDialogRef<CustomerGridComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData ) { }
 
   onNoClick(): void {
@@ -19,33 +20,5 @@ export class MyDialogBoxComponent {
   }
 
 
-
-  public rowData!: any[];
-
-  // For accessing the Grid's API
-  protected agGrid!: GridApi;
-  protected agColumnApi!: any;
-
-
-  // Each Column Definition results in one Column.
-  public columnDefs: ColDef[] =this.data.grid.columnDefs;
-
-  // DefaultColDef sets props common to all Columns
-  public defaultColDef: ColDef = this.data.grid.defaultColDef;
-
-  // Example load data from sever
-  onGridReady(params: GridReadyEvent) {
-    this.data.grid.onGridReady(params);
-    console.log("dddd"+this.rowData);
-  }
-
-  onSelectionChanged(event: SelectionChangedEvent): any {
-    return this.data.grid.onSelectionChangedRow(event);
-  }
-
-  onSelectionChangedClose(event: SelectionChangedEvent): any {
-    return this.data.grid.onSelectionChangedClose(event);
-
-  }
 
 }
