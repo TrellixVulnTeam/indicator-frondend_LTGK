@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { CellKeyDownEvent, CellKeyPressEvent, ColDef, FullWidthCellKeyDownEvent, FullWidthCellKeyPressEvent, GridApi, GridReadyEvent, SelectionChangedEvent } from "ag-grid-community";
-import { Customer } from "../../models/customer.model";
-import { CustomerService } from "../../services/customer.service";
-import { AbstractGrid } from "./abstract-grid";
+import { Customer } from "src/app/indicator/models/customer.model";
+import { CustomerService } from "src/app/indicator/services/customer.service";
 
 @Component({
     selector: 'app-customer-grid',
@@ -87,24 +86,4 @@ export class CustomerGridComponent  {
         }
       }
     
-    /*
-    gridDiv.addEventListener('keydown', function(evt) {
-        if(editing && evt.key === 'Enter') {
-            var currentCell = gridOptions.api.getFocusedCell();
-            var finalRowIndex = gridOptions.api.paginationGetRowCount()-1;
-      
-            // If we are editing the last row in the grid, don't move to next line
-            if (currentCell.rowIndex === finalRowIndex) {
-                return;
-            }
-            gridOptions.api.stopEditing();
-            gridOptions.api.clearFocusedCell();
-      
-            gridOptions.api.startEditingCell({
-              rowIndex: currentCell.rowIndex + 1,
-              colKey: currentCell.column.colId
-            });
-        }
-      });
-      */
 }

@@ -7,6 +7,7 @@ import { MyDialogBoxComponent } from 'src/app/framework/utilities/my-dialog-box/
 import { OrderHdr } from '../../models/order-hdr.model';
 import { Preinvoice } from '../../models/preInvoice.model'; 
 import { OrderHdrService } from '../../services/order-hdr.service';
+import { PreInvoiceGridComponent } from '../pre-invoice/grid/pre-invoice-grid.component';
 
 @Component({
   selector: 'app-order-hdr',
@@ -110,7 +111,7 @@ export class OrderHdrComponent implements OnInit {
       'orderNo': [null, [Validators.required]],
       'invoiceNo': [null, Validators.required],
       'invoiceValue': [null, [Validators.required]],
-      'preInvoiceId': [null, [Validators.required]],
+      'preInvoiceId': [null, []],
       'preInvoiceNo': [null, [Validators.required]],
       'vchDate': [null, [Validators.required]],
     });
@@ -127,18 +128,20 @@ export class OrderHdrComponent implements OnInit {
 
 
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(MyDialogBoxComponent, {
-      width: '250px',
-      data: {name: "test", data: this.rowData},
+  openDialogPreInvoiceNo(): void {
+    const dialogRef = this.dialog.open(PreInvoiceGridComponent, {panelClass: 'custom-dialog-container' ,
+      width: '600px',height:'400px',
+      data: { name: "test", data: [] },
     });
+    const dialogSubmitSubscription = dialogRef.componentInstance.outputGetFromGridToDialog.subscribe(data => {
+      console.log("returned value from dialog: " + data['id']);
+      this.formGroup.controls['preInvoiceId'].setValue(data['id']);
+      this.formGroup.controls['preInvoiceNo'].setValue(data['documentNo']);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.rowData = result;
+      dialogSubmitSubscription.unsubscribe();
+      dialogRef.close();
     });
   }
-
   //++++++++++++grid
 
   // Data that gets displayed in the grid

@@ -27,7 +27,9 @@ import { AgentComponent } from './indicator/invoice/agent/agent.component';
 import { CustomerComponent } from './indicator/invoice/customer/customer.component';
 import { OrderHdrComponent } from './indicator/invoice/order-hdr/order-hdr.component';
 import { MyDialogBoxComponent } from './framework/utilities/my-dialog-box/my-dialog-box.component';
-import { CustomerGridComponent } from './indicator/invoice/customer/customer-grid.componnent';
+import { CustomerGridComponent } from './indicator/invoice/customer/grid/customer-grid.componnent';
+import { PreInvoiceGridComponent } from './indicator/invoice/pre-invoice/grid/pre-invoice-grid.component';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { CustomerGridComponent } from './indicator/invoice/customer/customer-gri
 
     //grids
     CustomerGridComponent,
+    PreInvoiceGridComponent,
   ],
   imports: [
     BrowserModule,

@@ -36,10 +36,9 @@
     </form>
   </div>
 
-  <!-- AG Grid Angular Component -->
-  <ag-grid-angular style="width: 100%; height: 100%" class="ag-theme-alpine" [columnDefs]="columnDefs"
-    [defaultColDef]="defaultColDef" [rowData]="rowData" [rowSelection]="'multiple'" [animateRows]="true"
-    [enableRtl]="true" [columnHoverHighlight]="true" (gridReady)="onGridReady($event)"
-    (selectionChanged)="onSelectionChanged($event)"></ag-grid-angular>
+  <div style="width: 100%; height: 100%" >
+    <!-- AG Grid Angular Component-->
+    <app-pre-invoice-grid    (outputGetFromGrid)="onSelectionChanged($event)"></app-pre-invoice-grid> 
+    </div>
 
 </div>

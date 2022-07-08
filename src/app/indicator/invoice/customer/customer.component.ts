@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
 import { Customer } from '../../models/customer.model';
 import { CustomerService } from '../../services/customer.service';
-import { CustomerGridComponent } from './customer-grid.componnent';
+import { CustomerGridComponent } from './grid/customer-grid.componnent';
 
 @Component({
   selector: 'app-customer',
@@ -148,7 +148,7 @@ export class CustomerComponent implements OnInit {
       console.log("returned value from dialog: " + data['id']);
       this.formGroup.controls['id'].setValue(data['id']);
       this.formGroup.controls['address'].setValue(data['firstName']);
-      
+
       dialogSubmitSubscription.unsubscribe();
       dialogRef.close();
     });
