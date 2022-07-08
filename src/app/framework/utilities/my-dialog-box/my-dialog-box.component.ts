@@ -1,7 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ColDef, GridApi, GridReadyEvent, SelectionChangedEvent } from 'ag-grid-community';
-import { CustomerGridComponent } from 'src/app/indicator/invoice/customer/customer-grid.componnent';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData } from './dialog-data';
 
 @Component({
@@ -11,12 +9,15 @@ import { DialogData } from './dialog-data';
 })
 export class MyDialogBoxComponent {
 
+
+  
   constructor(
-    public dialogRef: MatDialogRef<CustomerGridComponent>,
+    public dialogRef: MatDialogRef<MyDialogBoxComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData ) { }
 
   onNoClick(): void {
     this.dialogRef.close();
+    
   }
 
 
