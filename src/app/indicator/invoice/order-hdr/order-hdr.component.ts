@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ColDef, GridApi, GridReadyEvent, SelectionChangedEvent } from 'ag-grid-community';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
+import { MyDialogBoxComponent } from 'src/app/framework/utilities/my-dialog-box/my-dialog-box.component';
 import { OrderHdr } from '../../models/order-hdr.model';
 import { Preinvoice } from '../../models/preInvoice.model'; 
 import { OrderHdrService } from '../../services/order-hdr.service';
 
 @Component({
-  selector: 'app-order',
-  templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css']
+  selector: 'app-order-hdr',
+  templateUrl: './order-hdr.component.html',
+  styleUrls: ['./order-hdr.component.css']
 })
-export class OrderComponent implements OnInit {
+export class OrderHdrComponent implements OnInit {
 
   formGroup: FormGroup;
 
@@ -19,6 +21,7 @@ export class OrderComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private orderHdrService: OrderHdrService,
+    public dialog: MatDialog
     ) { }
 
   ngOnInit() {
@@ -104,23 +107,37 @@ export class OrderComponent implements OnInit {
   createForm() {
     this.formGroup = this.formBuilder.group({
       'id': [null],
-      'documentNo': [null, [Validators.required]],
-      'fileNo': [null, Validators.required],
-      'preOrderUnitValue': [null, [Validators.required]],
+      'orderNo': [null, [Validators.required]],
+      'invoiceNo': [null, Validators.required],
+      'invoiceValue': [null, [Validators.required]],
+      'preInvoiceId': [null, [Validators.required]],
+      'preInvoiceNo': [null, [Validators.required]],
       'vchDate': [null, [Validators.required]],
     });
   }
 
   //form validation
   get getDocumentNo() {
-    return this.formGroup.get('documentNo') as FormControl
+    return this.formGroup.get('orderNo') as FormControl
   }
 
   getErrorDocumentNo() {
-    return this.formGroup.get('documentNo').hasError('required') ? '*' : '';
+    return this.formGroup.get('orderNo').hasError('required') ? '*' : '';
   }
 
 
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(MyDialogBoxComponent, {
+      width: '250px',
+      data: {name: "test", data: this.rowData},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.rowData = result;
+    });
+  }
 
   //++++++++++++grid
 
@@ -136,21 +153,13 @@ export class OrderComponent implements OnInit {
   // Each Column Definition results in one Column.
   public columnDefs: ColDef[] = [
     { field: 'id', hide: true },
-    { field: 'documentNo', headerName: 'شماره سفارش' },
+    { field: 'orderNo', headerName: 'شماره سفارش' },
     { field: 'invoiceNo', headerName: 'شماره اینویس' },
-    { field: 'reagentName', headerName: 'معرف' },
-    { field: 'reagentName', headerName: 'معرف' },
-    { field: 'vchDate', headerName: 'تاریخ' }
+    { field: 'invoiceValue', headerName: 'مبلغ اینویس' },
+    { field: 'preInvoiceId', headerName: 'preInvoiceId' ,hide: true },
+    { field: 'preInvoiceNo', headerName: 'شماره درخواست' },
+    { field: 'vchDate', headerName: 'تاریخ' },
   ];
-
-  id?: number 
-  reagentName: string = ""
-  customerName: string = ""
-  customerId: number | undefined
-  invoiceValue: number | undefined
-  preInvoiceNo: string =""    
-  preInvoiceId: number | undefined
-  vchDate: Date = new Date()
 
   // DefaultColDef sets props common to all Columns
   public defaultColDef: ColDef = {
@@ -183,3 +192,7 @@ export class OrderComponent implements OnInit {
 
 
 }
+function DialogOverviewExampleDialog(DialogOverviewExampleDialog: any, arg1: { width: string; data: { name: any; animal: any; }; }) {
+  throw new Error('Function not implemented.');
+}
+

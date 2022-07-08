@@ -1,14 +1,9 @@
-import { NumberSymbol } from "@angular/common"
-import { FormGroup } from "@angular/forms"
 
 export class OrderHdr {
     id?: number 
-    documentNo: string = ""
+    orderNo: string = ""
     invoiceNo: string = ""
-    reagentName: string = ""
-    customerName: string = ""
-    customerId: number | undefined
-    invoiceValue: number | undefined
+    invoiceValue: string = ""
     preInvoiceNo: string =""    
     preInvoiceId: number | undefined
     vchDate: Date = new Date()
@@ -17,6 +12,4 @@ export class OrderHdr {
     public constructor(init?: Partial<OrderHdr>) {
         Object.assign(this, init);
     }
-
-     
 }

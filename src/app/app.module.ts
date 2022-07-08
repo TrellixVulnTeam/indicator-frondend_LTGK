@@ -22,10 +22,12 @@ import { ForbiddenComponent } from './framework/forbidden/forbidden.component';
 import { LoginComponent } from './framework/login/login.component';
 import { UserService } from './framework/_services/user.service';
 import { NgPersianDatepickerModule } from 'ng-persian-datepicker';
-import { OrderComponent } from './indicator/invoice/order/order.component';
 import { CarInfoComponent } from './indicator/invoice/car-info/car-info.component';
 import { AgentComponent } from './indicator/invoice/agent/agent.component';
 import { CustomerComponent } from './indicator/invoice/customer/customer.component';
+import { OrderHdrComponent } from './indicator/invoice/order-hdr/order-hdr.component';
+import { MyDialogBoxComponent } from './framework/utilities/my-dialog-box/my-dialog-box.component';
+import { CustomerGridComponent } from './indicator/invoice/customer/customer-grid.componnent';
 
 @NgModule({
   declarations: [
@@ -41,10 +43,14 @@ import { CustomerComponent } from './indicator/invoice/customer/customer.compone
 
 
     PreInvoiceComponent,
-    OrderComponent,
+    OrderHdrComponent,
     CarInfoComponent,
     AgentComponent,
     CustomerComponent,
+    MyDialogBoxComponent,
+
+    //grids
+    CustomerGridComponent,
   ],
   imports: [
     BrowserModule,

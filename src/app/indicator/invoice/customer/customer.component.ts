@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ColDef, GridApi, GridReadyEvent, SelectionChangedEvent } from 'ag-grid-community';
+import { MatDialog } from '@angular/material/dialog';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
 import { Customer } from '../../models/customer.model';
 import { CustomerService } from '../../services/customer.service';
+import { CustomerGridComponent } from './customer-grid.componnent';
 
 @Component({
   selector: 'app-customer',
@@ -12,13 +13,18 @@ import { CustomerService } from '../../services/customer.service';
 })
 export class CustomerComponent implements OnInit {
 
+  @ViewChild(CustomerGridComponent) child;
+
   formGroup: FormGroup;
 
   loading = false;
 
   constructor(private formBuilder: FormBuilder,
     private customerService: CustomerService,
-    ) { }
+    public dialog: MatDialog
+  ) {
+
+  }
 
   ngOnInit() {
     this.createForm();
@@ -43,8 +49,8 @@ export class CustomerComponent implements OnInit {
   private create() {
     this.customerService.create(new Customer(this.formGroup.value))
       .subscribe((data) => {
-        this.rowData.push(data);
-        this.agGrid.applyTransaction({
+        this.child.rowData.push(data);
+        this.child.agGrid.applyTransaction({
           add: [data]
         })!;
         this.reset();
@@ -58,10 +64,10 @@ export class CustomerComponent implements OnInit {
     var id = this.formGroup.controls.id.value;
     this.customerService.update(id, this.formGroup.value)
       .subscribe((data) => {
-        const pi = this.rowData.findIndex(itm => itm.id === id);
+        const pi = this.child.rowData.findIndex(itm => itm.id === id);
         if (pi != -1) {
-          this.rowData.splice(pi, 1, data);
-          var rowNode = this.agGrid.getRowNode('' + pi);
+          this.child.rowData.splice(pi, 1, data);
+          var rowNode = this.child.agGrid.getRowNode('' + pi);
           rowNode?.setData(data);
           this.reset();
         }
@@ -76,13 +82,13 @@ export class CustomerComponent implements OnInit {
     var id1 = this.formGroup.controls.id.value;
     var result = confirm(Messages.beforeDelete);
     if (id1 && result) {
-      const pi = this.rowData.findIndex(itm => itm.id === id1);
+      const pi = this.child.rowData.findIndex(itm => itm.id === id1);
       if (pi != -1) {
         this.customerService.delete(id1).subscribe(() => {
-          this.rowData.splice(pi, 1);
+          this.child.rowData.splice(pi, 1);
 
-          const selectedData = this.agGrid.getSelectedRows();
-          this.agGrid.applyTransaction({ remove: selectedData })!;
+          const selectedData = this.child.agGrid.getSelectedRows();
+          this.child.agGrid.applyTransaction({ remove: selectedData })!;
 
           this.reset();
         })
@@ -110,7 +116,6 @@ export class CustomerComponent implements OnInit {
     });
   }
 
-  
   //form validation
   get getFirstName() {
     return this.formGroup.get('firstName') as FormControl
@@ -120,8 +125,38 @@ export class CustomerComponent implements OnInit {
     return this.formGroup.get('firstName').hasError('required') ? '*' : '';
   }
 
+  refresh() {
+
+    this.customerService.getAll().subscribe((data) => {
+      this.child.rowData = data;
+    });
+
+  }
+
+  //to get row from grid component
+  onSelectionChanged(event) {
+    this.formGroup.patchValue(event);
+  }
+  
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CustomerGridComponent, {panelClass: 'custom-dialog-container' ,
+      width: '600px',height:'400px',
+      data: { name: "test", data: [] },
+    });
+    const dialogSubmitSubscription = dialogRef.componentInstance.outputGetFromGridToDialog.subscribe(data => {
+      console.log("returned value from dialog: " + data['id']);
+      this.formGroup.controls['id'].setValue(data['id']);
+      this.formGroup.controls['address'].setValue(data['firstName']);
+      
+      dialogSubmitSubscription.unsubscribe();
+      dialogRef.close();
+    });
+
+  }
 
 
+  /*
   //++++++++++++grid
 
   // Data that gets displayed in the grid
@@ -160,16 +195,10 @@ export class CustomerComponent implements OnInit {
     });
   }
 
-  refresh() {
-    this.customerService.getAll().subscribe((data) => {
-      this.rowData = data;
-    });
-  }
-
   onSelectionChanged(event: SelectionChangedEvent) {
     let pi = new Customer(event.api.getSelectedRows()[0]);
     this.formGroup.patchValue(pi);
   }
-
+*/
 
 }

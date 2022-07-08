@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { OrderHdr } from '../models/order-hdr.model';
 
-const  baseUrl = environment.PATH_OF_API+'/api/order';
+const  baseUrl = environment.PATH_OF_API+'/api/orderhdr';
 
 @Injectable({
   providedIn: 'root'
