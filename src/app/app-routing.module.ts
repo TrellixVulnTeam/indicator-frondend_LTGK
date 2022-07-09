@@ -4,6 +4,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { HomeComponent } from './home/home.component';
 import { CarInformationIndexComponent } from './indicator/common/carInformation/car-information-index/car-information-index.component';
+import { CustomerDetailComponent } from './indicator/common/customer/customer-detail/customer-detail.component';
 import { CustomerEditableComponent } from './indicator/common/customer/customer-editable/customer-editable.component';
 import { CustomerIndexComponent } from './indicator/common/customer/customer-index/customer-index.component';
 import { FreightRateIndexComponent } from './indicator/common/freightRate/freight-rate-index/freight-rate-index.component';
@@ -23,6 +24,8 @@ const routes: Routes = [
   { path: 'order/index', component: OrderIndexComponent },
   { path: 'customer/index', component: CustomerIndexComponent },
   { path: 'customer/create', component: CustomerEditableComponent },
+  { path: 'customer/edit/:id', component: CustomerEditableComponent },
+  { path: 'customer/delete/:id', component: CustomerDetailComponent },
   { path: 'carInformation/index', component: CarInformationIndexComponent },
   { path: 'freightRate/index', component: FreightRateIndexComponent },
 ];

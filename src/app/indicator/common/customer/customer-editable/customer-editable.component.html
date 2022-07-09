@@ -21,7 +21,8 @@
             <label for="address">Address</label>
         </div>
         <div class="row">
-            <button (click)="create()" type="submit" class="col-2 btn btn-primary">Create</button>
+            <button *ngIf="editMode == false" (click)="create()" type="submit" class="col-2 btn btn-primary">Create</button>
+            <button *ngIf="editMode" (click)="edit()" type="submit" class="col-2 btn btn-primary">Edit</button>
             <span class="col-8"></span>
             <button (click)="backToList()" type="submit" class="col-2 btn btn-secondary">Back To list</button>
         </div>

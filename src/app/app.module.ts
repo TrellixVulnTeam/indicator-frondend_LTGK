@@ -25,6 +25,7 @@ import { FreightRateIndexComponent } from './indicator/common/freightRate/freigh
 import { FreightRateEditableComponent } from './indicator/common/freightRate/freight-rate-editable/freight-rate-editable.component';
 import { CustomerEditableComponent } from './indicator/common/customer/customer-editable/customer-editable.component';
 import { CustomerIndexComponent } from './indicator/common/customer/customer-index/customer-index.component';
+import { CustomerDetailComponent } from './indicator/common/customer/customer-detail/customer-detail.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CustomerIndexComponent } from './indicator/common/customer/customer-ind
     FreightRateIndexComponent,
     FreightRateEditableComponent,
     CustomerEditableComponent,
-    CustomerIndexComponent
+    CustomerIndexComponent,
+    CustomerDetailComponent
   ],
   imports: [
     BrowserModule,
