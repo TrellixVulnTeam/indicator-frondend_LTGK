@@ -9,8 +9,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './framework/_auth/auth.guard';
 import { AuthInterceptor } from './framework/_auth/auth.interceptor'; 
-import { FreightRateIndexComponent } from './indicator/common/freightRate/freight-rate-index/freight-rate-index.component';
-import { FreightRateEditableComponent } from './indicator/common/freightRate/freight-rate-editable/freight-rate-editable.component';
 import { PreInvoiceComponent } from './indicator/invoice/pre-invoice/pre-invoice.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
@@ -29,6 +27,10 @@ import { OrderHdrComponent } from './indicator/invoice/order-hdr/order-hdr.compo
 import { MyDialogBoxComponent } from './framework/utilities/my-dialog-box/my-dialog-box.component';
 import { CustomerGridComponent } from './indicator/invoice/customer/grid/customer-grid.componnent';
 import { PreInvoiceGridComponent } from './indicator/invoice/pre-invoice/grid/pre-invoice-grid.component';
+import { FreightRateComponent } from './indicator/invoice/freight-rate/freight-rate.component';
+import { OrderHdrGridComponent } from './indicator/invoice/order-hdr/grid/hdr/order-hdr-grid.componnent';
+import { OrderItmGridComponent } from './indicator/invoice/order-hdr/grid/itm/order-itm-grid.componnent';
+import { AgentGridComponent } from './indicator/invoice/agent/grid/agent-grid.componnent';
 
 
 @NgModule({
@@ -40,10 +42,8 @@ import { PreInvoiceGridComponent } from './indicator/invoice/pre-invoice/grid/pr
     LoginComponent,
     HeaderComponent,
     ForbiddenComponent, 
-    FreightRateIndexComponent,
-    FreightRateEditableComponent,
 
-
+    FreightRateComponent, 
     PreInvoiceComponent,
     OrderHdrComponent,
     CarInfoComponent,
@@ -54,6 +54,9 @@ import { PreInvoiceGridComponent } from './indicator/invoice/pre-invoice/grid/pr
     //grids
     CustomerGridComponent,
     PreInvoiceGridComponent,
+    OrderHdrGridComponent,
+    OrderItmGridComponent,
+    AgentGridComponent,
   ],
   imports: [
     BrowserModule,

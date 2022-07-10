@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FreightRateIndexComponent } from './indicator/common/freightRate/freight-rate-index/freight-rate-index.component';
 import { PreInvoiceComponent } from './indicator/invoice/pre-invoice/pre-invoice.component';
 import { AuthGuard } from './framework/_auth/auth.guard';
 import { HomeComponent } from './framework/home/home.component';
@@ -12,6 +11,7 @@ import { CarInfoComponent } from './indicator/invoice/car-info/car-info.componen
 import { AgentComponent } from './indicator/invoice/agent/agent.component';
 import { CustomerComponent } from './indicator/invoice/customer/customer.component';
 import { OrderHdrComponent } from './indicator/invoice/order-hdr/order-hdr.component';
+import { FreightRateComponent } from './indicator/invoice/freight-rate/freight-rate.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'carInformation', component: CarInfoComponent },
   { path: 'agent', component: AgentComponent },
   { path: 'customer', component: CustomerComponent },
-  { path: 'freightRate', component: FreightRateIndexComponent },
+  { path: 'freightRate', component: FreightRateComponent },
 ];
 
 @NgModule({

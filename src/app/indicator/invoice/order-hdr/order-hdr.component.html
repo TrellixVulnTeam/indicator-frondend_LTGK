@@ -1,7 +1,21 @@
 <div class="container" style="padding: 20px ;width: 100%; height: 100%">
 
+
+
   <div novalidate>
     <form [formGroup]="formGroup" class="form">
+
+      <div class="form-element">
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle mat-raised-button (click)="openDialogOrderHdrList()"> لیست سفارش</mat-button-toggle>
+
+          <mat-button-toggle mat-raised-button (click)="onSubmit(formGroup.value)" type="submit"
+            [disabled]="formGroup.invalid">ذخیره</mat-button-toggle>
+          <mat-button-toggle mat-raised-button (click)="delete()" [disabled]="formGroup.invalid">حذف</mat-button-toggle>
+          <mat-button-toggle mat-raised-button (click)="reset()">جدید</mat-button-toggle>
+          <mat-button-toggle mat-raised-button (click)="refresh()">بروزرسانی</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
 
       <mat-form-field class="form-element">
         <input matInput placeholder="شماره سفارش" formControlName="orderNo">
@@ -23,7 +37,7 @@
         <input matInput placeholder="شماره درخواست" formControlName="preInvoiceNo">
         <button mat-button matSuffix mat-stroked-button aria-label="search" (click)="openDialogPreInvoiceNo()">
           <mat-icon>search</mat-icon>
-      </button>
+        </button>
       </mat-form-field>
 
       <mat-form-field class="form-element">
@@ -32,22 +46,54 @@
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
 
-      <div class="form-element">
-        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-          <mat-button-toggle mat-raised-button (click)="onSubmit(formGroup.value)" type="submit"
-            [disabled]="formGroup.invalid">ذخیره</mat-button-toggle>
-          <mat-button-toggle mat-raised-button (click)="delete()" [disabled]="formGroup.invalid">حذف</mat-button-toggle>
-          <mat-button-toggle mat-raised-button (click)="reset()">جدید</mat-button-toggle>
-          <mat-button-toggle mat-raised-button (click)="refresh()">بروزرسانی</mat-button-toggle>
-        </mat-button-toggle-group>
-      </div>
+
     </form>
   </div>
 
-  <!-- AG Grid Angular Component -->
-  <ag-grid-angular style="width: 100%; height: 100%" class="ag-theme-alpine" [columnDefs]="columnDefs"
-    [defaultColDef]="defaultColDef" [rowData]="rowData" [rowSelection]="'multiple'" [animateRows]="true"
-    [enableRtl]="true" [columnHoverHighlight]="true" (gridReady)="onGridReady($event)"
-    (selectionChanged)="onSelectionChanged($event)"></ag-grid-angular>
+  <div style="width: 100%; height: 100%">
+    <div class="form-element">
+      <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle mat-raised-button (click)="addRow()">
+          <mat-icon><span class="material-icons">
+              add
+            </span></mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle mat-raised-button (click)="removeRow()">
+          <mat-icon><span class="material-icons">
+              remove
+            </span></mat-icon>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <div novalidate>
+      <form [formGroup]="formGroupItm" class="form">
+  
+        <mat-form-field class="form-element">
+          <input matInput placeholder="شماره شاسی" formControlName="chassiNo">
+          <button mat-button matSuffix mat-stroked-button aria-label="search" (click)="openCustomerDialog()">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-element">
+          <input matInput placeholder="مشتری" formControlName="customerName">
+          <button mat-button matSuffix mat-stroked-button aria-label="search" (click)="openCustomerDialog()">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-element">
+          <input matInput placeholder="معرف" formControlName="agentName">
+          <button mat-button matSuffix mat-stroked-button aria-label="search" (click)="openAgentDialog()">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+  
+      </form>
+    </div>
+    <!-- AG Grid Angular Component-->
+    <app-order-itm-grid (outputGetFromGrid)="onSelectionItmChanged($event)"></app-order-itm-grid>
+  </div>
 
 </div>
