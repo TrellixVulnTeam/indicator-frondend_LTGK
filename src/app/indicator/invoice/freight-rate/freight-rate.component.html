@@ -3,33 +3,81 @@
   <div novalidate>
     <form [formGroup]="formGroup" class="form">
 
-      <mat-form-field class="form-element">
-        <input matInput placeholder="شماره سفارش" formControlName="orderNo">
+      <mat-form-field class="form-element matInput4Text">
+        <input matInput placeholder="شماره کوتاژ" formControlName="kotaj">
         <mat-error *ngIf="getDocumentNo.invalid && getDocumentNo.touched">
           {{ getErrorDocumentNo() }}
         </mat-error>
       </mat-form-field>
+ 
+      <mat-form-field class="form-element matInput4DateTimePicker">
+        <input matInput  [matDatepicker]="picker1" formControlName="totajDate" placeholder="تاریخ کوتاژ">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle> <mat-datepicker #picker1></mat-datepicker>  </mat-form-field>
+
+
+        <mat-form-field class="form-element matInput4DateTimePicker">
+          <input matInput  [matDatepicker]="picker1sendToBankDate" formControlName="sendToBankDate" placeholder="	ارسال به بانک	">
+          <mat-datepicker-toggle matSuffix [for]="picker1sendToBankDate"></mat-datepicker-toggle> <mat-datepicker #picker1sendToBankDate></mat-datepicker>  </mat-form-field>
+
+      <mat-form-field class="form-element matInput4DateTimePicker">
+        <input matInput  [matDatepicker]="picker1contractDate" formControlName="contractDate" placeholder="	تاریخ قرارداد	">
+        <mat-datepicker-toggle matSuffix [for]="picker1contractDate"></mat-datepicker-toggle> <mat-datepicker #picker1contractDate></mat-datepicker>  </mat-form-field>
+
+      <mat-form-field class="form-element matInput4DateTimePicker">
+        <input matInput  [matDatepicker]="picker1rahdariMailDate" formControlName="rahdariMailDate" placeholder="	نامه به راهداری	">
+        <mat-datepicker-toggle matSuffix [for]="picker1rahdariMailDate"></mat-datepicker-toggle> <mat-datepicker #picker1rahdariMailDate></mat-datepicker>  </mat-form-field>
+
+        <mat-form-field class="form-element matInput4DateTimePicker">
+          <input matInput  [matDatepicker]="picker1stelamBazresiBeSherkatDate" formControlName="stelamBazresiBeSherkatDate" placeholder="	جواب استعلام بازرسی به شرکت	">
+          <mat-datepicker-toggle matSuffix [for]="picker1stelamBazresiBeSherkatDate"></mat-datepicker-toggle> <mat-datepicker #picker1stelamBazresiBeSherkatDate></mat-datepicker>  </mat-form-field>
+        
+      <mat-form-field class="form-element matInput4DateTimePicker">
+        <input matInput  [matDatepicker]="picker1mailToBazresiEnvDate" formControlName="mailToBazresiEnvDate" placeholder="	نامه به شرکت بازرسی محیط زیست	">
+        <mat-datepicker-toggle matSuffix [for]="picker1mailToBazresiEnvDate"></mat-datepicker-toggle> <mat-datepicker #picker1mailToBazresiEnvDate></mat-datepicker>  </mat-form-field>
+        
+      <mat-form-field class="form-element matInput4DateTimePicker">
+        <input matInput  [matDatepicker]="picker1envBazdidDate" formControlName="envBazdidDate" placeholder="	بازدید محیط زیست	">
+        <mat-datepicker-toggle matSuffix [for]="picker1envBazdidDate"></mat-datepicker-toggle> <mat-datepicker #picker1envBazdidDate></mat-datepicker>  </mat-form-field>
+        
+      <mat-form-field class="form-element matInput4DateTimePicker">
+        <input matInput  [matDatepicker]="picker1envBazdidPayDate" formControlName="envBazdidPayDate" placeholder="	پرداخت دستمزد بازرسی محیط زیست	">
+        <mat-datepicker-toggle matSuffix [for]="picker1envBazdidPayDate"></mat-datepicker-toggle> <mat-datepicker #picker1envBazdidPayDate></mat-datepicker>  </mat-form-field>
+
+      <mat-form-field class="form-element matInput4DateTimePicker">
+        <input matInput  [matDatepicker]="picker1plutionBazdidPayDate" formControlName="plutionBazdidPayDate" placeholder="	پرداخت دستمزد بازرسی آلایندگی	" >
+        <mat-datepicker-toggle matSuffix [for]="picker1plutionBazdidPayDate"></mat-datepicker-toggle> <mat-datepicker #picker1plutionBazdidPayDate></mat-datepicker>  </mat-form-field>
+
+        <mat-form-field class="form-element matInput4DateTimePicker">
+          <input matInput  [matDatepicker]="picker1plutionBazdidDate" formControlName="plutionBazdidDate" placeholder="	بازدید آلایند	">
+          <mat-datepicker-toggle matSuffix [for]="picker1plutionBazdidDate"></mat-datepicker-toggle> <mat-datepicker #picker1plutionBazdidDate></mat-datepicker>  </mat-form-field>
+          
+
+      <mat-form-field class="form-element"> <input matInput placeholder="	نوع عملیات بانکی	" formControlName="bankingOperationType"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	پارت اسناد حمل و ابزار پرداخت	" formControlName="asnadHamlVaPardakht"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	برگ سبز	" formControlName="greenPass"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	کد ساتا	" formControlName="sataCode"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	شماره قرارداد	" formControlName="contractNo"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	مبلغ حقوق و عوارض گمرکی	" formControlName="avarezGomroki"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	وضعیت حقوق و عوارض گمرکی	" formControlName="avarezGomrokiStatus"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	مبلغ قابل دریافت از مشتری	" formControlName="moneyFromCustomer"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	مبلغ قابل دریافت از مشتری قسط اول	" formControlName="firstInstallmentValue"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	مبلغ قابل دریافت از مشتری قسط دوم	" formControlName="secondInstallmentValue"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	کوتاژ صادراتی مستهلک شده	" formControlName="kotajSaderatiMostahlak"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	معادل دلاری مستهلک شده	" formControlName="kotajSaderatiMostahlakInUsd"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	نامه راهداری به ونک استاندارد جهت انتخاب بازرس " formControlName="mailRahdariToVanak"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	انتخاب بازرس	" formControlName="bazres"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	بازدید بازرس استاندارد	" formControlName="bazdidBazresStandard"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	شماره نامه ونک به راهداری ، گمرک و شماره گذاری	" formControlName="mailVanakToRahdari"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	شماره نامه آلایندگی و محیط زیست به راهداری و شماره گذاری	" formControlName="mailPlutionAndEnvToRahdariAndShorareNo"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	شماره نامه اتوماسیون محیط زیست در راهداری	" formControlName="mailAutomasionEnvInRahdariNo"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	اعلام کد ترخیص	" formControlName="clearanceCodeDate"></mat-form-field>
+
 
       <mat-form-field class="form-element">
-        <input matInput placeholder="شماره اینویس" formControlName="invoiceNo">
-      </mat-form-field>
-
-      <mat-form-field class="form-element">
-        <input matInput placeholder="تعداد اینویس" formControlName="invoiceValue">
-      </mat-form-field>
-
-
-      <mat-form-field class="form-element">
-        <input matInput placeholder="شماره درخواست" formControlName="preInvoiceNo">
-        <button mat-button matSuffix mat-stroked-button aria-label="search" (click)="openDialogPreInvoiceNo()">
+        <input matInput placeholder="" formControlName="orderNo" placeholder="شاسی">
+        <button mat-button matSuffix mat-stroked-button aria-label="search" (click)="openDialogOrderitm()">
           <mat-icon>search</mat-icon>
       </button>
-      </mat-form-field>
-
-      <mat-form-field class="form-element">
-        <input matInput [matDatepicker]="picker1" formControlName="vchDate" placeholder="تاریخ">
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
 
       <div class="form-element">
@@ -44,10 +92,9 @@
     </form>
   </div>
 
-  <!-- AG Grid Angular Component -->
-  <ag-grid-angular style="width: 100%; height: 100%" class="ag-theme-alpine" [columnDefs]="columnDefs"
-    [defaultColDef]="defaultColDef" [rowData]="rowData" [rowSelection]="'multiple'" [animateRows]="true"
-    [enableRtl]="true" [columnHoverHighlight]="true" (gridReady)="onGridReady($event)"
-    (selectionChanged)="onSelectionChanged($event)"></ag-grid-angular>
+  <div style="width: 100%; height: 100%" >
+    <!-- AG Grid Angular Component-->
+    <app-freight-rate-grid   (outputGetFromGrid)="onSelectionChanged($event)"></app-freight-rate-grid> 
+    </div>
 
 </div>

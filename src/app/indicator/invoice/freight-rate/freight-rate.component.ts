@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ColDef, GridApi, GridReadyEvent, SelectionChangedEvent } from 'ag-grid-community';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
-import { OrderHdr } from '../../models/order-hdr.model';
-import { Preinvoice } from '../../models/preInvoice.model'; 
-import { OrderHdrService } from '../../services/order-hdr.service';
-import { PreInvoiceGridComponent } from '../pre-invoice/grid/pre-invoice-grid.component';
+import { FreightRate } from '../../models/freight-rate.model';
+import { FreightRateService } from '../../services/freight-rate.service';
+import { OrderItmGridComponent } from '../order-hdr/grid/itm/order-itm-grid.componnent';
+import { FreightRateGridComponent } from './grid/freight-rate-grid.componnent';
 
 @Component({
   selector: 'app-freight-rate',
@@ -14,13 +13,15 @@ import { PreInvoiceGridComponent } from '../pre-invoice/grid/pre-invoice-grid.co
   styleUrls: ['./freight-rate.component.css']
 })
 export class FreightRateComponent implements OnInit {
-
+  
+  @ViewChild(FreightRateGridComponent) child;
   formGroup: FormGroup;
 
   loading = false;
+  fromDialogOn= false;
 
   constructor(private formBuilder: FormBuilder,
-    private orderHdrService: OrderHdrService,
+    private freightRateService: FreightRateService,
     public dialog: MatDialog
     ) { }
 
@@ -45,10 +46,10 @@ export class FreightRateComponent implements OnInit {
   }
 
   private create() {
-    this.orderHdrService.create(new OrderHdr(this.formGroup.value))
+    this.freightRateService.create(new FreightRate(this.formGroup.value))
       .subscribe((data) => {
-        this.rowData.push(data);
-        this.agGrid.applyTransaction({
+        this.child.rowData.push(data);
+        this.child.agGrid.applyTransaction({
           add: [data]
         })!;
         this.reset();
@@ -60,12 +61,12 @@ export class FreightRateComponent implements OnInit {
   }
   private update() {
     var id = this.formGroup.controls.id.value;
-    this.orderHdrService.update(id, this.formGroup.value)
+    this.freightRateService.update(id, this.formGroup.value)
       .subscribe((data) => {
-        const pi = this.rowData.findIndex(itm => itm.id === id);
+        const pi = this.child.rowData.findIndex(itm => itm.id === id);
         if (pi != -1) {
-          this.rowData.splice(pi, 1, data);
-          var rowNode = this.agGrid.getRowNode('' + pi);
+          this.child.rowData.splice(pi, 1, data);
+          var rowNode = this.child.agGrid.getRowNode('' + pi);
           rowNode?.setData(data);
           this.reset();
         }
@@ -80,13 +81,13 @@ export class FreightRateComponent implements OnInit {
     var id1 = this.formGroup.controls.id.value;
     var result = confirm(Messages.beforeDelete);
     if (id1 && result) {
-      const pi = this.rowData.findIndex(preinvoice => preinvoice.id === id1);
+      const pi = this.child.rowData.findIndex(itm => itm.id === id1);
       if (pi != -1) {
-        this.orderHdrService.delete(id1).subscribe(() => {
-          this.rowData.splice(pi, 1);
+        this.freightRateService.delete(id1).subscribe(() => {
+          this.child.rowData.splice(pi, 1);
 
-          const selectedData = this.agGrid.getSelectedRows();
-          this.agGrid.applyTransaction({ remove: selectedData })!;
+          const selectedData = this.child.agGrid.getSelectedRows();
+          this.child.agGrid.applyTransaction({ remove: selectedData })!;
 
           this.reset();
         })
@@ -106,95 +107,83 @@ export class FreightRateComponent implements OnInit {
 
   createForm() {
     this.formGroup = this.formBuilder.group({
-      'id': [null],
-      'orderNo': [null, [Validators.required]],
-      'invoiceNo': [null, Validators.required],
-      'invoiceValue': [null, [Validators.required]],
-      'preInvoiceId': [null, []],
-      'preInvoiceNo': [null, [Validators.required]],
-      'vchDate': [null, [Validators.required]],
+      'id': [null], 
+      'kotaj': [null, [Validators.required]],																					
+      'totajDate': [null, [Validators.required]],	
+      'bankingOperationType': [null, []],
+      'asnadHamlVaPardakht': [null, []],
+      'sendToBankDate': [null, []],
+      'greenPass': [null, []],
+      'sataCode': [null, []],
+      'contractNo': [null, []],
+      'contractDate': [null, []],
+      'avarezGomroki': [null, []],
+      'avarezGomrokiStatus': [null, []],
+      'moneyFromCustomer': [null, []],
+      'firstInstallmentValue': [null, []],
+      'secondInstallmentValue': [null, []],
+      'kotajSaderatiMostahlak': [null, []],
+      'kotajSaderatiMostahlakInUsd': [null, []],
+      'rahdariMailDate': [null, []],
+      'mailRahdariToVanak': [null, []],
+      'bazres': [null, []],
+      'bazdidBazresStandard': [null, []],
+      'stelamBazresiBeSherkatDate': [null, []],
+      'mailVanakToRahdari': [null, []],
+      'mailToBazresiEnvDate': [null, []],
+      'envBazdidDate': [null, []],
+      'envBazdidPayDate': [null, []],
+      'plutionBazdidPayDate': [null, []],
+      'plutionBazdidDate': [null, []],
+      'mailPlutionAndEnvToRahdariAndShorareNo': [null, []],
+      'mailAutomasionEnvInRahdariNo': [null, []],
+      'clearanceCodeDate': [null, []],
+      'orderNo': [null, []],
+      'orderItmId': [null, []],
+      
     });
   }
 
   //form validation
   get getDocumentNo() {
-    return this.formGroup.get('orderNo') as FormControl
+    return this.formGroup.get('kotaj') as FormControl
   }
 
   getErrorDocumentNo() {
-    return this.formGroup.get('orderNo').hasError('required') ? '*' : '';
+    return this.formGroup.get('kotaj').hasError('required') ? '*' : '';
   }
 
 
 
-  openDialogPreInvoiceNo(): void {
-    const dialogRef = this.dialog.open(PreInvoiceGridComponent, {panelClass: 'custom-dialog-container' ,
+  openDialogOrderitm(): void {
+    this.fromDialogOn= true;
+    const dialogRef = this.dialog.open(OrderItmGridComponent, {panelClass: 'custom-dialog-container' ,
       width: '600px',height:'400px',
-      data: { name: "test", data: [] },
+      data: { name: "test",fromDialog:this.fromDialogOn, data: [] },
     });
     const dialogSubmitSubscription = dialogRef.componentInstance.outputGetFromGridToDialog.subscribe(data => {
       console.log("returned value from dialog: " + data['id']);
-      this.formGroup.controls['preInvoiceId'].setValue(data['id']);
-      this.formGroup.controls['preInvoiceNo'].setValue(data['documentNo']);
+      this.formGroup.controls['orderItmId'].setValue(data['id']);
+      this.formGroup.controls['orderNo'].setValue(data['carInformationChassisNumber']);
 
       dialogSubmitSubscription.unsubscribe();
       dialogRef.close();
     });
   }
-  //++++++++++++grid
-
-  // Data that gets displayed in the grid
-  //public rowData$!: Observable<any[]>;
-  public rowData!: any[];
-
-  // For accessing the Grid's API
-  private agGrid!: GridApi;
-  private agColumnApi!: any;
 
 
-  // Each Column Definition results in one Column.
-  public columnDefs: ColDef[] = [
-    { field: 'id', hide: true },
-    { field: 'orderNo', headerName: 'شماره سفارش' },
-    { field: 'invoiceNo', headerName: 'شماره اینویس' },
-    { field: 'invoiceValue', headerName: 'مبلغ اینویس' },
-    { field: 'preInvoiceId', headerName: 'preInvoiceId' ,hide: true },
-    { field: 'preInvoiceNo', headerName: 'شماره درخواست' },
-    { field: 'vchDate', headerName: 'تاریخ' },
-  ];
-
-  // DefaultColDef sets props common to all Columns
-  public defaultColDef: ColDef = {
-    sortable: true,
-    filter: true,
-    resizable: true,
-    floatingFilter: true,
-
-  };
-
-  // Example load data from sever
-  onGridReady(params: GridReadyEvent) {
-    this.agGrid = params.api;
-    this.agColumnApi = params.columnApi;
-    this.orderHdrService.getAll().subscribe((data) => {
-      this.rowData = data;
-    });
-  }
 
   refresh() {
-    this.orderHdrService.getAll().subscribe((data) => {
-      this.rowData = data;
+
+    this.freightRateService.getAll().subscribe((data) => {
+      this.child.rowData = data;
     });
+
   }
-
-  onSelectionChanged(event: SelectionChangedEvent) {
-    let pi = new Preinvoice(event.api.getSelectedRows()[0]);
-    this.formGroup.patchValue(pi);
+  //to get row from grid component
+  onSelectionChanged(event) {
+    this.formGroup.patchValue(event);
   }
-
-
-}
-function DialogOverviewExampleDialog(DialogOverviewExampleDialog: any, arg1: { width: string; data: { name: any; animal: any; }; }) {
-  throw new Error('Function not implemented.');
+   
 }
 

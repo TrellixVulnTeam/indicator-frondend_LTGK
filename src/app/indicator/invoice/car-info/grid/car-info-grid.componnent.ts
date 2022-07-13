@@ -1,16 +1,16 @@
 import { Component, EventEmitter, Output } from "@angular/core";
 import { ColDef, FullWidthCellKeyPressEvent, GridApi, GridReadyEvent, SelectionChangedEvent } from "ag-grid-community";
-import { OrderItm } from "src/app/indicator/models/order-itm.model";
-import { OrderItmService } from "src/app/indicator/services/order-itm.service";
+import { CarInfo } from "src/app/indicator/models/car-info.model";
+import { CarInfoService } from "src/app/indicator/services/car-info-service";
 
 @Component({
-    selector: 'app-order-itm-grid',
-    templateUrl: './order-itm-grid.component.html',
-    styleUrls: ['./order-itm-grid.component.css']
+    selector: 'app-car-info-grid',
+    templateUrl: './car-info-grid.component.html',
+    styleUrls: ['./car-info-grid.component.css']
 })
-export class OrderItmGridComponent  {
+export class CarInfoGridComponent  {
 
-    constructor(protected service: OrderItmService) {
+    constructor(protected service: CarInfoService) {
     }
 
   @Output() outputGetFromGridToDialog = new EventEmitter<any>();
@@ -25,16 +25,16 @@ export class OrderItmGridComponent  {
     protected agColumnApi!: any;
 
 
-    // Each Column Definition results in one Column.
-    public columnDefs: ColDef[] = [
-        { field: 'id', hide: true },
-        { field: 'orderNo', headerName: 'شماره شاسی' },
-        { field: 'invoiceNo', headerName: 'مشتری' },
-        { field: 'invoiceValue', headerName: 'معرف' },
-        { field: 'customerId', headerName: 'customerId' ,hide: true },
-        { field: 'agentId', headerName: 'agentId' ,hide: true },
-        { field: 'chassiId', headerName: 'chassiId' ,hide: true },
-      ];
+  // Each Column Definition results in one Column.
+  public columnDefs: ColDef[] = [
+    { field: 'id', hide: true },
+    { field: 'chassisNumber', headerName: 'شماره شاسی' },
+    { field: 'engineNumber', headerName: 'شماره موتور' },
+    { field: 'carYearModel', headerName: 'سال ساخت' },
+    { field: 'location', headerName: 'پارکینگ' },
+    { field: 'arriveDocumentsDate', headerName: 'تاریخ رسیدن مدارک' },
+    { field: 'arriveBoarderDate', headerName: 'تاریخ رسیدن به مرز' }
+  ];
 
     // DefaultColDef sets props common to all Columns
     public defaultColDef: ColDef = {
@@ -55,12 +55,12 @@ export class OrderItmGridComponent  {
     }
 
     onSelectionRowChanged(event: SelectionChangedEvent) {
-        let pi = new  OrderItm(event.api.getSelectedRows()[0]);
+        let pi = new CarInfo(event.api.getSelectedRows()[0]);
         this.outputGetFromGrid.emit(pi)
     }
 
     onSelectionChangedClose(event: SelectionChangedEvent): any {
-        let pi = new  OrderItm(event.api.getSelectedRows()[0]);
+        let pi = new CarInfo(event.api.getSelectedRows()[0]);
         return pi;
     }
 
@@ -74,7 +74,7 @@ export class OrderItmGridComponent  {
 
 
     onRowDoubleClick(event: SelectionChangedEvent) {
-        let pii = new  OrderItm(event.api.getSelectedRows()[0]);
+        let pii = new CarInfo(event.api.getSelectedRows()[0]);
         this.outputGetFromGridToDialog.emit(pii)
     }
 

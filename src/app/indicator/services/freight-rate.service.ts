@@ -9,7 +9,7 @@ const  baseUrl = environment.PATH_OF_API+'/api/freightrate';
 @Injectable({
   providedIn: 'root'
 })
-export class AgentService {
+export class FreightRateService {
  
 
   constructor(private http: HttpClient) { }

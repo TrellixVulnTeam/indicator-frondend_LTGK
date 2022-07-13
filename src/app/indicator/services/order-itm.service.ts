@@ -18,9 +18,18 @@ export class OrderItmService {
     console.log(baseUrl);
     return this.http.get<OrderItm[]>(`${baseUrl}/`);
   }
+
+  getAllFreeChassi(): Observable<OrderItm[]> {
+    console.log(baseUrl);
+    return this.http.get<OrderItm[]>(`${baseUrl}/getfreechassi`);
+  }
   get(id: any): Observable<any> {
     return this.http.get(`${baseUrl}/${id}`);
   }
+  getAllByHdrId(id: any): Observable<OrderItm[]> {
+    return this.http.get<OrderItm[]>(`${baseUrl}/getbyhdrid/${id}`);
+  }
+   
   create(data: OrderItm): Observable<any> {
     console.log(data);
     return this.http.post(`${baseUrl}/`, data);

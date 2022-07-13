@@ -31,6 +31,8 @@ import { FreightRateComponent } from './indicator/invoice/freight-rate/freight-r
 import { OrderHdrGridComponent } from './indicator/invoice/order-hdr/grid/hdr/order-hdr-grid.componnent';
 import { OrderItmGridComponent } from './indicator/invoice/order-hdr/grid/itm/order-itm-grid.componnent';
 import { AgentGridComponent } from './indicator/invoice/agent/grid/agent-grid.componnent';
+import { CarInfoGridComponent } from './indicator/invoice/car-info/grid/car-info-grid.componnent';
+import { FreightRateGridComponent } from './indicator/invoice/freight-rate/grid/freight-rate-grid.componnent';
 
 
 @NgModule({
@@ -57,6 +59,8 @@ import { AgentGridComponent } from './indicator/invoice/agent/grid/agent-grid.co
     OrderHdrGridComponent,
     OrderItmGridComponent,
     AgentGridComponent,
+    CarInfoGridComponent,
+    FreightRateGridComponent,
   ],
   imports: [
     BrowserModule,

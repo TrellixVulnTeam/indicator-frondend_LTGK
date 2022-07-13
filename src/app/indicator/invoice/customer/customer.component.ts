@@ -138,21 +138,5 @@ export class CustomerComponent implements OnInit {
     this.formGroup.patchValue(event);
   }
   
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(CustomerGridComponent, {panelClass: 'custom-dialog-container' ,
-      width: '600px',height:'400px',
-      data: { name: "test", data: [] },
-    });
-    const dialogSubmitSubscription = dialogRef.componentInstance.outputGetFromGridToDialog.subscribe(data => {
-      console.log("returned value from dialog: " + data['id']);
-      this.formGroup.controls['id'].setValue(data['id']);
-      this.formGroup.controls['address'].setValue(data['firstName']);
-
-      dialogSubmitSubscription.unsubscribe();
-      dialogRef.close();
-    });
-
-  }
-
+ 
 }

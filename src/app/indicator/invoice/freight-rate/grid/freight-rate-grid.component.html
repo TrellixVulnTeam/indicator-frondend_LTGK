@@ -1,0 +1,25 @@
+<div class="container" style="width: 100%; height: 100%; " >
+ 
+  <input
+  type="text"
+  id="filter-text-box"
+  placeholder="Filter..."
+  (input)="onFilterTextBoxChanged()"
+  style="width: 99%; height: 29px; padding: 0%;"
+/>
+  <!-- AG Grid Angular Component -->
+  <ag-grid-angular style="width: 100%; height: 100%" class="ag-theme-alpine" 
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef" 
+    [rowData]="rowData" 
+    [rowSelection]="'multiple'" 
+    [animateRows]="true"
+    [enableRtl]="true" 
+    [columnHoverHighlight]="true" 
+    (gridReady)="onGridReady($event)"
+    (selectionChanged)="onSelectionRowChanged($event)"
+    (rowDoubleClicked) = "onRowDoubleClick($event)"
+    (cellKeyPress)="onCellKeyPress($event)"
+    ></ag-grid-angular>
+
+</div>

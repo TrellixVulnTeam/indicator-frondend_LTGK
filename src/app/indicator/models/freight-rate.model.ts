@@ -41,8 +41,9 @@ export class FreightRate {
     enviromentMailNo: string = "" 
     companyToTollMailNo: string = ""
      
-    orderItmId;
-    orderHdrNo;
+    orderItmId: number 
+    orderHdrNo: string = ""
+     
  
 
     public constructor(init?: Partial<FreightRate>) {

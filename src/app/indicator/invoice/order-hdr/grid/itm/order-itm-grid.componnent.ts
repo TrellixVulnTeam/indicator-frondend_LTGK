@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Inject, Injector, Input, Output } from "@angular/core";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ColDef, FullWidthCellKeyPressEvent, GridApi, GridReadyEvent, SelectionChangedEvent } from "ag-grid-community";
 import { OrderItm } from "src/app/indicator/models/order-itm.model";
 import { OrderItmService } from "src/app/indicator/services/order-itm.service";
@@ -10,11 +11,21 @@ import { OrderItmService } from "src/app/indicator/services/order-itm.service";
 })
 export class OrderItmGridComponent  {
 
-    constructor(protected service: OrderItmService) {
+    
+    dialogData: [] ;
+    constructor(protected service: OrderItmService,
+        private injector: Injector
+       // @Inject(MAT_DIALOG_DATA) public dialogData: [] 
+    ) {  
+    this.dialogData = this.injector.get(MAT_DIALOG_DATA, null);
+ 
+
     }
 
+   
   @Output() outputGetFromGridToDialog = new EventEmitter<any>();
   @Output() outputGetFromGrid = new EventEmitter<any>();
+  @Input() fromDialog: boolean;
 
     // Data that gets displayed in the grid
     //public rowData$!: Observable<any[]>; 
@@ -28,15 +39,17 @@ export class OrderItmGridComponent  {
     // Each Column Definition results in one Column.
     public columnDefs: ColDef[] = [
         { field: 'id', hide: true },
-        { field: 'chassiNo', headerName: 'شماره شاسی' },
+        { field: 'orderHdrId', hide: true },
+        { field: 'seq', headerName: 'ردیف' },
+        { field: 'carInformationChassisNumber', headerName: 'شماره شاسی' },
         { field: 'customerName', headerName: 'مشتری' },
         { field: 'agentName', headerName: 'معرف' },
         { field: 'customerId', headerName: 'customerId' ,hide: true },
         { field: 'agentId', headerName: 'agentId' ,hide: true },
-        { field: 'chassiId', headerName: 'chassiId' ,hide: true },
+        { field: 'carInformationId', headerName: 'chassiId' ,hide: true },
       ];
 
-    // DefaultColDef sets props common to all Columns
+      // DefaultColDef sets props common to all Columns
     public defaultColDef: ColDef = {
         sortable: true,
         filter: true,
@@ -49,9 +62,19 @@ export class OrderItmGridComponent  {
     onGridReady(params: GridReadyEvent) {
         this.agGrid = params.api;
         this.agColumnApi = params.columnApi;
+        this.rowData =[] 
+        if(this.dialogData && this.dialogData['fromDialog'] && this.dialogData['fromDialog']==true)
+          this.service.getAllFreeChassi().subscribe((data) => { this.rowData = data; });
+    }
+        // Example load data from sever
+    reloadGrid() {
         this.service.getAll().subscribe((data) => {
             this.rowData = data;
         });
+    }
+
+    resetGrid() {
+            this.rowData = [];
     }
 
     onSelectionRowChanged(event: SelectionChangedEvent) {
@@ -88,4 +111,8 @@ export class OrderItmGridComponent  {
         }
       }
     
+}
+
+function MD_DIALOG_DATA(MD_DIALOG_DATA: any) {
+    throw new Error("Function not implemented.");
 }
