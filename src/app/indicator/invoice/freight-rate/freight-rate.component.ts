@@ -109,7 +109,7 @@ export class FreightRateComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       'id': [null], 
       'kotaj': [null, [Validators.required]],																					
-      'totajDate': [null, [Validators.required]],	
+      'totajDate': [null, [Validators.required]],	 
       'bankingOperationType': [null, []],
       'asnadHamlVaPardakht': [null, []],
       'sendToBankDate': [null, []],
@@ -140,6 +140,7 @@ export class FreightRateComponent implements OnInit {
       'clearanceCodeDate': [null, []],
       'orderNo': [null, []],
       'orderItmId': [null, []],
+      'chassiNumber': [null, []],
       
     });
   }
@@ -164,7 +165,7 @@ export class FreightRateComponent implements OnInit {
     const dialogSubmitSubscription = dialogRef.componentInstance.outputGetFromGridToDialog.subscribe(data => {
       console.log("returned value from dialog: " + data['id']);
       this.formGroup.controls['orderItmId'].setValue(data['id']);
-      this.formGroup.controls['orderNo'].setValue(data['carInformationChassisNumber']);
+      this.formGroup.controls['chassiNumber'].setValue(data['carInformationChassisNumber']);
 
       dialogSubmitSubscription.unsubscribe();
       dialogRef.close();

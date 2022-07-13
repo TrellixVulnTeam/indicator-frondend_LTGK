@@ -28,90 +28,40 @@ export class FreightRateGridComponent  {
     // Each Column Definition results in one Column.
     public columnDefs: ColDef[] = [
         { field: 'id', hide: true },
-        { field: 'freigtRateNo', headerName: '' },																						
-        { field: 'freigtRateDate', headerName: '' },																						
-        { field: 'importExport', headerName: '' },																						
-        { field: 'paymentMethod', headerName: '' },																						
-        { field: 'sendDate', headerName: '' },																						
-        { field: 'hasGreenCard', headerName: '' },																						
-        { field: 'sataCode', headerName: '' },																						
-        { field: 'contractNo', headerName: '' },																						
-        { field: 'contractDate', headerName: '' },																						
-        { field: 'taxAndDutyValue', headerName: '' },																						
-        { field: 'isPaidTaxAndDuty', headerName: '' },																						
-        { field: 'cutomerPayableValue', headerName: '' },																						
-        { field: 'firstInstallmentValue', headerName: '' },																						
-        { field: 'secondInstallmentValue', headerName: '' },																						
-        { field: 'amorizedFreigtRateValue', headerName: '' },																						
-        { field: 'tollMailDate', headerName: '' },																						
-        { field: 'amorizedFreigtRateNo', headerName: '' },																						
-        { field: 'hasMailToVanak', headerName: '' },																						
-        { field: 'inspector', headerName: '' },																						
-        { field: 'vanakTollNo', headerName: '' },																						
-        { field: 'tollStandardMailNo', headerName: '' },																						
-        { field: 'isDoneStandardInspecting', headerName: '' },																						
-        { field: 'isDoneInspectingResult', headerName: '' },																						
-        { field: 'hasVanakInvoiceRequest', headerName: '' },																						
-        { field: 'isVanakPaid', headerName: '' },																						
-        { field: 'hasTollStandardMail', headerName: '' },																						
-        { field: 'isEnviroimentPaid', headerName: '' },																						
-        { field: 'isPolutionPaid', headerName: '' },																						
-        { field: 'isDonePolutionInspecting', headerName: '' },																						
-        { field: 'standardInspectingDateDate', headerName: '' },																						
-        { field: 'inspectingInquiryDate', headerName: '' },																						
-        { field: 'modelInquiry', headerName: '' },																						
-        { field: 'enviroimentIspectingMailDate', headerName: '' },																						
-        { field: 'enviroimentInspectingDate', headerName: '' },																						
-        { field: 'clearanceCodeDate', headerName: '' },																						
-        { field: 'enviroPolutionMailNo', headerName: '' },																						
-        { field: 'enviromentMailNo', headerName: '' },																						
-        { field: 'companyToTollMailNo', headerName: '' },																						
-        { field: 'orderItmId', headerName: '' },																						
-        { field: 'orderHdrNo', headerName: '' },		
+        { field: 'kotaj', headerName:  'کوتاژ' },
+        { field: 'totajDate', headerName:  'تاریخ کوتاژ' },
+        { field: 'chassiNumber', headerName:  'شماره شاسی' },
+        { field: 'bankingOperationType', headerName:  'نوع عملیات بانکی' },
+        { field: 'asnadHamlVaPardakht', headerName:  'پارت اسناد حمل و ابزار پرداخت' },
+        { field: 'sendToBankDate', headerName:  'ارسال به بانک' },
+        { field: 'greenPass', headerName:  'برگ سبز' },
+        { field: 'sataCode', headerName:  'کد ساتا' },
+        { field: 'contractNo', headerName:  'شماره قرارداد' },
+        { field: 'contractDate', headerName:  'تاریخ قرارداد' },
+        { field: 'avarezGomroki', headerName:  'مبلغ حقوق و عوارض گمرکی' },
+        { field: 'avarezGomrokiStatus', headerName:  'وضعیت حقوق و عوارض گمرکی' },
+        { field: 'moneyFromCustomer', headerName:  'مبلغ قابل دریافت از مشتری' },
+        { field: 'firstInstallmentValue', headerName:  'مبلغ قابل دریافت از مشتری قسط اول' },
+        { field: 'secondInstallmentValue', headerName:  'مبلغ قابل دریافت از مشتری قسط دوم' },
+        { field: 'kotajSaderatiMostahlak', headerName:  'کوتاژ صادراتی مستهلک شده' },
+        { field: 'kotajSaderatiMostahlakInUsd', headerName:  'معادل دلاری مستهلک شده' },
+        { field: 'rahdariMailDate', headerName:  'نامه به راهداری' },
+        { field: 'mailRahdariToVanak', headerName:  '"نامه راهداری به ونک استانداهت انتخاب بازرس"' },
+        { field: 'bazres', headerName:  'انتخاب بازرس' },
+        { field: 'bazdidBazresStandard', headerName:  'بازدید بازرس استاندارد' },
+        { field: 'stelamBazresiBeSherkatDate', headerName:  'جواب استعلام بازرسی به شرکت' },
+        { field: 'mailVanakToRahdari', headerName:  'شماره نامه ونک به راهداری ، گمرک و شماره گذاری' },
+        { field: 'mailToBazresiEnvDate', headerName:  'نامه به شرکت بازرسی محیط زیست' },
+        { field: 'envBazdidDate', headerName:  'بازدید محیط زیست' },
+        { field: 'envBazdidPayDate', headerName:  'پرداخت دستمزد بازرسی محیط زیست' },
+        { field: 'plutionBazdidPayDate', headerName:  'پرداخت دستمزد بازرسی آلایندگی' },
+        { field: 'plutionBazdidDate', headerName:  'بازدید آلایند' },
+        { field: 'mailPlutionAndEnvToRahdariAndShorareNo', headerName:  'شماره نامه آلایندگی و محیط زیست به راهداری و شماره گذاری' },
+        { field: 'mailAutomasionEnvInRahdariNo', headerName:  'شماره نامه اتوماسیون محیط زیست در راهداری' },
+        { field: 'clearanceCodeDate', headerName:  'اعلام کد ترخیص' },	
     ];
 
-    freigtRateNo: string = ""
-    freigtRateDate: Date = new Date() 
-    importExport: boolean
-    paymentMethod: string = "" 
-    sendDate: Date = new Date() 
-    hasGreenCard: boolean
-    sataCode: string = "" 
-    contractNo: string = "" 
-    contractDate: Date = new Date()
-    taxAndDutyValue:number
-    isPaidTaxAndDuty: boolean
-    cutomerPayableValue:number
-    firstInstallmentValue:number
-    secondInstallmentValue:number
-    amorizedFreigtRateValue:number
-    tollMailDate: Date = new Date()
-
-    amorizedFreigtRateNo: string = "" 
-    hasMailToVanak: boolean
-    inspector: string = "" 
-    vanakTollNo: string = "" 
-    tollStandardMailNo: string = "" 
-    isDoneStandardInspecting: boolean
-    isDoneInspectingResult: boolean
-    hasVanakInvoiceRequest: boolean
-    isVanakPaid: boolean
-    hasTollStandardMail: boolean
-    isEnviroimentPaid: boolean
-    isPolutionPaid: boolean
-    isDonePolutionInspecting: boolean
-    standardInspectingDateDate: Date = new Date()
-    inspectingInquiryDate: Date = new Date()
-    modelInquiry: Date = new Date()
-    enviroimentIspectingMailDate: Date = new Date()
-    enviroimentInspectingDate: Date = new Date()
-    clearanceCodeDate: Date = new Date()
-    enviroPolutionMailNo: string = "" 
-    enviromentMailNo: string = "" 
-    companyToTollMailNo: string = ""
      
-    orderItmId: number 
-    orderHdrNo: string = ""
     // DefaultColDef sets props common to all Columns
     public defaultColDef: ColDef = {
         sortable: true,
