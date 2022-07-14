@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ColDef, GridApi, GridReadyEvent, SelectionChangedEvent } from 'ag-grid-community';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
 import { CarInfo } from '../../models/car-info.model';
@@ -14,11 +14,11 @@ import { CarInfoGridComponent } from './grid/car-info-grid.componnent';
 export class CarInfoComponent implements OnInit {
   @ViewChild(CarInfoGridComponent) child;
 
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
 
   loading = false;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
     private carInfoService: CarInfoService,
     ) { }
 
@@ -115,7 +115,7 @@ export class CarInfoComponent implements OnInit {
   }
   //form validation
   get getchassisNumber() {
-    return this.formGroup.get('chassisNumber') as FormControl
+    return this.formGroup.get('chassisNumber') as UntypedFormControl
   }
 
   getErrorchassisNumber() {

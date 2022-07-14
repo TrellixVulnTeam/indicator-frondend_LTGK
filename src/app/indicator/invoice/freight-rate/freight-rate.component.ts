@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
 import { environment } from 'src/environments/environment';
@@ -16,13 +16,13 @@ import { FreightRateGridComponent } from './grid/freight-rate-grid.componnent';
 export class FreightRateComponent implements OnInit {
   
   @ViewChild(FreightRateGridComponent) child;
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
 
   
   loading = false;
   fromDialogOn= false;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
     private freightRateService: FreightRateService,
     public dialog: MatDialog
     ) { }
@@ -149,7 +149,7 @@ export class FreightRateComponent implements OnInit {
 
   //form validation
   get getDocumentNo() {
-    return this.formGroup.get('kotaj') as FormControl
+    return this.formGroup.get('kotaj') as UntypedFormControl
   }
 
   getErrorDocumentNo() {

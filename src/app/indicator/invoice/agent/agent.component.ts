@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ColDef, GridApi, GridReadyEvent, SelectionChangedEvent } from 'ag-grid-community';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
 import { Agent } from '../../models/agent.model';
@@ -14,11 +14,11 @@ import { AgentGridComponent } from './grid/agent-grid.componnent';
 export class AgentComponent implements OnInit {
   @ViewChild(AgentGridComponent) child;
 
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
 
   loading = false;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
     private agentService: AgentService,
     ) { }
 
@@ -115,7 +115,7 @@ export class AgentComponent implements OnInit {
   
   //form validation
   get getFirstName() {
-    return this.formGroup.get('firstName') as FormControl
+    return this.formGroup.get('firstName') as UntypedFormControl
   }
 
   getErrorFirstName() {

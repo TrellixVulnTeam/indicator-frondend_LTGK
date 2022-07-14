@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
 import { Customer } from '../../models/customer.model';
@@ -15,11 +15,11 @@ export class CustomerComponent implements OnInit {
 
   @ViewChild(CustomerGridComponent) child;
 
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
 
   loading = false;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
     private customerService: CustomerService,
     public dialog: MatDialog
   ) {
@@ -118,7 +118,7 @@ export class CustomerComponent implements OnInit {
 
   //form validation
   get getFirstName() {
-    return this.formGroup.get('firstName') as FormControl
+    return this.formGroup.get('firstName') as UntypedFormControl
   }
 
   getErrorFirstName() {

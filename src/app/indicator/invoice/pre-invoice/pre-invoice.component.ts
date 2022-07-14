@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
 import { Preinvoice } from '../../models/preInvoice.model';
 import { PreInvoiceService } from '../../services/pre-invoice.service';
@@ -14,11 +14,11 @@ export class PreInvoiceComponent implements OnInit {
 
   @ViewChild(PreInvoiceGridComponent) gridChild;
 
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
 
   loading = false;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
     private preInvoiceService: PreInvoiceService) { }
 
   ngOnInit() {
@@ -113,7 +113,7 @@ export class PreInvoiceComponent implements OnInit {
 
   //form validation
   get getDocumentNo() {
-    return this.formGroup.get('documentNo') as FormControl
+    return this.formGroup.get('documentNo') as UntypedFormControl
   }
 
   getErrorDocumentNo() {

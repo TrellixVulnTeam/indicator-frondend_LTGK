@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
 import { OrderHdr } from '../../models/order-hdr.model';
@@ -22,12 +22,12 @@ export class OrderHdrComponent implements OnInit {
 
   @ViewChild(OrderHdrGridComponent) childHdr;
   @ViewChild(OrderItmGridComponent) childItm;
-  formGroup: FormGroup;
-  formGroupItm: FormGroup;
+  formGroup: UntypedFormGroup;
+  formGroupItm: UntypedFormGroup;
 
   loading = false;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
     private orderHdrService: OrderHdrService,
     private orderItmService: OrderItmService,
     public dialog: MatDialog,
@@ -136,7 +136,7 @@ export class OrderHdrComponent implements OnInit {
 
   //form validation
   get getDocumentNo() {
-    return this.formGroup.get('orderNo') as FormControl
+    return this.formGroup.get('orderNo') as UntypedFormControl
   }
 
   getErrorDocumentNo() {
