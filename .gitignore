@@ -6,3 +6,4 @@ node_modules/
 src/.DS_Store
 src/app/.DS_Store
 .angular/
+package-lock.json
