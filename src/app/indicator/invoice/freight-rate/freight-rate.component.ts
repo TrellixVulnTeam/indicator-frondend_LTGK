@@ -18,8 +18,7 @@ export class FreightRateComponent implements OnInit {
   @ViewChild(FreightRateGridComponent) child;
   formGroup: FormGroup;
 
-  datemask = environment.datemask;
-
+  
   loading = false;
   fromDialogOn= false;
 
