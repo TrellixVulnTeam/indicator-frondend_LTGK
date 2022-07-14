@@ -4,9 +4,7 @@
 
 export const environment = {
   production: false,
-  PATH_OF_API : 'http://localhost:9091',
-
-  datemask : [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]
+  PATH_OF_API : 'http://localhost:9091'
 };
 
 /*
