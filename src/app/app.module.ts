@@ -35,6 +35,8 @@ import { CarInfoGridComponent } from './indicator/invoice/car-info/grid/car-info
 import { FreightRateGridComponent } from './indicator/invoice/freight-rate/grid/freight-rate-grid.componnent';
  
  
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +65,7 @@ import { FreightRateGridComponent } from './indicator/invoice/freight-rate/grid/
     FreightRateGridComponent,
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     FormsModule,
