@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { GlobalVariables } from 'src/app/framework/utilities/global/global-variables';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
 import { environment } from 'src/environments/environment';
 import { FreightRate } from '../../models/freight-rate.model';
@@ -15,6 +16,9 @@ import { FreightRateGridComponent } from './grid/freight-rate-grid.componnent';
 })
 export class FreightRateComponent implements OnInit {
   
+  gv= GlobalVariables.variables;
+  
+  name1
   @ViewChild(FreightRateGridComponent) child;
   formGroup: UntypedFormGroup;
 
