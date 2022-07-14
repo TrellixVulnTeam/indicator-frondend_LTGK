@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
+import { environment } from 'src/environments/environment';
 import { FreightRate } from '../../models/freight-rate.model';
 import { FreightRateService } from '../../services/freight-rate.service';
 import { OrderItmGridComponent } from '../order-hdr/grid/itm/order-itm-grid.componnent';
@@ -16,6 +17,8 @@ export class FreightRateComponent implements OnInit {
   
   @ViewChild(FreightRateGridComponent) child;
   formGroup: FormGroup;
+  
+  datemask = environment.datemask;
 
   loading = false;
   fromDialogOn= false;

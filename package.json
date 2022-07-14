@@ -28,7 +28,7 @@
     "jalali-ts": "^2.0.3",
     "jquery": "^3.6.0",
     "material-icons": "^1.11.2",
-    "ng-persian-datepicker": "^6.1.0",
+    "ng-persian-datepicker": "^6.1.0", 
     "npm": "^8.12.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
