@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { GlobalVariables } from 'src/app/framework/utilities/global/global-variables';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
 import { Preinvoice } from '../../models/preInvoice.model';
 import { PreInvoiceService } from '../../services/pre-invoice.service';
@@ -11,6 +12,8 @@ import { PreInvoiceGridComponent } from './grid/pre-invoice-grid.component';
   styleUrls: ['./pre-invoice.component.css']
 })
 export class PreInvoiceComponent implements OnInit {
+
+  gv= GlobalVariables.variables;
 
   @ViewChild(PreInvoiceGridComponent) gridChild;
 

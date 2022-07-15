@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Injector, Output } from "@angular/core";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ColDef, FullWidthCellKeyPressEvent, GridApi, GridReadyEvent, SelectionChangedEvent } from "ag-grid-community";
 import { Preinvoice } from "src/app/indicator/models/preInvoice.model";
 import { PreInvoiceService } from "src/app/indicator/services/pre-invoice.service";
@@ -10,7 +11,14 @@ import { PreInvoiceService } from "src/app/indicator/services/pre-invoice.servic
 })
 export class PreInvoiceGridComponent {
 
-    constructor(protected service: PreInvoiceService) {}
+    dialogData: [];
+    constructor(protected service: PreInvoiceService,
+        private injector: Injector
+    ) {
+        this.dialogData = this.injector.get(MAT_DIALOG_DATA, null);
+
+
+    }
 
     @Output() outputGetFromGridToDialog = new EventEmitter<any>();
     @Output() outputGetFromGrid = new EventEmitter<any>();
@@ -22,7 +30,7 @@ export class PreInvoiceGridComponent {
         { field: 'fileNo', headerName: 'شماره فایل' },
         { field: 'preOrderUnitValue', headerName: 'تعداد' },
         { field: 'vchDate', headerName: 'تاریخ' }
-      ];
+    ];
 
     onSelectionRowChanged(event: SelectionChangedEvent) {
         let pi = new Preinvoice(event.api.getSelectedRows()[0]);
@@ -59,9 +67,10 @@ export class PreInvoiceGridComponent {
     onGridReady(params: GridReadyEvent) {
         this.agGrid = params.api;
         this.agColumnApi = params.columnApi;
-        this.service.getAll().subscribe((data) => {
-            this.rowData = data;
-        });
+        if (this.dialogData && this.dialogData['fromDialog'] && this.dialogData['fromDialog'] == true)
+            this.service.getfreepreinvoice().subscribe((data) => { this.rowData = data; });
+        else
+            this.service.getAll().subscribe((data) => { this.rowData = data; });
     }
 
     onCellKeyPress(e: FullWidthCellKeyPressEvent) {

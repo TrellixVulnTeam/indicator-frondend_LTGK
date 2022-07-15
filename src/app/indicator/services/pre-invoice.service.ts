@@ -18,6 +18,10 @@ export class PreInvoiceService {
     console.log(baseUrl);
     return this.http.get<Preinvoice[]>(`${baseUrl}/`);
   }
+  getfreepreinvoice(): Observable<Preinvoice[]> {
+    console.log(baseUrl);
+    return this.http.get<Preinvoice[]>(`${baseUrl}/getfreepreinvoice`);
+  }
   get(id: any): Observable<any> {
     return this.http.get(`${baseUrl}/${id}`);
   }

@@ -18,6 +18,11 @@ export class CarInfoService {
     console.log(baseUrl);
     return this.http.get<CarInfo[]>(`${baseUrl}/`);
   }
+
+  getAllFreeChassi(): Observable<CarInfo[]> {
+    console.log(baseUrl);
+    return this.http.get<CarInfo[]>(`${baseUrl}/getfreechassi`);
+  }
   get(id: any): Observable<any> {
     return this.http.get(`${baseUrl}/${id}`);
   }

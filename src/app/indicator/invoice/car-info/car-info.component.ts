@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ColDef, GridApi, GridReadyEvent, SelectionChangedEvent } from 'ag-grid-community';
+import { GlobalVariables } from 'src/app/framework/utilities/global/global-variables';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
 import { CarInfo } from '../../models/car-info.model';
 import { CarInfoService } from '../../services/car-info-service';
@@ -12,6 +13,8 @@ import { CarInfoGridComponent } from './grid/car-info-grid.componnent';
   styleUrls: ['./car-info.component.css']
 })
 export class CarInfoComponent implements OnInit {
+
+  gv= GlobalVariables.variables;
   @ViewChild(CarInfoGridComponent) child;
 
   formGroup: UntypedFormGroup;
@@ -109,8 +112,8 @@ export class CarInfoComponent implements OnInit {
       'engineNumber': [null, Validators.required],
       'carYearModel': [null, [Validators.required]],
       'location': [null, [Validators.required]],
-      'arriveDocumentsDate': [null, [Validators.required]],
-      'arriveBoarderDate': [null, [Validators.required]],
+      'arriveDocumentsDate': [null, [Validators.required, Validators.pattern(this.gv.datePattern)]], 
+      'arriveBoarderDate': [null, [Validators.required, Validators.pattern(this.gv.datePattern)]], 
     });
   }
   //form validation

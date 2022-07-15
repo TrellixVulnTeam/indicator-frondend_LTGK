@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { GlobalVariables } from 'src/app/framework/utilities/global/global-variables';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
 import { OrderHdr } from '../../models/order-hdr.model';
 import { OrderItm } from '../../models/order-itm.model';
@@ -19,6 +20,8 @@ import { OrderItmGridComponent } from './grid/itm/order-itm-grid.componnent';
   styleUrls: ['./order-hdr.component.css']
 })
 export class OrderHdrComponent implements OnInit {
+
+  gv= GlobalVariables.variables;
 
   @ViewChild(OrderHdrGridComponent) childHdr;
   @ViewChild(OrderItmGridComponent) childItm;
@@ -57,10 +60,8 @@ export class OrderHdrComponent implements OnInit {
   private create() {
     this.orderHdrService.create(new OrderHdr(this.formGroup.value))
       .subscribe((data) => {
-        this.childItm.rowData.push(data);
-        this.childItm.agGrid.applyTransaction({
-          add: [data]
-        })!;
+
+        this.formGroup.patchValue(data);
         // this.reset();
       })
       .add(() => {
@@ -118,7 +119,7 @@ export class OrderHdrComponent implements OnInit {
       'invoiceValue': [null, [Validators.required]],
       'preInvoiceId': [null, []],
       'preInvoiceNo': [null, [Validators.required]],
-      'vchDate': [null, [Validators.required]],
+      'vchDate': [null, [Validators.required, Validators.pattern(this.gv.datePattern)]], 
     });
 
     this.formGroupItm = this.formBuilder.group({
@@ -149,7 +150,7 @@ export class OrderHdrComponent implements OnInit {
     const dialogRef = this.dialog.open(PreInvoiceGridComponent, {
       panelClass: 'custom-dialog-container',
       width: '600px', height: '400px',
-      data: { name: "test", data: [] },
+      data: { name: "test",fromDialog:true, data: [] },
     });
     const dialogSubmitSubscription = dialogRef.componentInstance.outputGetFromGridToDialog.subscribe(data => {
       console.log("returned value from dialog: " + data['id']);
@@ -204,7 +205,7 @@ export class OrderHdrComponent implements OnInit {
     const dialogRef = this.dialog.open(CarInfoGridComponent, {
       panelClass: 'custom-dialog-container',
       width: '600px', height: '400px',
-      data: { name: "test", data: [] },
+      data: { name: "test",fromDialog:true, data: [] },
     });
     const dialogSubmitSubscription = dialogRef.componentInstance.outputGetFromGridToDialog.subscribe(data => {
       console.log("returned value from dialog: " + data['id']);
