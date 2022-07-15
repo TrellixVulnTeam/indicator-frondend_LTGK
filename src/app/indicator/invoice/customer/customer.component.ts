@@ -137,6 +137,9 @@ export class CustomerComponent implements OnInit {
   onSelectionChanged(event) {
     this.formGroup.patchValue(event);
   }
-  
+  onBtnExport() {
+    this.child.agGrid.exportDataAsCsv();
+  }
+
  
 }

@@ -134,7 +134,9 @@ export class PreInvoiceComponent implements OnInit {
     this.formGroup.patchValue(event);
   }
 
-
+  onBtnExport() {
+    this.gridChild.agGrid.exportDataAsCsv();
+  }
 
 
 }

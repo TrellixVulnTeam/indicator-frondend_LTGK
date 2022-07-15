@@ -21,6 +21,7 @@
           <mat-button-toggle  routerLink="/customer" *ngIf="userService.roleMatch(['Admin'])" >مشتری</mat-button-toggle>
           <mat-button-toggle  routerLink="/carInformation" *ngIf="userService.roleMatch(['Admin'])" >شاسی</mat-button-toggle>
           <mat-button-toggle  routerLink="/agent" *ngIf="userService.roleMatch(['Admin'])" >معرف</mat-button-toggle>
+          <mat-button-toggle  routerLink="/totalReport" *ngIf="userService.roleMatch(['Admin'])" >گزارش</mat-button-toggle>
   
         </mat-button-toggle-group>
   

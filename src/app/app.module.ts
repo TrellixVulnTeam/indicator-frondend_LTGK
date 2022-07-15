@@ -34,6 +34,8 @@ import { AgentGridComponent } from './indicator/invoice/agent/grid/agent-grid.co
 import { CarInfoGridComponent } from './indicator/invoice/car-info/grid/car-info-grid.componnent';
 import { FreightRateGridComponent } from './indicator/invoice/freight-rate/grid/freight-rate-grid.componnent';
 import { NgxMaskModule } from 'ngx-mask'; 
+import { TotalReportGridComponent } from './indicator/invoice/total-report/grid/total-report-grid.componnent';
+import { TotalReportComponent } from './indicator/invoice/total-report/total-report.component';
  
 
 
@@ -54,6 +56,7 @@ import { NgxMaskModule } from 'ngx-mask';
     AgentComponent,
     CustomerComponent,
     MyDialogBoxComponent,
+    TotalReportComponent,
 
     //grids
     CustomerGridComponent,
@@ -63,6 +66,7 @@ import { NgxMaskModule } from 'ngx-mask';
     AgentGridComponent,
     CarInfoGridComponent,
     FreightRateGridComponent,
+    TotalReportGridComponent
   ],
   imports: [
     

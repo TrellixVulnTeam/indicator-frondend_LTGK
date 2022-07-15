@@ -14,6 +14,7 @@
           <mat-button-toggle mat-raised-button (click)="delete()" [disabled]="formGroup.invalid">حذف</mat-button-toggle>
           <mat-button-toggle mat-raised-button (click)="reset()">جدید</mat-button-toggle>
           <mat-button-toggle mat-raised-button (click)="refresh()">بروزرسانی</mat-button-toggle>
+
         </mat-button-toggle-group>
       </div>
 
@@ -52,16 +53,18 @@
   <div style="width: 100%; height: 100%">
     <div class="form-element">
       <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-        <mat-button-toggle mat-raised-button (click)="addRow()">
+        <mat-button-toggle mat-raised-button (click)="addRow()" [disabled]="isItemsDisabled">
           <mat-icon><span class="material-icons">
               add
             </span></mat-icon>
         </mat-button-toggle> 
-        <mat-button-toggle mat-raised-button (click)="removeRow()">
+        <mat-button-toggle mat-raised-button (click)="removeRow()" [disabled]="isItemsDisabled">
           <mat-icon><span class="material-icons">
               remove
             </span></mat-icon>
         </mat-button-toggle>
+
+        <mat-button-toggle mat-raised-button (click)="onBtnExportItm()">اکسل <mat-icon>file_download</mat-icon></mat-button-toggle> 
       </mat-button-toggle-group>
     </div>
 

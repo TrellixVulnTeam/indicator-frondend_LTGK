@@ -29,6 +29,7 @@ export class OrderHdrComponent implements OnInit {
   formGroupItm: UntypedFormGroup;
 
   loading = false;
+  isItemsDisabled=true;
 
   constructor(private formBuilder: UntypedFormBuilder,
     private orderHdrService: OrderHdrService,
@@ -62,6 +63,7 @@ export class OrderHdrComponent implements OnInit {
       .subscribe((data) => {
 
         this.formGroup.patchValue(data);
+        this.isItemsDisabled=false;
         // this.reset();
       })
       .add(() => {
@@ -92,6 +94,7 @@ export class OrderHdrComponent implements OnInit {
 
           const selectedData = this.childItm.agGrid.getSelectedRows();
           this.childItm.agGrid.applyTransaction({ remove: selectedData })!;
+          this.isItemsDisabled=true;
 
           this.reset();
         })
@@ -108,6 +111,7 @@ export class OrderHdrComponent implements OnInit {
     this.formGroup.reset();
     this.formGroupItm.reset();
     this.childItm.rowData = [];
+    this.isItemsDisabled=true;
 
   }
 
@@ -168,6 +172,7 @@ export class OrderHdrComponent implements OnInit {
     this.orderHdrService.getAll().subscribe((data) => {
       this.childItm.rowData = data;
     });
+    this.isItemsDisabled=false;
 
   }
 
@@ -191,6 +196,8 @@ export class OrderHdrComponent implements OnInit {
         this.formGroup.reset();
         this.childItm.rowData = items;
         this.formGroup.patchValue(data);
+        this.isItemsDisabled=false;
+
 
       });
 
@@ -254,7 +261,12 @@ export class OrderHdrComponent implements OnInit {
 
 
   }
-  addRow() {
+  addRow() { 
+    if(this.isItemsDisabled==true){
+      console.log("select order or create new");
+      return;
+    }
+
     if (this.formGroup.invalid) {
       console.log("form is invalid");
       return;
@@ -310,6 +322,10 @@ export class OrderHdrComponent implements OnInit {
 
   }
   removeRow() {
+    if(this.isItemsDisabled==true){
+      console.log("select order or create new");
+      return;
+    }
     var id1 = this.formGroupItm.controls.id.value;
     var result = confirm(Messages.beforeDelete);
     if (id1 && result) {
@@ -337,5 +353,11 @@ export class OrderHdrComponent implements OnInit {
 
     }
   }
+
+ 
+  onBtnExportItm() {
+    this.childItm.agGrid.exportDataAsCsv();
+  }
+
 }
 

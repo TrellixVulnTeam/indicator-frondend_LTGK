@@ -192,31 +192,11 @@ export class FreightRateComponent implements OnInit {
   onSelectionChanged(event) {
     this.formGroup.patchValue(event);
   }
+ 
 
-
-
-  //******* */
-
- validateDate(c: FormControl) {  
-
-
-  console.log('method:'+c.value);
-  validateEmail: {
-          valid: false
-        }
-    let EMAIL_REGEXP = "/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/"
-  
-    // return EMAIL_REGEXP.test(c.value) ? null : {
-    //   validateEmail: {
-    //     valid: false
-    //   }
-    // };
-  } 
-   
-
-  onSearchChange(searchValue: string): void {  
-    console.log(searchValue);
-    this.dateValue=searchValue;
+  onBtnExport() {
+    this.child.agGrid.exportDataAsCsv();
   }
+
 }
 

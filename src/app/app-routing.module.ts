@@ -12,6 +12,7 @@ import { AgentComponent } from './indicator/invoice/agent/agent.component';
 import { CustomerComponent } from './indicator/invoice/customer/customer.component';
 import { OrderHdrComponent } from './indicator/invoice/order-hdr/order-hdr.component';
 import { FreightRateComponent } from './indicator/invoice/freight-rate/freight-rate.component';
+import { TotalReportComponent } from './indicator/invoice/total-report/total-report.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'agent', component: AgentComponent },
   { path: 'customer', component: CustomerComponent },
   { path: 'freightRate', component: FreightRateComponent },
+  { path: 'totalReport', component: TotalReportComponent },
 ];
 
 @NgModule({
