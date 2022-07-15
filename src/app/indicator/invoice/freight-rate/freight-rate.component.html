@@ -2,100 +2,136 @@
 
   <div novalidate>
     <form [formGroup]="formGroup" class="form">
- 
+
       <mat-form-field class="form-element matInput4Text">
-        <input matInput   placeholder="شماره کوتاژ" formControlName="kotaj">
+        <input matInput placeholder="شماره کوتاژ" formControlName="kotaj">
         <mat-error *ngIf="getDocumentNo.invalid && getDocumentNo.touched">
           {{ getErrorDocumentNo() }}
         </mat-error>
       </mat-form-field>
- 
-      <!--
-      <mat-form-field class="form-element matInput4Text"> 
-          <span matPrefix>شماره کوتاژ&nbsp; : </span>
-          <input type="tel" matInput placeholder="555-555-1234"> 
+
+      <mat-form-field class="form-element matInput4DateText">
+        <mat-label>تاریخ کوتاژ</mat-label>
+        <input matInput formControlName="totajDate" type="text" mask="{{gv.dateFormat}}" [dropSpecialCharacters]="false"
+          placeholder="{{gv.dateFormatPlaceHolder}}" />
       </mat-form-field>
- -->
- 
-      <mat-form-field class="form-element matInput4DateTimePicker" >
-        <input matInput [matDatepicker]="picker1"   formControlName="totajDate" placeholder="تاریخ کوتاژ">
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle> <mat-datepicker #picker1></mat-datepicker>  </mat-form-field>
+
+      <mat-form-field class="form-element matInput4DateText">
+        <mat-label>اعلام کد ترخیص</mat-label>
+        <input matInput formControlName="clearanceCodeDate" type="text" mask="{{gv.dateFormat}}"
+          [dropSpecialCharacters]="false" placeholder="{{gv.dateFormatPlaceHolder}}" />
+      </mat-form-field>
+
+      <mat-form-field class="form-element matInput4DateText">
+        <mat-label>بازدید بازرس استاندارد</mat-label>
+        <input matInput formControlName="bazdidBazresStandard" type="text" mask="{{gv.dateFormat}}"
+          [dropSpecialCharacters]="false" placeholder="{{gv.dateFormatPlaceHolder}}" />
+      </mat-form-field>
+
+      <mat-form-field class="form-element matInput4DateText">
+        <mat-label> بازدید آلایند </mat-label>
+        <input matInput formControlName="plutionBazdidDate" type="text" mask="{{gv.dateFormat}}"
+          [dropSpecialCharacters]="false" placeholder="{{gv.dateFormatPlaceHolder}}" />
+      </mat-form-field>
+
+      <mat-form-field class="form-element matInput4DateText">
+        <mat-label>پرداخت دستمزد بازرسی آلایندگی </mat-label>
+        <input matInput formControlName="plutionBazdidPayDate" type="text" mask="{{gv.dateFormat}}"
+          [dropSpecialCharacters]="false" placeholder="{{gv.dateFormatPlaceHolder}}" />
+      </mat-form-field>
+
+      <mat-form-field class="form-element matInput4DateText">
+        <mat-label> پرداخت دستمزد بازرسی محیط زیست </mat-label>
+        <input matInput formControlName="envBazdidPayDate" type="text" mask="{{gv.dateFormat}}"
+          [dropSpecialCharacters]="false" placeholder="{{gv.dateFormatPlaceHolder}}" />
+      </mat-form-field>
+
+      <mat-form-field class="form-element matInput4DateText">
+        <mat-label>بازدید محیط زیست</mat-label>
+        <input matInput formControlName="envBazdidDate" type="text" mask="{{gv.dateFormat}}"
+          [dropSpecialCharacters]="false" placeholder="{{gv.dateFormatPlaceHolder}}" />
+      </mat-form-field>
+
+      <mat-form-field class="form-element matInput4DateText">
+        <mat-label> نامه به شرکت بازرسی محیط زیست</mat-label>
+        <input matInput formControlName="mailToBazresiEnvDate" type="text" mask="{{gv.dateFormat}}"
+          [dropSpecialCharacters]="false" placeholder="{{gv.dateFormatPlaceHolder}}" />
+      </mat-form-field>
+
+      <mat-form-field class="form-element matInput4DateText">
+        <mat-label>جواب استعلام بازرسی به شرکت </mat-label>
+        <input matInput formControlName="stelamBazresiBeSherkatDate" type="text" mask="{{gv.dateFormat}}"
+          [dropSpecialCharacters]="false" placeholder="{{gv.dateFormatPlaceHolder}}" />
+      </mat-form-field>
+
+      <mat-form-field class="form-element matInput4DateText">
+        <mat-label>نامه به راهداری </mat-label>
+        <input matInput formControlName="rahdariMailDate" type="text" mask="{{gv.dateFormat}}"
+          [dropSpecialCharacters]="false" placeholder="{{gv.dateFormatPlaceHolder}}" />
+      </mat-form-field>
+
+      <mat-form-field class="form-element matInput4DateText">
+        <mat-label> تاریخ قرارداد </mat-label>
+        <input matInput formControlName="contractDate" type="text" mask="{{gv.dateFormat}}"
+          [dropSpecialCharacters]="false" placeholder="{{gv.dateFormatPlaceHolder}}" />
+      </mat-form-field>
+
+      <mat-form-field class="form-element matInput4DateText">
+        <mat-label> ارسال به بانک </mat-label>
+        <input matInput formControlName="sendToBankDate" type="text" mask="{{gv.dateFormat}}"
+          [dropSpecialCharacters]="false" placeholder="{{gv.dateFormatPlaceHolder}}" />
+      </mat-form-field>
 
 
-        <mat-form-field class="form-element matInput4DateTimePicker" >
-          <input matInput  [matDatepicker]="picker1sendToBankDate" formControlName="sendToBankDate" placeholder="	ارسال به بانک	">
-          <mat-datepicker-toggle matSuffix [for]="picker1sendToBankDate"></mat-datepicker-toggle> <mat-datepicker #picker1sendToBankDate></mat-datepicker>  </mat-form-field>
 
-      <mat-form-field class="form-element matInput4DateTimePicker">
-        <input matInput   [matDatepicker]="picker1contractDate" formControlName="contractDate" placeholder="	تاریخ قرارداد	">
-        <mat-datepicker-toggle matSuffix [for]="picker1contractDate"></mat-datepicker-toggle> <mat-datepicker #picker1contractDate></mat-datepicker>  </mat-form-field>
 
-      <mat-form-field class="form-element matInput4DateTimePicker">
-        <input matInput  [matDatepicker]="picker1rahdariMailDate" formControlName="rahdariMailDate" placeholder="	نامه به راهداری	">
-        <mat-datepicker-toggle matSuffix [for]="picker1rahdariMailDate"></mat-datepicker-toggle> <mat-datepicker #picker1rahdariMailDate></mat-datepicker>  </mat-form-field>
 
-        <mat-form-field class="form-element matInput4DateTimePicker">
-          <input matInput  [matDatepicker]="picker1stelamBazresiBeSherkatDate" formControlName="stelamBazresiBeSherkatDate" placeholder="	جواب استعلام بازرسی به شرکت	">
-          <mat-datepicker-toggle matSuffix [for]="picker1stelamBazresiBeSherkatDate"></mat-datepicker-toggle> <mat-datepicker #picker1stelamBazresiBeSherkatDate></mat-datepicker>  </mat-form-field>
-        
-      <mat-form-field class="form-element matInput4DateTimePicker">
-        <input matInput  [matDatepicker]="picker1mailToBazresiEnvDate" formControlName="mailToBazresiEnvDate" placeholder="	نامه به شرکت بازرسی محیط زیست	">
-        <mat-datepicker-toggle matSuffix [for]="picker1mailToBazresiEnvDate"></mat-datepicker-toggle> <mat-datepicker #picker1mailToBazresiEnvDate></mat-datepicker>  </mat-form-field>
-        
-      <mat-form-field class="form-element matInput4DateTimePicker">
-        <input matInput  [matDatepicker]="picker1envBazdidDate" formControlName="envBazdidDate" placeholder="	بازدید محیط زیست	">
-        <mat-datepicker-toggle matSuffix [for]="picker1envBazdidDate"></mat-datepicker-toggle> <mat-datepicker #picker1envBazdidDate></mat-datepicker>  </mat-form-field>
-        
-      <mat-form-field class="form-element matInput4DateTimePicker">
-        <input matInput  [matDatepicker]="picker1envBazdidPayDate" formControlName="envBazdidPayDate" placeholder="	پرداخت دستمزد بازرسی محیط زیست	">
-        <mat-datepicker-toggle matSuffix [for]="picker1envBazdidPayDate"></mat-datepicker-toggle> <mat-datepicker #picker1envBazdidPayDate></mat-datepicker>  </mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	نوع عملیات بانکی	"
+          formControlName="bankingOperationType"> </mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	پارت اسناد حمل و ابزار پرداخت	"
+          formControlName="asnadHamlVaPardakht"></mat-form-field>
 
-      <mat-form-field class="form-element matInput4DateTimePicker">
-        <input matInput  [matDatepicker]="picker1plutionBazdidPayDate" formControlName="plutionBazdidPayDate" placeholder="	پرداخت دستمزد بازرسی آلایندگی	" >
-        <mat-datepicker-toggle matSuffix [for]="picker1plutionBazdidPayDate"></mat-datepicker-toggle> <mat-datepicker #picker1plutionBazdidPayDate></mat-datepicker>  </mat-form-field>
-
-        <mat-form-field class="form-element matInput4DateTimePicker">
-          <input matInput  [matDatepicker]="picker1plutionBazdidDate" formControlName="plutionBazdidDate" placeholder="	بازدید آلایند	">
-          <mat-datepicker-toggle matSuffix [for]="picker1plutionBazdidDate"></mat-datepicker-toggle> <mat-datepicker #picker1plutionBazdidDate></mat-datepicker>  </mat-form-field>
-          
-        <mat-form-field class="form-element matInput4DateTimePicker">
-          <input matInput  [matDatepicker]="picker1bazdidBazresStandard" formControlName="bazdidBazresStandard" placeholder="	بازدید بازرس استاندارد	">
-          <mat-datepicker-toggle matSuffix [for]="picker1bazdidBazresStandard"></mat-datepicker-toggle> <mat-datepicker #picker1bazdidBazresStandard></mat-datepicker>  </mat-form-field>
-          
-        <mat-form-field class="form-element matInput4DateTimePicker">
-          
-          <input matInput    [matDatepicker]="picker1clearanceCodeDate" formControlName="clearanceCodeDate" placeholder="	اعلام کد ترخیص	">
-          <mat-datepicker-toggle matSuffix [for]="picker1clearanceCodeDate"></mat-datepicker-toggle> <mat-datepicker #picker1clearanceCodeDate></mat-datepicker>  </mat-form-field>
-          
- 
-
-      <mat-form-field class="form-element"> <input matInput   placeholder="	نوع عملیات بانکی	" formControlName="bankingOperationType"></mat-form-field>
-      <mat-form-field class="form-element"> <input matInput placeholder="	پارت اسناد حمل و ابزار پرداخت	" formControlName="asnadHamlVaPardakht"></mat-form-field>
-
-      <mat-form-field class="form-element"> <input matInput placeholder="	کد ساتا	" formControlName="sataCode"></mat-form-field>
-      <mat-form-field class="form-element"> <input matInput placeholder="	شماره قرارداد	" formControlName="contractNo"></mat-form-field>
-      <mat-form-field class="form-element"> <input matInput placeholder="	مبلغ حقوق و عوارض گمرکی	" formControlName="avarezGomroki"  mask="{{gv.numberFormat}}" ></mat-form-field>
-      <mat-form-field class="form-element"> <input matInput placeholder="	وضعیت حقوق و عوارض گمرکی	" formControlName="avarezGomrokiStatus"></mat-form-field>
-      <mat-form-field class="form-element"> <input matInput placeholder="	مبلغ قابل دریافت از مشتری	" formControlName="moneyFromCustomer" mask="{{gv.numberFormat}}"></mat-form-field>
-      <mat-form-field class="form-element"> <input matInput placeholder="	مبلغ قابل دریافت از مشتری قسط اول	" formControlName="firstInstallmentValue" mask="{{gv.numberFormat}}"></mat-form-field>
-      <mat-form-field class="form-element"> <input matInput placeholder="	مبلغ قابل دریافت از مشتری قسط دوم	" formControlName="secondInstallmentValue" mask="{{gv.numberFormat}}"></mat-form-field>
-      <mat-form-field class="form-element"> <input matInput placeholder="	کوتاژ صادراتی مستهلک شده	" formControlName="kotajSaderatiMostahlak"></mat-form-field>
-      <mat-form-field class="form-element"> <input matInput placeholder="	معادل دلاری مستهلک شده	" formControlName="kotajSaderatiMostahlakInUsd" mask="{{gv.numberFormat}}"></mat-form-field>
-      <mat-form-field class="form-element"> <input matInput placeholder="	نامه راهداری به ونک استاندارد جهت انتخاب بازرس " formControlName="mailRahdariToVanak"></mat-form-field>
-      <mat-form-field class="form-element"> <input matInput placeholder="	انتخاب بازرس	" formControlName="bazres"></mat-form-field>
-      <mat-form-field class="form-element"> <input matInput placeholder="	شماره نامه ونک به راهداری ، گمرک و شماره گذاری	" formControlName="mailVanakToRahdari"></mat-form-field>
-      <mat-form-field class="form-element"> <input matInput placeholder="	شماره نامه آلایندگی و محیط زیست به راهداری و شماره گذاری	" formControlName="mailPlutionAndEnvToRahdariAndShorareNo"></mat-form-field>
-      <mat-form-field class="form-element"> <input matInput placeholder="	شماره نامه اتوماسیون محیط زیست در راهداری	" formControlName="mailAutomasionEnvInRahdariNo"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	کد ساتا	" formControlName="sataCode">
+      </mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	شماره قرارداد	" formControlName="contractNo">
+      </mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	مبلغ حقوق و عوارض گمرکی	"
+          formControlName="avarezGomroki" mask="{{gv.numberFormat}}"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	وضعیت حقوق و عوارض گمرکی	"
+          formControlName="avarezGomrokiStatus"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	مبلغ قابل دریافت از مشتری	"
+          formControlName="moneyFromCustomer" mask="{{gv.numberFormat}}"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	مبلغ قابل دریافت از مشتری قسط اول	"
+          formControlName="firstInstallmentValue" mask="{{gv.numberFormat}}"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	مبلغ قابل دریافت از مشتری قسط دوم	"
+          formControlName="secondInstallmentValue" mask="{{gv.numberFormat}}"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	کوتاژ صادراتی مستهلک شده	"
+          formControlName="kotajSaderatiMostahlak"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	معادل دلاری مستهلک شده	"
+          formControlName="kotajSaderatiMostahlakInUsd" mask="{{gv.numberFormat}}"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput
+          placeholder="	نامه راهداری به ونک استاندارد جهت انتخاب بازرس " formControlName="mailRahdariToVanak">
+      </mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	انتخاب بازرس	" formControlName="bazres">
+      </mat-form-field>
+      <mat-form-field class="form-element"> <input matInput
+          placeholder="	شماره نامه ونک به راهداری ، گمرک و شماره گذاری	" formControlName="mailVanakToRahdari">
+      </mat-form-field>
+      <mat-form-field class="form-element"> <input matInput
+          placeholder="	شماره نامه آلایندگی و محیط زیست به راهداری و شماره گذاری	"
+          formControlName="mailPlutionAndEnvToRahdariAndShorareNo"></mat-form-field>
+      <mat-form-field class="form-element"> <input matInput placeholder="	شماره نامه اتوماسیون محیط زیست در راهداری	"
+          formControlName="mailAutomasionEnvInRahdariNo"></mat-form-field>
 
 
       <mat-form-field class="form-element">
         <input matInput placeholder="" formControlName="chassiNumber" placeholder="شاسی">
         <button mat-button matSuffix mat-stroked-button aria-label="search" (click)="openDialogOrderitm()">
           <mat-icon>search</mat-icon>
-      </button>
+        </button>
       </mat-form-field>
 
-      <mat-checkbox formControlName="greenPass"> 	برگ سبز	 ....</mat-checkbox> 
+      <mat-checkbox formControlName="greenPass"> برگ سبز ....</mat-checkbox>
 
       <div class="form-element">
         <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
@@ -109,9 +145,9 @@
     </form>
   </div>
 
-  <div style="width: 100%; height: 100%" >
+  <div style="width: 100%; height: 100%">
     <!-- AG Grid Angular Component-->
-    <app-freight-rate-grid   (outputGetFromGrid)="onSelectionChanged($event)"></app-freight-rate-grid> 
-    </div>
+    <app-freight-rate-grid (outputGetFromGrid)="onSelectionChanged($event)"></app-freight-rate-grid>
+  </div>
 
 </div>

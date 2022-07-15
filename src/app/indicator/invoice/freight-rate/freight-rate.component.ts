@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { GlobalVariables } from 'src/app/framework/utilities/global/global-variables';
 import { Messages } from 'src/app/framework/utilities/messages/messages';
@@ -18,7 +18,8 @@ export class FreightRateComponent implements OnInit {
   
   gv= GlobalVariables.variables;
   
-  name1
+  dateValue 
+  
   @ViewChild(FreightRateGridComponent) child;
   formGroup: UntypedFormGroup;
 
@@ -109,7 +110,7 @@ export class FreightRateComponent implements OnInit {
   reset() {
     this.formGroup.reset();
 
-  }
+  } 
 
   createForm() {
     this.formGroup = this.formBuilder.group({
@@ -143,7 +144,7 @@ export class FreightRateComponent implements OnInit {
       'plutionBazdidDate': [null, []],
       'mailPlutionAndEnvToRahdariAndShorareNo': [null, []],
       'mailAutomasionEnvInRahdariNo': [null, []],
-      'clearanceCodeDate': [null, []],
+      'clearanceCodeDate': [null, [Validators.pattern(this.gv.datePattern)]], 
       'orderNo': [null, []],
       'orderItmId': [null, []],
       'chassiNumber': [null, []],
@@ -191,6 +192,31 @@ export class FreightRateComponent implements OnInit {
   onSelectionChanged(event) {
     this.formGroup.patchValue(event);
   }
+
+
+
+  //******* */
+
+ validateDate(c: FormControl) {  
+
+
+  console.log('method:'+c.value);
+  validateEmail: {
+          valid: false
+        }
+    let EMAIL_REGEXP = "/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/"
+  
+    // return EMAIL_REGEXP.test(c.value) ? null : {
+    //   validateEmail: {
+    //     valid: false
+    //   }
+    // };
+  } 
    
+
+  onSearchChange(searchValue: string): void {  
+    console.log(searchValue);
+    this.dateValue=searchValue;
+  }
 }
 
