@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ViewActions } from 'src/app/indicator/enums/viewActions';
 import { Customer } from 'src/app/indicator/models/common/customer.model';
 import { CustomerService } from 'src/app/indicator/services/customer.service';
 import 'src/app/indicator/services/shared.service';
@@ -11,13 +12,13 @@ import 'src/app/indicator/services/shared.service';
 export class CustomerEditableComponent implements OnInit {
 
   customer: Customer = new Customer();
-  editMode: boolean = false;
+  viewAction: ViewActions;
 
   constructor(private route: Router, private activateRoute: ActivatedRoute, private customerService: CustomerService) {
     let id = +this.activateRoute.snapshot.paramMap.get("id")
-    
-    if (id.isDefined()) {
-      this.editMode = true;
+    this.viewAction = this.activateRoute.snapshot.data["viewAction"]
+
+    if (this.viewAction == ViewActions.Edit) {
       this.getById(id);
     }
   }

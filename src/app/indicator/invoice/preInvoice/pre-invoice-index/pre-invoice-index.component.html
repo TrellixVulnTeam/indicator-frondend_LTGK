@@ -1,1 +1,33 @@
-<p>pre-invoice-index works!</p>
+<div class="container" style="padding: 20px 0;">
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <span role="button" class="material-icons md-dark nav-link active" routerLink="/preInvoice/create"
+                        data-bs-toggle="tooltip" title="Create new Preinvoice">add</span>
+                </th>
+            </tr>
+            <tr>
+                <th scope="col">Row</th>
+                <th scope="col">Actions</th>
+                <th scope="col">Preinvoice Code</th>
+                <th scope="col">Document Code</th>
+                <th scope="col">Preorder Unit Value</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let preInvoice of preInvoices; index as row">
+                <td scope="row">{{row + 1}}</td>
+                <td>
+                    <a href="/preInvoice/delete/{{preInvoice.id}}" class="material-icons btn btn-danger" role="button">delete</a>
+                    <a href="/preInvoice/edit/{{preInvoice.id}}" class="material-icons btn btn-primary" role="button">edit</a>
+                </td>
+                <td>{{preInvoice.fileNo}}</td>
+                <td>{{preInvoice.documentNo}}</td>
+                <td>{{preInvoice.preOrderUnitValue}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

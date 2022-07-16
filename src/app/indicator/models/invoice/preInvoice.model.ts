@@ -1,4 +1,4 @@
-export class Preinvoice {
+export class PreInvoice {
     id: number | undefined
     documentNo: string = ""
     fileNo: string = ""

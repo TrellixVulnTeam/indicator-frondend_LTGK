@@ -11,17 +11,17 @@ export class CustomerDetailComponent implements OnInit {
 
   customer: Customer = new Customer();
 
-  constructor(private route: Router,private activateRoute: ActivatedRoute,private customerService: CustomerService) { 
+  constructor(private route: Router, private activateRoute: ActivatedRoute, private customerService: CustomerService) {
 
   }
 
   ngOnInit(): void {
     let id = this.activateRoute.snapshot.paramMap.get("id");
     this.customerService.getbyId(id).subscribe(data => {
-      this.customer =data;
-      },err =>{
-        console.log(err)
-      })
+      this.customer = data;
+    }, err => {
+      console.log(err)
+    })
   }
 
   backToList() {
@@ -36,5 +36,5 @@ export class CustomerDetailComponent implements OnInit {
       console.log(err)
     })
   }
-  
+
 }

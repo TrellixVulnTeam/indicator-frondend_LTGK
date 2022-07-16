@@ -1,0 +1,54 @@
+<form style="padding: 20px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="firstName" [ngModel]="carInformation.chassisNumber" type="text" class="form-control" id="firstName"
+                    placeholder="firstName" disabled>
+                <label for="firstName">Chassis Number</label>
+            </div>
+            <div class="col form-floating mb-3">
+                <input name="lastName" [ngModel]="carInformation.engineNumber" type="text" class="form-control" id="lastName"
+                    placeholder="lastName" disabled>
+                <label for="lastName">Engine Number</label>
+                <div class="valid-feedback">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="carYearModel" [ngModel]="carInformation.carYearModel" type="text" class="form-control" id="carYearModel"
+                    placeholder="carYearModel" disabled>
+                <label for="carYearModel">Car Year Model</label>
+            </div>
+            <div class="col form-floating mb-3">
+                <input name="location" [ngModel]="carInformation.location" type="text" class="form-control" id="location"
+                    placeholder="location" disabled>
+                <label for="location">Location</label>
+                <div class="valid-feedback">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="arriveBoarderDate" [ngModel]="carInformation.arriveBoarderDateDisplay" type="text" class="form-control" id="arriveBoarderDate"
+                    placeholder="arriveBoarderDate" disabled>
+                <label for="arriveBoarderDate">Arrive Boarder Date</label>
+            </div>
+            <div class="col form-floating mb-3">
+                <input name="arriveDocumentsDate" [ngModel]="carInformation.arriveDocumentsDateDisplay" type="text" class="form-control" id="arriveDocumentsDate"
+                    placeholder="arriveDocumentsDate" disabled>
+                <label for="arriveDocumentsDate">Arrive Documents Date</label>
+                <div class="valid-feedback">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <button (click)="delete()" type="submit" class="col-2 btn btn-danger">Delete</button>
+            <span class="col-8"></span>
+            <button (click)="backToList()" type="submit" class="col-2 btn btn-secondary">Back To list</button>
+        </div>
+    </div>
+</form>

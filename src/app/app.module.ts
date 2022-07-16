@@ -26,6 +26,10 @@ import { FreightRateEditableComponent } from './indicator/common/freightRate/fre
 import { CustomerEditableComponent } from './indicator/common/customer/customer-editable/customer-editable.component';
 import { CustomerIndexComponent } from './indicator/common/customer/customer-index/customer-index.component';
 import { CustomerDetailComponent } from './indicator/common/customer/customer-detail/customer-detail.component';
+import { PreInvoiceDetailComponent } from './indicator/invoice/preInvoice/pre-invoice-detail/pre-invoice-detail.component';
+import { CarInformationDetailComponent } from './indicator/common/carInformation/car-information-detail/car-information-detail.component';
+import { FreightRateDetailComponent } from './indicator/common/freightRate/freight-rate-detail/freight-rate-detail.component';
+import { OrderDetailComponent } from './indicator/invoice/order/order-detail/order-detail.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,11 @@ import { CustomerDetailComponent } from './indicator/common/customer/customer-de
     FreightRateEditableComponent,
     CustomerEditableComponent,
     CustomerIndexComponent,
-    CustomerDetailComponent
+    CustomerDetailComponent,
+    PreInvoiceDetailComponent,
+    CarInformationDetailComponent,
+    FreightRateDetailComponent,
+    OrderDetailComponent
   ],
   imports: [
     BrowserModule,

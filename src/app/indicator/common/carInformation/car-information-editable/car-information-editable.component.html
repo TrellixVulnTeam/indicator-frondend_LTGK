@@ -1,1 +1,49 @@
-<p>car-information-edit works!</p>
+<form class="needs-validation" style="padding: 20px 0;" novalidate>
+    <div class="container">
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="chassisNumber" [(ngModel)]="carInformation.chassisNumber" type="text" class="form-control" id="chassisNumber" placeholder="chassisNumber" required>
+                <label for="chassisNumber">Chassis Number</label>
+            </div>
+            <div class="col form-floating mb-3">
+                <input name="engineNumber" [(ngModel)]="carInformation.engineNumber" type="text" class="form-control" id="engineNumber" placeholder="engineNumber" required>
+                <label for="engineNumber">Engine Number</label>
+                <div class="valid-feedback">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="carYearModel" [(ngModel)]="carInformation.carYearModel" type="text" class="form-control" id="carYearModel" placeholder="carYearModel" required>
+                <label for="carYearModel">Car Year Model</label>
+            </div>
+            <div class="col form-floating mb-3">
+                <input name="location" [(ngModel)]="carInformation.location" type="text" class="form-control" id="location" placeholder="location" required>
+                <label for="location">Location</label>
+                <div class="valid-feedback">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="arriveBoarderDate" [(ngModel)]="carInformation.arriveBoarderDateDisplay" type="date" class="form-control" id="arriveBoarderDate" placeholder="arriveBoarderDate" required>
+                <label for="arriveBoarderDate">Arrive Boarder Date</label>
+            </div>
+            <div class="col form-floating mb-3">
+                <input name="arriveDocumentsDate" [(ngModel)]="carInformation.arriveDocumentsDateDisplay" type="date" class="form-control" id="arriveDocumentsDate" placeholder="arriveDocumentsDate" required>
+                <label for="arriveDocumentsDate">Arrive Documents Date</label>
+                <div class="valid-feedback">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <button *ngIf="viewAction == 100" (click)="create()" type="submit" class="col-2 btn btn-primary">Create</button>
+            <button *ngIf="viewAction == 200" (click)="edit()" type="submit" class="col-2 btn btn-primary">Edit</button>
+            <span class="col-8"></span>
+            <button (click)="backToList()" type="submit" class="col-2 btn btn-secondary">Back To list</button>
+        </div>
+    </div>
+</form>

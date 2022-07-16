@@ -1,0 +1,26 @@
+<form style="padding: 20px 0;">
+    <div class="container">
+        <div class="col form-floating mb-3">
+            <input name="fileNo" [(ngModel)]="preInvoice.fileNo" type="text" class="form-control" id="fileNo"
+                placeholder="fileNo" disabled>
+            <label for="fileNo">Preinvoice Code</label>
+        </div>
+        <div class="col form-floating mb-3">
+            <input name="documentNo" [(ngModel)]="preInvoice.documentNo" type="text" class="form-control" id="documentNo"
+                placeholder="documentNo" disabled>
+            <label for="documentNo">Document Code</label>
+            <div class="valid-feedback">
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input name="preOrderUnitValue" [(ngModel)]="preInvoice.preOrderUnitValue" type="number" class="form-control" id="preOrderUnitValue"
+                placeholder="preOrderUnitValue" disabled>
+            <label for="preOrderUnitValue">Preorder Unit Value</label>
+        </div>
+        <div class="row">
+            <button (click)="delete()" type="submit" class="col-2 btn btn-danger">Delete</button>
+            <span class="col-8"></span>
+            <button (click)="backToList()" type="submit" class="col-2 btn btn-secondary">Back To list</button>
+        </div>
+    </div>
+</form>
