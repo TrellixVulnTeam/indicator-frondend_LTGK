@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderHeader } from 'src/app/indicator/models/invoice/orderHeader.model';
+import { OrderService } from 'src/app/indicator/services/order.service';
 
 @Component({
   selector: 'app-order-index',
@@ -6,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderIndexComponent implements OnInit {
 
-  constructor() { }
+  orderHeaders: Array<OrderHeader> = [];
+
+  constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
+    this.orderService.index().subscribe(data => {
+      this.orderHeaders = data;
+    })
   }
 
 }

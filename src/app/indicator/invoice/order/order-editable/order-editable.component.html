@@ -1,5 +1,129 @@
-<div class="container mt-5">
-    <div class="card text-center" style="color: green; padding: 20px;">
-        <h1>order-editable works!</h1>
+<form class="needs-validation" style="padding: 20px 0;" novalidate>
+    <div class="container">
+        <h5>Pre Invoice Information</h5>
+        <div class="row">
+            <!-- <div class="col form-floating mb-3">
+                <input name="fileNo" [(ngModel)]="preInvoice.fileNo" type="text" class="form-control" id="fileNo"
+                    placeholder="fileNo">
+                <label for="fileNo">Preinvoice Code</label>
+            </div> -->
+
+            <div class="col form-floating input-group mb-3">
+                <input type="text" name="fileNo" [(ngModel)]="preInvoice.fileNo" class="form-control" id="fileNo"
+                    placeholder="fileNo" aria-label="fileNo">
+                <label for="fileNo">Preinvoice Code</label>
+                <!-- <a role="button" class="material-icons md-dark nav-link active bordered" routerLink="/order/create"
+                    data-bs-toggle="tooltip" title="Get Pre Invoice" id="button-addon1">archive</a> -->
+                <button [disabled]="preInvoice.fileNo" (click)="getPreInvoice()" type="submit"
+                    class="btn btn-success material-icons md-dark nav-link active bordered" data-bs-toggle="tooltip"
+                    title="Get Pre Invoice">archive</button>
+            </div>
+
+            <div class="col form-floating mb-3">
+                <input name="preInvoiceDocumentNo" [(ngModel)]="preInvoice.documentNo" type="text" class="form-control"
+                    id="preInvoiceDocumentNo" placeholder="preInvoiceDocumentNo" disabled>
+                <label for="preInvoiceDocumentNo">Document Code</label>
+                <div class="valid-feedback">
+                </div>
+            </div>
+            <div class="col form-floating mb-3">
+                <input name="preOrderUnitValue" [(ngModel)]="preInvoice.preOrderUnitValue" type="number"
+                    class="form-control" id="preOrderUnitValue" placeholder="preOrderUnitValue" disabled>
+                <label for="preOrderUnitValue">Preorder Unit Value</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="documentNo" [(ngModel)]="order.orderHeader.documentNo" type="text" class="form-control"
+                    id="documentNo" placeholder="documentNo" required>
+                <label for="documentNo">Document Number</label>
+            </div>
+            <div class="col form-floating mb-3">
+                <input name="invoiceNo" [(ngModel)]="order.orderHeader.invoiceNo" type="text" class="form-control"
+                    id="invoiceNo" placeholder="lastName" required>
+                <label for="invoiceNo">Invoice Number</label>
+                <div class="valid-feedback">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="invoiceValue" [(ngModel)]="order.orderHeader.invoiceValue" type="text" class="form-control"
+                    id="invoiceValue" placeholder="invoiceValue" required>
+                <label for="invoiceValue">Invoice Value</label>
+            </div>
+            <div class="col form-floating mb-3">
+                <input name="reagentName" [(ngModel)]="order.orderHeader.reagentName" type="text" class="form-control"
+                    id="reagentName" placeholder="reagentName" required>
+                <label for="reagentName">Reagent Name</label>
+                <div class="valid-feedback">
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-hover table-bordered">
+            <thead>
+                <th style="text-align:center" colspan="6">Order Details</th>
+                <tr>
+                    <th colspan="6">
+                        <span role="button" class="material-icons md-dark nav-link active" routerLink="/order/create"
+                            data-bs-toggle="tooltip" title="Create new Detail">note_add</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th scope="col">Row</th>
+                    <th scope="col">Actions</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">CarInformation Chassis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let orderDetail of order.orderDetails; index as row">
+                    <td scope="row">{{orderDetail.rowNo}}</td>
+                    <td>
+                        <a href="/order/delete/{{orderHeader.id}}" class="material-icons btn btn-danger"
+                            role="button">delete</a>
+                        <a href="/order/edit/{{orderHeader.id}}" class="material-icons btn btn-primary"
+                            role="button">edit</a>
+                    </td>
+                    <td>{{orderDetail.customerName}}</td>
+                    <td>{{orderDetail.carInformationChassis}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Accordion Item #1
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the
+                        collapse plugin adds the appropriate classes that we use to style each element. These classes
+                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
+                        that just about any HTML can go within the <code>.accordion-body</code>, though the transition
+                        does limit overflow.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+
+        <div class="row">
+            <button *ngIf="viewAction == 100" (click)="create()" type="submit"
+                class="col-2 btn btn-primary">Create</button>
+            <button *ngIf="viewAction == 200" (click)="edit()" type="submit" class="col-2 btn btn-primary">Edit</button>
+            <span class="col-8"></span>
+            <button (click)="backToList()" type="submit" class="col-2 btn btn-secondary">Back To list</button>
+        </div>
     </div>
-</div>
+
+</form>

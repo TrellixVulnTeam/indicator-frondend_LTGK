@@ -30,6 +30,9 @@ import { PreInvoiceDetailComponent } from './indicator/invoice/preInvoice/pre-in
 import { CarInformationDetailComponent } from './indicator/common/carInformation/car-information-detail/car-information-detail.component';
 import { FreightRateDetailComponent } from './indicator/common/freightRate/freight-rate-detail/freight-rate-detail.component';
 import { OrderDetailComponent } from './indicator/invoice/order/order-detail/order-detail.component';
+import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastGlobalComponent } from './toast-global/toast-global.component';
+import { ToastsContainer } from './toast-global/toast-container.component';
 
 @NgModule({
   declarations: [
@@ -54,14 +57,17 @@ import { OrderDetailComponent } from './indicator/invoice/order/order-detail/ord
     PreInvoiceDetailComponent,
     CarInformationDetailComponent,
     FreightRateDetailComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    ToastGlobalComponent,
+    ToastsContainer
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    NgbToastModule
   ],
   providers: [
     AuthGuard,
@@ -72,6 +78,6 @@ import { OrderDetailComponent } from './indicator/invoice/order/order-detail/ord
     },
     UserService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,OrderEditableComponent]
 })
 export class AppModule { }
