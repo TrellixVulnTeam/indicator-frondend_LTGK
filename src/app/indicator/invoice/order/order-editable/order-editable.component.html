@@ -14,7 +14,7 @@
                 <label for="fileNo">Preinvoice Code</label>
                 <!-- <a role="button" class="material-icons md-dark nav-link active bordered" routerLink="/order/create"
                     data-bs-toggle="tooltip" title="Get Pre Invoice" id="button-addon1">archive</a> -->
-                <button [disabled]="preInvoice.fileNo" (click)="getPreInvoice()" type="submit"
+                <button autocomplete="false" (click)="getPreInvoice()" type="submit"
                     class="btn btn-success material-icons md-dark nav-link active bordered" data-bs-toggle="tooltip"
                     title="Get Pre Invoice">archive</button>
             </div>
@@ -68,8 +68,8 @@
                 <th style="text-align:center" colspan="6">Order Details</th>
                 <tr>
                     <th colspan="6">
-                        <span role="button" class="material-icons md-dark nav-link active" routerLink="/order/create"
-                            data-bs-toggle="tooltip" title="Create new Detail">note_add</span>
+                        <span role="button" class="material-icons md-dark nav-link active" data-bs-toggle="tooltip"
+                            (click)="openAcc()" title="Create new Detail">note_add</span>
                     </th>
                 </tr>
                 <tr>
@@ -93,27 +93,28 @@
                 </tr>
             </tbody>
         </table>
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Accordion Item #1
-                    </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the
-                        collapse plugin adds the appropriate classes that we use to style each element. These classes
-                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
-                        that just about any HTML can go within the <code>.accordion-body</code>, though the transition
-                        does limit overflow.
+        <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+            <ngb-panel id="detailAcc">
+                <ng-template ngbPanelContent>
+                    <div class="row">
+                        <label class="col-2">Customer:</label>
+                        <select  id="customerSelect" *ngFor="let customer of customers" class="col form-select"
+                            aria-label="Default select example">
+                            <option value="customer.id">{{customer.firstName}} {{customer.lastName}}</option>
+                        </select>
                     </div>
+                    <div class="row">
+                        <label class="col-2">CarInformation:</label>
+                        <select id="carInformationSelect" *ngFor="let carInformation of carInformations" class="col table-bordered form-select"
+                        aria-label="Default select example">
+                        <option  value="carInformation.id">
+                           <td>{{carInformation.chassisNumber}}</td>  
+                        </option>
+                    </select>
                 </div>
-            </div>
-        </div>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
 
         <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
 

@@ -39,4 +39,8 @@ export class OrderService extends BaseService {
   getPreInvoice(fileNo: String): Observable<any> {
     return this.http.get(url + "getPreInvoice/" + fileNo)
   }
+
+  getSelects(): Observable<any>{
+    return this.http.get(url + "getSelects")
+  }
 }

@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { ViewActions } from 'src/app/indicator/enums/viewActions';
@@ -9,6 +9,11 @@ import { OrderHeader } from 'src/app/indicator/models/invoice/orderHeader.model'
 import { PreInvoice } from 'src/app/indicator/models/invoice/preInvoice.model';
 import { OrderService } from 'src/app/indicator/services/order.service';
 import { ToastService } from 'src/app/indicator/services/toast.service';
+import { Observable, of } from 'rxjs';
+import { Customer } from 'src/app/indicator/models/common/customer.model';
+import { NgbAccordion } from '@ng-bootstrap/ng-bootstrap';
+import { CarInformation } from 'src/app/indicator/models/common/carInformation.model';
+import { BootstrapOptions } from '@angular/core';
 
 @Component({
   selector: 'app-order-editable',
@@ -19,8 +24,9 @@ export class OrderEditableComponent implements OnInit, AppComponent {
   order: Order = new Order();
   preInvoice: PreInvoice = new PreInvoice();
   viewAction: ViewActions;
-  tt:boolean = true;
-  ff:boolean;
+  customers: Array<Customer> = new Array<Customer>();
+  carInformations: Array<CarInformation> = new Array<CarInformation>();
+  @ViewChild('acc') acc: NgbAccordion
 
 
   constructor(private route: Router,
@@ -40,48 +46,40 @@ export class OrderEditableComponent implements OnInit, AppComponent {
   title: string;
 
   ngOnInit(): void {
-    // const toastTrigger = document.getElementById('liveToastBtn')
-    // const toastLiveExample = document.getElementById('liveToast')
-    // if (toastTrigger) {
-    //   toastTrigger.addEventListener('click', () => {
-    //     const toast = new bootstrap.Toast(toastLiveExample)
-
-    //     toast.show()
-    //   })
-    // }
+    this.orderService.getSelects().subscribe(data =>{
+      this.customers = data[0]
+      this.carInformations = data[1]
+    })
   }
 
   getById(id: number) {
-    this.orderService.getbyId(id).subscribe(data => {
-      this.order.orderHeader = data.orderHeader;
-      this.order.orderDetails = data.orderDetails;
-    }, err => {
-      console.log(err)
-    })
+    of(this.orderService.getbyId(id)).subscribe(
+      {
+        next: (data: any) => {
+          this.order.orderHeader = data.orderHeader;
+          this.order.orderDetails = data.orderDetails;
+        },
+        error: (e) => this.toast.show(e),
+      })
   }
 
   getPreInvoice() {
-    this.tt  = this.preInvoice.fileNo == '';
-    this.ff = this.preInvoice.fileNo != '';
-    this.orderService.getPreInvoice(this.preInvoice.fileNo).subscribe(data => {
-
+    this.orderService.getPreInvoice(this.preInvoice.fileNo) .subscribe( (data?: any) =>{
       if (data == null) {
         this.toast.show('There is no document with entered number')
-      }else{
+      } else {
         this.preInvoice = data;
-      }
-
-    }, err => {
-      console.log(err)
-    })
+      }  
+    }
+    )
   }
 
   create() {
-    this.orderService.create(this.order.orderHeader).subscribe(data => {
-      console.log(data);
-      this.route.navigate(['order/index'])
-    }, err => {
-      console.log(err)
+    of(this.orderService.create(this.order.orderHeader)).subscribe({
+      next: () => {
+        this.route.navigate(['order/index'])
+      },
+      error: (e) => this.toast.show(e)
     })
   }
 
@@ -99,5 +97,12 @@ export class OrderEditableComponent implements OnInit, AppComponent {
     this.route.navigate(['order/index'])
   }
 
+  newDetail(){
+
+  }
+
+  openAcc(){
+    this.acc.toggle('detailAcc');
+  }
 }
 

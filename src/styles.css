@@ -1,8 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-button[disable=true]{
-    color: var(--bs-btn-disabled-color);
-    pointer-events: none;
-    background-color: var(--bs-btn-disabled-bg);
-    border-color: var(--bs-btn-disabled-border-color);
-    opacity: var(--bs-btn-disabled-opacity);
+
+.form-select{
+    margin: 8px 0;
 }
