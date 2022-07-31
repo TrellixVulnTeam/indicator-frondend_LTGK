@@ -17,6 +17,10 @@
                 <button autocomplete="false" (click)="getPreInvoice()" type="submit"
                     class="btn btn-success material-icons md-dark nav-link active bordered" data-bs-toggle="tooltip"
                     title="Get Pre Invoice">archive</button>
+
+                <button autocomplete="false" (click)="getPreInvoice()" type="submit"
+                    class="btn btn-primary material-icons md-dark nav-link active bordered" data-bs-toggle="tooltip"
+                    title="Get Pre Invoice List">assignment</button>
             </div>
 
             <div class="col form-floating mb-3">
@@ -35,12 +39,12 @@
 
         <div class="row">
             <div class="col form-floating mb-3">
-                <input name="documentNo" [(ngModel)]="order.orderHeader.documentNo" type="text" class="form-control"
+                <input name="documentNo" [(ngModel)]="order.orderHeaderVM.documentNo" type="text" class="form-control"
                     id="documentNo" placeholder="documentNo" required>
                 <label for="documentNo">Document Number</label>
             </div>
             <div class="col form-floating mb-3">
-                <input name="invoiceNo" [(ngModel)]="order.orderHeader.invoiceNo" type="text" class="form-control"
+                <input name="invoiceNo" [(ngModel)]="order.orderHeaderVM.invoiceNo" type="text" class="form-control"
                     id="invoiceNo" placeholder="lastName" required>
                 <label for="invoiceNo">Invoice Number</label>
                 <div class="valid-feedback">
@@ -50,16 +54,9 @@
 
         <div class="row">
             <div class="col form-floating mb-3">
-                <input name="invoiceValue" [(ngModel)]="order.orderHeader.invoiceValue" type="text" class="form-control"
+                <input name="invoiceValue" [(ngModel)]="order.orderHeaderVM.invoiceValue" type="text" class="form-control"
                     id="invoiceValue" placeholder="invoiceValue" required>
                 <label for="invoiceValue">Invoice Value</label>
-            </div>
-            <div class="col form-floating mb-3">
-                <input name="reagentName" [(ngModel)]="order.orderHeader.reagentName" type="text" class="form-control"
-                    id="reagentName" placeholder="reagentName" required>
-                <label for="reagentName">Reagent Name</label>
-                <div class="valid-feedback">
-                </div>
             </div>
         </div>
 
@@ -69,7 +66,7 @@
                 <tr>
                     <th colspan="6">
                         <span role="button" class="material-icons md-dark nav-link active" data-bs-toggle="tooltip"
-                            (click)="openAcc()" title="Create new Detail">note_add</span>
+                            (click)="openAcc(true)" title="Create new Detail">note_add</span>
                     </th>
                 </tr>
                 <tr>
@@ -77,41 +74,51 @@
                     <th scope="col">Actions</th>
                     <th scope="col">Customer Name</th>
                     <th scope="col">CarInformation Chassis</th>
+                    <th scope="col">Reagent Name</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let orderDetail of order.orderDetails; index as row">
+                <tr *ngFor="let orderDetail of order.orderDetailVM; index as ind">
                     <td scope="row">{{orderDetail.rowNo}}</td>
                     <td>
-                        <a href="/order/delete/{{orderHeader.id}}" class="material-icons btn btn-danger"
-                            role="button">delete</a>
-                        <a href="/order/edit/{{orderHeader.id}}" class="material-icons btn btn-primary"
-                            role="button">edit</a>
+                        <a (click)="deleteDetail(ind)" class="material-icons btn btn-danger" role="button">delete</a>
+                        <a (click)="openAcc(false,ind)" class="material-icons btn btn-primary" role="button">edit</a>
                     </td>
                     <td>{{orderDetail.customerName}}</td>
                     <td>{{orderDetail.carInformationChassis}}</td>
+                    <td>{{orderDetail.reagentName}}</td>
                 </tr>
             </tbody>
         </table>
-        <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-            <ngb-panel id="detailAcc">
+        <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" (panelChange)="beforeChange($event)">
+            <ngb-panel id="detailAcc" disabled="true">
                 <ng-template ngbPanelContent>
                     <div class="row">
                         <label class="col-2">Customer:</label>
-                        <select  id="customerSelect" *ngFor="let customer of customers" class="col form-select"
-                            aria-label="Default select example">
-                            <option value="customer.id">{{customer.firstName}} {{customer.lastName}}</option>
+                        <select name="customerSelect" [(ngModel)]="newOrderDetail.customerId" class="col form-select" aria-label="customerSelect">
+                            <option *ngFor="let customer of customers" value="{{customer.id}}">{{customer.firstName}}
+                                {{customer.lastName}}</option>
                         </select>
                     </div>
                     <div class="row">
                         <label class="col-2">CarInformation:</label>
-                        <select id="carInformationSelect" *ngFor="let carInformation of carInformations" class="col table-bordered form-select"
-                        aria-label="Default select example">
-                        <option  value="carInformation.id">
-                           <td>{{carInformation.chassisNumber}}</td>  
-                        </option>
-                    </select>
-                </div>
+                        <select name="carInformationSelect" [(ngModel)]="newOrderDetail.carInformationId" class="col form-select"
+                            aria-label="carInformationSelect">
+                            <option *ngFor="let carInformation of carInformations" value="{{carInformation.id}}">
+                                {{carInformation.id}} {{carInformation.chassisNumber}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col form-floating mb-3">
+                        <input name="reagentName" type="text" class="form-control"
+                            [(ngModel)]="newOrderDetail.reagentName" placeholder="reagentName" required>
+                        <label for="reagentName">Reagent Name</label>
+                        <div class="valid-feedback">
+                        </div>
+                    </div>
+
+                    <button (click)="saveDetail()" type="submit" class="col-2 btn btn-success">Save</button>
                 </ng-template>
             </ngb-panel>
         </ngb-accordion>

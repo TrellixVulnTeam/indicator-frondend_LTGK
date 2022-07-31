@@ -5,6 +5,7 @@ import { UserAuthService } from 'src/app/_services/user-auth.service';
 import { BaseService } from './base.service';
 import { OrderHeader } from '../models/invoice/OrderHeader.model';
 import { Observable } from 'rxjs';
+import { Order } from '../models/invoice/order.model';
 
 const url = `${environment.apiUrl}/api/order/`
 @Injectable({
@@ -16,8 +17,8 @@ export class OrderService extends BaseService {
     super(userAuthService, httpClient)
   }
 
-  create(OrderHeader: OrderHeader): Observable<any> {
-    return this.http.post(url + "create", OrderHeader, { headers: this.getHeaders });
+  create(order: Order): Observable<any> {
+    return this.http.post(url + "create", order, { headers: this.getHeaders });
   }
 
   edit(OrderHeader: OrderHeader): Observable<any> {
