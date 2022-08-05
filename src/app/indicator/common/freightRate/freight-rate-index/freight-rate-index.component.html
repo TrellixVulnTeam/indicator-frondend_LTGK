@@ -1,1 +1,30 @@
-<p>freigt-rate-index works!</p>
+<div class="container" style="padding: 20px 0;">
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <span role="button" class="material-icons md-dark nav-link active" routerLink="/freightRate/create"
+                        data-bs-toggle="tooltip" title="Create new Freight Rate">add</span>
+                </th>
+            </tr>
+            <tr>
+                <th scope="col">Row</th>
+                <th scope="col">Actions</th>
+                <th scope="col">Freight Rate Number</th>
+                <th scope="col">Freight Rate Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let freightRate of freightRates; index as row">
+                <td scope="row">{{row + 1}}</td>
+                <td>
+                    <a href="/freightRate/delete/{{freightRate.id}}" class="material-icons btn btn-danger" role="button">delete</a>
+                    <a href="/freightRate/edit/{{freightRate.id}}" class="material-icons btn btn-primary" role="button">edit</a>
+                </td>
+                <td>{{freightRate.freightRateNo}}</td>
+                <td>{{freightRate.freightRateDate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

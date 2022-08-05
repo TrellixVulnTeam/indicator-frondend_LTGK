@@ -1,1 +1,283 @@
-<p>freight-rate-editable works!</p>
+<form class="needs-validation" style="padding: 20px 0;" novalidate>
+    <div class="container">
+        <div class="row">
+
+            <div class="col form-floating input-group mb-3">
+                <input type="text" name="orderHeaderDocumentNo" [(ngModel)]="freightRate.orderHeaderDocumentNo"
+                    class="form-control" id="orderHeaderDocumentNo" placeholder="orderHeaderDocumentNo"
+                    aria-label="orderHeaderDocumentNo" disabled>
+                <label for="orderHeaderDocumentNo">Order Document Number</label>
+                <button autocomplete="false" (click)="openOrderDetailModal()" type="submit"
+                    class="btn btn-primary material-icons md-dark nav-link active bordered" data-bs-toggle="tooltip"
+                    title="Get Order Detail list">assignment</button>
+            </div>
+            <div class="col form-floating mb-3">
+                <input name="orderDetailRowNo" [(ngModel)]="freightRate.orderDetailRowNo" type="text"
+                    class="form-control" id="orderDetailRowNo" placeholder="orderDetailRowNo" disabled>
+                <label for="orderDetailRowNo">Order Detail Row Number</label>
+                <div class="valid-feedback">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="freightRateNo" [(ngModel)]="freightRate.freightRateNo" type="text" class="form-control"
+                    id="freightRateNo" placeholder="freightRateNo" required>
+                <label for="freightRateNo">Freight Rate Number</label>
+            </div><!-- -->
+            <div class="col form-floating mb-3">
+                <input name="importExport" [(ngModel)]="freightRate.importExport" type="text" class="form-control"
+                    id="importExport" placeholder="importExport" required>
+                <label for="importExport">Import Or Export</label>
+                <div class="valid-feedback">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 form-floating mb-3">
+                <input name="paymentMethod" [(ngModel)]="freightRate.paymentMethod" type="text" class="form-control"
+                    id="paymentMethod" placeholder="paymentMethod">
+                <label for="paymentMethod">Payment Method</label>
+            </div><!-- -->
+            <div class="col form-check form-switch">
+                <input class="form-check-input" [(ngModel)]="freightRate.hasGreenCard" type="checkbox" role="switch"
+                    id="hasGreenCard">
+                <label class="form-check-label" for="hasGreenCard">Has Green Card?</label>
+            </div>
+            <!--bool-->
+        </div>
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="sataCode" [(ngModel)]="freightRate.sataCode" type="text" class="form-control" id="sataCode"
+                    placeholder="sataCode">
+                <label for="sataCode">Sata Code</label>
+            </div><!-- -->
+            <div class="col form-floating mb-3">
+                <input name="contractNo" [(ngModel)]="freightRate.contractNo" type="text" class="form-control"
+                    id="contractNo" placeholder="contractNo">
+                <label for="contractNo">Contract Number</label>
+                <div class="valid-feedback">
+                </div><!-- -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="taxAndDutyValue" [(ngModel)]="freightRate.taxAndDutyValue" type="number"
+                    class="form-control" id="taxAndDutyValue" placeholder="taxAndDutyValue">
+                <label for="taxAndDutyValue">Tax And Duty Value</label>
+            </div><!-- number -->
+            <div class="col form-check form-switch">
+                <input class="form-check-input" [(ngModel)]="freightRate.isPaidTaxAndDuty" type="checkbox" role="switch"
+                    id="isPaidTaxAndDuty">
+                <label class="form-check-label" for="isPaidTaxAndDuty">Has Tax And Duty Been Paid?</label>
+            </div>
+            <!--bool-->
+        </div>
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="customerPayableValue" [(ngModel)]="freightRate.customerPayableValue" type="number"
+                    class="form-control" id="customerPayableValue" placeholder="customerPayableValue">
+                <label for="customerPayableValue">Customer Payable Value</label>
+            </div><!-- number -->
+            <div class="col form-floating mb-3">
+                <input name="firstInstallmentValue" [(ngModel)]="freightRate.firstInstallmentValue" type="number"
+                    class="form-control" id="firstInstallmentValue" placeholder="firstInstallmentValue">
+                <label for="firstInstallmentValue">First Installment Value</label>
+                <div class="valid-feedback">
+                </div><!-- number -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="secondInstallmentValue" [(ngModel)]="freightRate.secondInstallmentValue" type="number"
+                    class="form-control" id="secondInstallmentValue" placeholder="secondInstallmentValue">
+                <label for="secondInstallmentValue">Second Installment Value</label>
+            </div><!-- number -->
+            <div class="col form-floating mb-3">
+                <input name="amortizedFreightRateNo" [(ngModel)]="freightRate.amortizedFreightRateNo" type="text"
+                    class="form-control" id="amortizedFreightRateNo" placeholder="amortizedFreightRateNo">
+                <label for="amortizedFreightRateNo">Amortized Freight Rate Number</label>
+                <div class="valid-feedback">
+                </div><!-- -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="amortizedFreightRateValue" [(ngModel)]="freightRate.freightRateNo" type="text"
+                    class="form-control" id="amortizedFreightRateValue" placeholder="amortizedFreightRateValue"
+                    required>
+                <label for="amortizedFreightRateValue">Amortized Freight Rate Value</label>
+            </div><!-- number -->
+            <div class="col form-check form-switch">
+                <input class="form-check-input" [(ngModel)]="freightRate.hasMailToVanak" type="checkbox" role="switch"
+                    id="hasMailToVanak">
+                <label class="form-check-label" for="hasMailToVanak">Has Mail To Vanak?</label>
+            </div>
+            <!--bool-->
+        </div>
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="inspector" [(ngModel)]="freightRate.inspector" type="text" class="form-control"
+                    id="inspector" placeholder="inspector" required>
+                <label for="inspector">Inspector</label>
+            </div>
+            <div class="col form-check form-switch">
+                <input class="form-check-input" [(ngModel)]="freightRate.isDoneInspectingResult" type="checkbox"
+                    role="switch" id="isDoneInspectingResult">
+                <label class="form-check-label" for="isDoneInspectingResult">Has Inspecting Result Been Done?</label>
+            </div>
+            <!--bool-->
+        </div>
+        <div class="row">
+            <div class="col form-check form-switch">
+                <input class="form-check-input" [(ngModel)]="freightRate.hasVanakInvoiceRequest" type="checkbox"
+                    role="switch" id="hasVanakInvoiceRequest">
+                <label class="form-check-label" for="hasVanakInvoiceRequest">Has Vanak Invoice Request?</label>
+            </div>
+            <!--bool-->
+            <div class="col form-check form-switch">
+                <input class="form-check-input" [(ngModel)]="freightRate.isVanakPaid" type="checkbox" role="switch"
+                    id="isVanakPaid">
+                <label class="form-check-label" for="isVanakPaid">Has Vanak Been Paid?</label>
+            </div>
+            <!--bool-->
+        </div>
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="vanakTollNo" [(ngModel)]="freightRate.vanakTollNo" type="text" class="form-control"
+                    id="vanakTollNo" placeholder="vanakTollNo">
+                <label for="vanakTollNo">Vanak Toll NUmber</label>
+            </div><!-- -->
+            <div class="col form-floating mb-3">
+                <input name="tollStandardMailNo" [(ngModel)]="freightRate.tollStandardMailNo" type="text"
+                    class="form-control" id="tollStandardMailNo" placeholder="tollStandardMailNo">
+                <label for="tollStandardMailNo">Toll Standard Mail Number</label>
+                <div class="valid-feedback">
+                </div>
+            </div><!-- -->
+        </div>
+        <div class="row">
+            <div class="col form-check form-switch">
+                <input class="form-check-input" [(ngModel)]="freightRate.isDonePollutionInspecting" type="checkbox"
+                    role="switch" id="isDonePollutionInspecting">
+                <label class="form-check-label" for="isDonePollutionInspecting">Has Pollution Inspecting Been
+                    Done?</label>
+            </div>
+            <!--bool-->
+            <div class="col form-check form-switch">
+                <input class="form-check-input" [(ngModel)]="freightRate.hasTollStandardMail" type="checkbox"
+                    role="switch" id="hasTollStandardMail">
+                <label class="form-check-label" for="hasTollStandardMail">Has Toll Standard Mail?</label>
+            </div>
+            <!--bool-->
+        </div>
+        <div class="row">
+            <div class="col form-check form-switch">
+                <input class="form-check-input" [(ngModel)]="freightRate.isEnvironmentPaid" type="checkbox"
+                    role="switch" id="isEnvironmentPaid">
+                <label class="form-check-label" for="isEnvironmentPaid">Has Environment Been Paid?</label>
+            </div>
+            <!--bool-->
+            <div class="col form-check form-switch">
+                <input class="form-check-input" [(ngModel)]="freightRate.isPollutionPaid" type="checkbox" role="switch"
+                    id="isPollutionPaid">
+                <label class="form-check-label" for="isPollutionPaid">Has Pollution Been Paid?</label>
+            </div>
+            <!--bool-->
+        </div>
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="environPollutionMailNo" [(ngModel)]="freightRate.environPollutionMailNo" type="text"
+                    class="form-control" id="environPollutionMailNo" placeholder="environPollutionMailNo">
+                <label for="environPollutionMailNo">Environment Pollution Mail Number</label>
+            </div><!-- -->
+            <div class="col form-floating mb-3">
+                <input name="environmentMailNo" [(ngModel)]="freightRate.environmentMailNo" type="text"
+                    class="form-control" id="environmentMailNo" placeholder="environmentMailNo">
+                <label for="environmentMailNo">Environment Mail Number</label>
+                <div class="valid-feedback">
+                </div><!-- -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="companyToTollMailNo" [(ngModel)]="freightRate.companyToTollMailNo" type="text"
+                    class="form-control" id="companyToTollMailNo" placeholder="companyToTollMailNo">
+                <label for="companyToTollMailNo">Company To Toll Mail Number</label>
+            </div><!-- -->
+            <div class="col form-check form-switch">
+                <input class="form-check-input" [(ngModel)]="freightRate.isDoneStandardInspecting" type="checkbox"
+                    role="switch" id="isDoneStandardInspecting">
+                <label class="form-check-label" for="isDoneStandardInspecting">Has Standard Inspecting Been
+                    Done?</label>
+            </div>
+            <!--bool-->
+        </div>
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="standardInspectingDateDate" [(ngModel)]="freightRate.standardInspectingDateDateDisplay"
+                    type="date" class="form-control" id="standardInspectingDateDate"
+                    placeholder="standardInspectingDateDate" required>
+                <label for="standardInspectingDateDate">Standard Inspecting Date</label>
+            </div><!-- Date -->
+            <div class="col form-floating mb-3">
+                <input name="modelInquiry" [(ngModel)]="freightRate.modelInquiryDisplay" type="date"
+                    class="form-control" id="modelInquiry" placeholder="modelInquiry" required>
+                <label for="modelInquiry">Inspecting Inquiry Date</label>
+            </div><!-- Date -->
+        </div>
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="environmentInspectingDate" [(ngModel)]="freightRate.environmentInspectingDateDisplay"
+                    type="date" class="form-control" id="environmentInspectingDate"
+                    placeholder="environmentInspectingDate" required>
+                <label for="environmentInspectingDate">Environment Inspecting Date</label>
+            </div><!-- Date -->
+            <div class="col form-floating mb-3">
+                <input name="freightRateDate" [(ngModel)]="freightRate.freightRateDateDisplay" type="date"
+                    class="form-control" id="freightRateDate" placeholder="freightRateDate" required>
+                <label for="freightRateDate">Freight Rate Date</label>
+            </div><!-- Date -->
+        </div>
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="sendDate" [(ngModel)]="freightRate.sendDateDisplay" type="date" class="form-control"
+                    id="sendDate" placeholder="sendDate" required>
+                <label for="sendDate">Send Date</label>
+            </div><!-- Date -->
+            <div class="col form-floating mb-3">
+                <input name="contractDate" [(ngModel)]="freightRate.contractDateDisplay" type="date"
+                    class="form-control" id="contractDate" placeholder="contractDate" required>
+                <label for="contractDate">Freight Rate Date</label>
+            </div><!-- Date -->
+        </div>
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="environmentInspectingMailDate"
+                    [(ngModel)]="freightRate.environmentInspectingMailDateDisplay" type="date" class="form-control"
+                    id="environmentInspectingMailDate" placeholder="environmentInspectingMailDate" required>
+                <label for="environmentInspectingMailDate">Environment Inspecting Mail Date</label>
+            </div><!-- Date -->
+            <div class="col form-floating mb-3">
+                <input name="tollMailDate" [(ngModel)]="freightRate.tollMailDateDisplay" type="date"
+                    class="form-control" id="tollMailDate" placeholder="tollMailDate" required>
+                <label for="tollMailDate">Toll Mail Date</label>
+            </div><!-- Date -->
+        </div>
+        <div class="row">
+            <div class="col form-floating mb-3">
+                <input name="clearanceCodeDate" [(ngModel)]="freightRate.clearanceCodeDateDisplay" type="date"
+                    class="form-control" id="clearanceCodeDate" placeholder="clearanceCodeDate" required>
+                <label for="clearanceCodeDate">Send Date</label>
+            </div><!-- Date -->
+        </div>
+
+        <div class="row">
+            <button *ngIf="viewAction == 100" (click)="create()" type="submit"
+                class="col-2 btn btn-primary">Create</button>
+            <button *ngIf="viewAction == 200" (click)="edit()" type="submit" class="col-2 btn btn-primary">Edit</button>
+            <span class="col-8"></span>
+            <button (click)="backToList()" type="submit" class="col-2 btn btn-secondary">Back To list</button>
+        </div>
+    </div>
+</form>

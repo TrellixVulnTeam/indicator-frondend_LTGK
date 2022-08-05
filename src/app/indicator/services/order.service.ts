@@ -33,6 +33,10 @@ export class OrderService extends BaseService {
     return this.http.get(url + "getList")
   }
 
+  getOrderDetails(): Observable<any> {
+    return this.http.get(url + "getOrderDetailsList")
+  }
+
   getbyId(id: any): Observable<any> {
     return this.http.get(url + "getById/" + id)
   }

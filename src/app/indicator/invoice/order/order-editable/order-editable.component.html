@@ -12,12 +12,9 @@
                 <input type="text" name="fileNo" [(ngModel)]="preInvoice.fileNo" class="form-control" id="fileNo"
                     placeholder="fileNo" aria-label="fileNo">
                 <label for="fileNo">Preinvoice Code</label>
-                <!-- <a role="button" class="material-icons md-dark nav-link active bordered" routerLink="/order/create"
-                    data-bs-toggle="tooltip" title="Get Pre Invoice" id="button-addon1">archive</a> -->
                 <button autocomplete="false" (click)="getPreInvoice()" type="submit"
                     class="btn btn-success material-icons md-dark nav-link active bordered" data-bs-toggle="tooltip"
                     title="Get Pre Invoice">archive</button>
-
                 <button autocomplete="false" (click)="getPreInvoice()" type="submit"
                     class="btn btn-primary material-icons md-dark nav-link active bordered" data-bs-toggle="tooltip"
                     title="Get Pre Invoice List">assignment</button>

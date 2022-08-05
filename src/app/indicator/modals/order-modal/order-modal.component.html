@@ -1,0 +1,27 @@
+
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Order Details</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Row</th>
+                    <th scope="col">Order Detail Row Number</th>
+                    <th scope="col">Order Header Document Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr (click)="closeModal(orderDetail)" role="button" *ngFor="let orderDetail of orderDetailsModal; index as row">
+                    <td scope="row">{{row + 1}}</td>
+                    <td>{{orderDetail.orderDetailRowNo}}</td>
+                    <td>{{orderDetail.orderHeaderDocumentNo}}</td>
+                </tr>
+            </tbody>
+        </table>
+      </form>
+    </div>
+  
+  

@@ -3,50 +3,63 @@ import { Inspectors } from "../../enums/inspectors.enum"
 
 export class FreightRate {
     id: number | undefined
-    freigtRateNo: string = ""
-    freigtRateDate: Date = new Date()
+    freightRateNo: string = ""
     importExport: ImEx = ImEx.Export
     paymentMethod: string = ""
-    sendDate: Date = new Date()
     hasGreenCard: boolean = false
     sataCode: string = ""
     contractNo: string = ""
-    contractDate: Date = new Date()
     taxAndDutyValue: number | undefined
     isPaidTaxAndDuty: boolean = false
-    cutomerPayableValue: number | undefined
+    customerPayableValue: number | undefined
     firstInstallmentValue: number | undefined
     secondInstallmentValue: number | undefined
-    amorizedFreigtRateNo: string = ""
-    amorizedFreigtRateValue: number | undefined
-    tollMailDate: Date = new Date()
+    amortizedFreightRateNo: string = ""
+    amortizedFreightRateValue: number | undefined
     hasMailToVanak: boolean = false
     inspector: Inspectors = Inspectors.HHEe
-    standardInspectingDateDate: Date = new Date()
-    isDoneStandardInspecting: boolean = false
-    inspectingInquiryDate: Date = new Date()
-    modelInquiry: Date = new Date()
     isDoneInspectingResult: boolean = false
     hasVanakInvoiceRequest: boolean = false
     isVanakPaid: boolean = false
     vanakTollNo: string = ""
     tollStandardMailNo: string = ""
     hasTollStandardMail: boolean = false
-    enviroimentIspectingMailDate: Date = new Date()
-    enviroimentInspectingDate: Date = new Date()
-    isEnviroimentPaid: boolean = false
-    isPolutionPaid: boolean = false
-    isDonePolutionInspecting: boolean = false
-    enviroPolutionMailNo: string = ""
-    enviromentMailNo: string = ""
+    isEnvironmentPaid: boolean = false
+    isPollutionPaid: boolean = false
+    isDonePollutionInspecting: boolean = false
+    environPollutionMailNo: string = ""
+    environmentMailNo: string = ""
     companyToTollMailNo: string = ""
+    orderDetailId: number | undefined
+    orderDetailRowNo: number | undefined
+    orderHeaderDocumentNo: string = ""
+    isDoneStandardInspecting: boolean = false
+    standardInspectingDateDate: Date = new Date()
+    inspectingInquiryDate: Date = new Date()
+    modelInquiry: Date = new Date()
+    environmentInspectingDate: Date = new Date()
+    freightRateDate: Date = new Date()
+    sendDate: Date = new Date()
+    contractDate: Date = new Date()
+    environmentInspectingMailDate: Date = new Date()
+    tollMailDate: Date = new Date()
     clearanceCodeDate: Date = new Date()
     insertDateTime: Date = new Date()
-
+    standardInspectingDateDateDisplay: string = ""
+    inspectingInquiryDateDisplay: string = ""
+    modelInquiryDisplay: string = ""
+    environmentInspectingDateDisplay: string = ""
+    freightRateDateDisplay: string = ""
+    sendDateDisplay: string = ""
+    contractDateDisplay: string = ""
+    environmentInspectingMailDateDisplay: string = ""
+    tollMailDateDisplay: string = ""
+    clearanceCodeDateDisplay: string = ""
+    
     constructor(
         id?: number,
-        freigtRateNo: string = "",
-        freigtRateDate: Date = new Date(),
+        freightRateNo: string = "",
+        freightRateDate: Date = new Date(),
         importExport: ImEx = ImEx.Export,
         paymentMethod: string = "",
         sendDate: Date = new Date(),
@@ -54,13 +67,13 @@ export class FreightRate {
         sataCode: string = "",
         contractNo: string = "",
         contractDate: Date = new Date(),
-        taxAndDutyValue?: number,
+        taxAndDutyValue?: number ,
         isPaidTaxAndDuty: boolean = false,
-        cutomerPayableValue?: number,
-        firstInstallmentValue?: number,
-        secondInstallmentValue?: number,
-        amorizedFreigtRateNo: string = "",
-        amorizedFreigtRateValue?: number,
+        customerPayableValue?: number ,
+        firstInstallmentValue?: number ,
+        secondInstallmentValue?: number ,
+        amortizedFreightRateNo: string = "",
+        amortizedFreightRateValue?: number ,
         tollMailDate: Date = new Date(),
         hasMailToVanak: boolean = false,
         inspector: Inspectors = Inspectors.HHEe,
@@ -74,19 +87,19 @@ export class FreightRate {
         vanakTollNo: string = "",
         tollStandardMailNo: string = "",
         hasTollStandardMail: boolean = false,
-        enviroimentIspectingMailDate: Date = new Date(),
-        enviroimentInspectingDate: Date = new Date(),
-        isEnviroimentPaid: boolean = false,
-        isPolutionPaid: boolean = false,
-        isDonePolutionInspecting: boolean = false,
-        enviroPolutionMailNo: string = "",
-        enviromentMailNo: string = "",
+        environmentInspectingMailDate: Date = new Date(),
+        environmentInspectingDate: Date = new Date(),
+        isEnvironmentPaid: boolean = false,
+        isPollutionPaid: boolean = false,
+        isDonePollutionInspecting: boolean = false,
+        environPollutionMailNo: string = "",
+        environmentMailNo: string = "",
         companyToTollMailNo: string = "",
-        clearanceCodeDate: Date = new Date()
+        clearanceCodeDate: Date = new Date(),
     ) {
         this.id = id
-        this.freigtRateNo = freigtRateNo
-        this.freigtRateDate = freigtRateDate
+        this.freightRateNo = freightRateNo
+        this.freightRateDate = freightRateDate
         this.importExport = importExport
         this.paymentMethod = paymentMethod
         this.sendDate = sendDate
@@ -96,11 +109,11 @@ export class FreightRate {
         this.contractDate = contractDate
         this.taxAndDutyValue = taxAndDutyValue
         this.isPaidTaxAndDuty = isPaidTaxAndDuty
-        this.cutomerPayableValue = cutomerPayableValue
+        this.customerPayableValue = customerPayableValue
         this.firstInstallmentValue = firstInstallmentValue
         this.secondInstallmentValue = secondInstallmentValue
-        this.amorizedFreigtRateNo = amorizedFreigtRateNo
-        this.amorizedFreigtRateValue = amorizedFreigtRateValue
+        this.amortizedFreightRateNo = amortizedFreightRateNo
+        this.amortizedFreightRateValue = amortizedFreightRateValue
         this.tollMailDate = tollMailDate
         this.hasMailToVanak = hasMailToVanak
         this.inspector = inspector
@@ -114,13 +127,13 @@ export class FreightRate {
         this.vanakTollNo = vanakTollNo
         this.tollStandardMailNo = tollStandardMailNo
         this.hasTollStandardMail = hasTollStandardMail
-        this.enviroimentIspectingMailDate = enviroimentIspectingMailDate
-        this.enviroimentInspectingDate = enviroimentInspectingDate
-        this.isEnviroimentPaid = isEnviroimentPaid
-        this.isPolutionPaid = isPolutionPaid
-        this.isDonePolutionInspecting = isDonePolutionInspecting
-        this.enviroPolutionMailNo = enviroPolutionMailNo
-        this.enviromentMailNo = enviromentMailNo
+        this.environmentInspectingMailDate = environmentInspectingMailDate
+        this.environmentInspectingDate = environmentInspectingDate
+        this.isEnvironmentPaid = isEnvironmentPaid
+        this.isPollutionPaid = isPollutionPaid
+        this.isDonePollutionInspecting = isDonePollutionInspecting
+        this.environPollutionMailNo = environPollutionMailNo
+        this.environmentMailNo = environmentMailNo
         this.companyToTollMailNo = companyToTollMailNo
         this.clearanceCodeDate = clearanceCodeDate
     }

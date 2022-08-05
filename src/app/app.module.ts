@@ -30,9 +30,10 @@ import { PreInvoiceDetailComponent } from './indicator/invoice/preInvoice/pre-in
 import { CarInformationDetailComponent } from './indicator/common/carInformation/car-information-detail/car-information-detail.component';
 import { FreightRateDetailComponent } from './indicator/common/freightRate/freight-rate-detail/freight-rate-detail.component';
 import { OrderDetailComponent } from './indicator/invoice/order/order-detail/order-detail.component';
-import { NgbAccordionModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionModule, NgbModal, NgbModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastGlobalComponent } from './toast-global/toast-global.component';
 import { ToastsContainer } from './toast-global/toast-container.component';
+import { OrderModalComponent } from './indicator/modals/order-modal/order-modal.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { ToastsContainer } from './toast-global/toast-container.component';
     FreightRateDetailComponent,
     OrderDetailComponent,
     ToastGlobalComponent,
-    ToastsContainer
+    ToastsContainer,
+    OrderModalComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ import { ToastsContainer } from './toast-global/toast-container.component';
     HttpClientModule,
     RouterModule,
     NgbToastModule,
-    NgbAccordionModule
+    NgbAccordionModule,
+    NgbModule
   ],
   providers: [
     AuthGuard,
@@ -79,6 +82,6 @@ import { ToastsContainer } from './toast-global/toast-container.component';
     },
     UserService
   ],
-  bootstrap: [AppComponent,OrderEditableComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
