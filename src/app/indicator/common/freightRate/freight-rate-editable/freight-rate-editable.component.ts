@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
+import { ImEx } from 'src/app/indicator/enums/imEx.enum';
+import { Inspectors } from 'src/app/indicator/enums/inspectors.enum';
 import { ViewActions } from 'src/app/indicator/enums/viewActions';
 import { OrderModalComponent } from 'src/app/indicator/modals/order-modal/order-modal.component';
 import { FreightRate } from 'src/app/indicator/models/common/freightRate.model';
@@ -15,6 +17,8 @@ export class FreightRateEditableComponent implements OnInit {
 
   freightRate: FreightRate = new FreightRate();
   viewAction: ViewActions;
+  imexList: string[] = Object.keys(ImEx);
+  inspectors: string[] = Object.keys(Inspectors)
 
   constructor(private route: Router,
      private activateRoute: ActivatedRoute,

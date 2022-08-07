@@ -19,19 +19,16 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col form-floating mb-3">
                 <input name="freightRateNo" [(ngModel)]="freightRate.freightRateNo" type="text" class="form-control"
                     id="freightRateNo" placeholder="freightRateNo" required>
                 <label for="freightRateNo">Freight Rate Number</label>
             </div><!-- -->
-            <div class="col form-floating mb-3">
-                <input name="importExport" [(ngModel)]="freightRate.importExport" type="text" class="form-control"
-                    id="importExport" placeholder="importExport" required>
-                <label for="importExport">Import Or Export</label>
-                <div class="valid-feedback">
-                </div>
-            </div>
+            <select name="importOrExport" class="col form-select" [(ngModel)]="freightRate.importExport">
+                <option value="{{item}}" *ngFor="let item of imexList">{{item}}</option>
+            </select><!-- select-->
         </div>
         <div class="row">
             <div class="col-6 form-floating mb-3">
@@ -116,11 +113,9 @@
             <!--bool-->
         </div>
         <div class="row">
-            <div class="col form-floating mb-3">
-                <input name="inspector" [(ngModel)]="freightRate.inspector" type="text" class="form-control"
-                    id="inspector" placeholder="inspector" required>
-                <label for="inspector">Inspector</label>
-            </div>
+            <select name="inspector" class="col form-select" [(ngModel)]="freightRate.inspector">
+                <option value="{{item}}" *ngFor="let item of inspectors">{{item}}</option>
+            </select><!-- select-->
             <div class="col form-check form-switch">
                 <input class="form-check-input" [(ngModel)]="freightRate.isDoneInspectingResult" type="checkbox"
                     role="switch" id="isDoneInspectingResult">

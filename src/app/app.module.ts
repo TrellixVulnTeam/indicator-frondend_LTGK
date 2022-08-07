@@ -34,6 +34,7 @@ import { NgbAccordionModule, NgbModal, NgbModule, NgbToastModule } from '@ng-boo
 import { ToastGlobalComponent } from './toast-global/toast-global.component';
 import { ToastsContainer } from './toast-global/toast-container.component';
 import { OrderModalComponent } from './indicator/modals/order-modal/order-modal.component';
+import { PreInvoiceModalComponent } from './indicator/modals/pre-invoice-modal/pre-invoice-modal.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { OrderModalComponent } from './indicator/modals/order-modal/order-modal.
     OrderDetailComponent,
     ToastGlobalComponent,
     ToastsContainer,
-    OrderModalComponent
+    OrderModalComponent,
+    PreInvoiceModalComponent
   ],
   imports: [
     BrowserModule,

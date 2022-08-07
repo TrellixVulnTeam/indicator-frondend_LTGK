@@ -11,8 +11,9 @@ import { OrderService } from 'src/app/indicator/services/order.service';
 import { ToastService } from 'src/app/indicator/services/toast.service';
 import { Observable, of } from 'rxjs';
 import { Customer } from 'src/app/indicator/models/common/customer.model';
-import { NgbAccordion, NgbPanelChangeEvent } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordion, NgbModal, NgbPanelChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { CarInformation } from 'src/app/indicator/models/common/carInformation.model';
+import { PreInvoiceModalComponent } from 'src/app/indicator/modals/pre-invoice-modal/pre-invoice-modal.component';
 
 @Component({
   selector: 'app-order-editable',
@@ -34,7 +35,8 @@ export class OrderEditableComponent implements OnInit, AppComponent {
   constructor(private route: Router,
     private activateRoute: ActivatedRoute,
     private orderService: OrderService,
-    private toast: ToastService) {
+    private toast: ToastService,
+    private modalService: NgbModal) {
     let id = +this.activateRoute.snapshot.paramMap.get("id")
     this.viewAction = this.activateRoute.snapshot.data["viewAction"]
     this.order.orderHeaderVM = new OrderHeader()
@@ -78,6 +80,14 @@ export class OrderEditableComponent implements OnInit, AppComponent {
       }
     }
     )
+  }
+
+  openPreInvoiceModal(){
+    this.modalService.open(PreInvoiceModalComponent)
+    .result.then((result)=>{
+      this.preInvoice = result;
+      this.order.orderHeaderVM.preInvoiceId = this.preInvoice.id
+    },()=>{})
   }
 
   create() {

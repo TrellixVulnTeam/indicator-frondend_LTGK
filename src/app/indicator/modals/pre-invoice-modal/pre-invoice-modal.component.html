@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">PreInvoice List</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('close')"></button>
+</div>
+<div class="modal-body">
+    <form>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Row</th>
+                    <th scope="col">Preinvoice Code</th>
+                    <th scope="col">Document Code</th>
+                    <th scope="col">Preorder Unit Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr (click)="closeModal(preInvoice)" role="button" *ngFor="let preInvoice of preInvoices; index as row">
+                    <td scope="row">{{row + 1}}</td>
+                    <td>{{preInvoice.fileNo}}</td>
+                    <td>{{preInvoice.documentNo}}</td>
+                    <td>{{preInvoice.preOrderUnitValue}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

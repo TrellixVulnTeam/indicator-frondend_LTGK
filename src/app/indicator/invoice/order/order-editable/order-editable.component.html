@@ -15,7 +15,7 @@
                 <button autocomplete="false" (click)="getPreInvoice()" type="submit"
                     class="btn btn-success material-icons md-dark nav-link active bordered" data-bs-toggle="tooltip"
                     title="Get Pre Invoice">archive</button>
-                <button autocomplete="false" (click)="getPreInvoice()" type="submit"
+                <button autocomplete="false" (click)="openPreInvoiceModal()" type="submit"
                     class="btn btn-primary material-icons md-dark nav-link active bordered" data-bs-toggle="tooltip"
                     title="Get Pre Invoice List">assignment</button>
             </div>
@@ -27,6 +27,7 @@
                 <div class="valid-feedback">
                 </div>
             </div>
+            
             <div class="col form-floating mb-3">
                 <input name="preOrderUnitValue" [(ngModel)]="preInvoice.preOrderUnitValue" type="number"
                     class="form-control" id="preOrderUnitValue" placeholder="preOrderUnitValue" disabled>
