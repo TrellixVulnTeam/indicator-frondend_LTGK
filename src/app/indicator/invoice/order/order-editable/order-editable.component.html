@@ -11,19 +11,19 @@
             <div class="col form-floating input-group mb-3">
                 <input type="text" name="fileNo" [(ngModel)]="preInvoice.fileNo" class="form-control" id="fileNo"
                     placeholder="fileNo" aria-label="fileNo">
-                <label for="fileNo">Preinvoice Code</label>
+                <label for="fileNo">شماره پیش فاکتور</label>
                 <button autocomplete="false" (click)="getPreInvoice()" type="submit"
                     class="btn btn-success material-icons md-dark nav-link active bordered" data-bs-toggle="tooltip"
-                    title="Get Pre Invoice">archive</button>
+                    title="گرفتن پیش فاکتور">archive</button>
                 <button autocomplete="false" (click)="openPreInvoiceModal()" type="submit"
                     class="btn btn-primary material-icons md-dark nav-link active bordered" data-bs-toggle="tooltip"
-                    title="Get Pre Invoice List">assignment</button>
+                    title="گرفتن لیست پیش فاکتور ها">assignment</button>
             </div>
 
             <div class="col form-floating mb-3">
                 <input name="preInvoiceDocumentNo" [(ngModel)]="preInvoice.documentNo" type="text" class="form-control"
                     id="preInvoiceDocumentNo" placeholder="preInvoiceDocumentNo" disabled>
-                <label for="preInvoiceDocumentNo">Document Code</label>
+                <label for="preInvoiceDocumentNo">شماره پرونده</label>
                 <div class="valid-feedback">
                 </div>
             </div>
@@ -31,7 +31,7 @@
             <div class="col form-floating mb-3">
                 <input name="preOrderUnitValue" [(ngModel)]="preInvoice.preOrderUnitValue" type="number"
                     class="form-control" id="preOrderUnitValue" placeholder="preOrderUnitValue" disabled>
-                <label for="preOrderUnitValue">Preorder Unit Value</label>
+                <label for="preOrderUnitValue">ارزش  واحد پیش فاکتور</label>
             </div>
         </div>
 
@@ -39,12 +39,12 @@
             <div class="col form-floating mb-3">
                 <input name="documentNo" [(ngModel)]="order.orderHeaderVM.documentNo" type="text" class="form-control"
                     id="documentNo" placeholder="documentNo" required>
-                <label for="documentNo">Document Number</label>
+                <label for="documentNo">شماره ثبت سفارش</label>
             </div>
             <div class="col form-floating mb-3">
                 <input name="invoiceNo" [(ngModel)]="order.orderHeaderVM.invoiceNo" type="text" class="form-control"
                     id="invoiceNo" placeholder="lastName" required>
-                <label for="invoiceNo">Invoice Number</label>
+                <label for="invoiceNo">شماره اینویس</label>
                 <div class="valid-feedback">
                 </div>
             </div>
@@ -54,13 +54,13 @@
             <div class="col form-floating mb-3">
                 <input name="invoiceValue" [(ngModel)]="order.orderHeaderVM.invoiceValue" type="text" class="form-control"
                     id="invoiceValue" placeholder="invoiceValue" required>
-                <label for="invoiceValue">Invoice Value</label>
+                <label for="invoiceValue">مبلغ اینویس</label>
             </div>
         </div>
 
         <table class="table table-hover table-bordered">
             <thead>
-                <th style="text-align:center" colspan="6">Order Details</th>
+                <th style="text-align:center" colspan="6">جزئیات سفارش</th>
                 <tr>
                     <th colspan="6">
                         <span role="button" class="material-icons md-dark nav-link active" data-bs-toggle="tooltip"
@@ -68,11 +68,11 @@
                     </th>
                 </tr>
                 <tr>
-                    <th scope="col">Row</th>
-                    <th scope="col">Actions</th>
-                    <th scope="col">Customer Name</th>
-                    <th scope="col">CarInformation Chassis</th>
-                    <th scope="col">Reagent Name</th>
+                    <th scope="col">ردیف</th>
+                    <th scope="col">عملیات</th>
+                    <th scope="col">مشتری</th>
+                    <th scope="col">شماره شاسی</th>
+                    <th scope="col">معرف</th>
                 </tr>
             </thead>
             <tbody>
@@ -92,14 +92,14 @@
             <ngb-panel id="detailAcc" disabled="true">
                 <ng-template ngbPanelContent>
                     <div class="row">
-                        <label class="col-2">Customer:</label>
+                        <label class="col-2">مشتری:</label>
                         <select name="customerSelect" [(ngModel)]="newOrderDetail.customerId" class="col form-select" aria-label="customerSelect">
                             <option *ngFor="let customer of customers" value="{{customer.id}}">{{customer.firstName}}
                                 {{customer.lastName}}</option>
                         </select>
                     </div>
                     <div class="row">
-                        <label class="col-2">CarInformation:</label>
+                        <label class="col-2">شماره شاسی:</label>
                         <select name="carInformationSelect" [(ngModel)]="newOrderDetail.carInformationId" class="col form-select"
                             aria-label="carInformationSelect">
                             <option *ngFor="let carInformation of carInformations" value="{{carInformation.id}}">
@@ -111,12 +111,12 @@
                     <div class="col form-floating mb-3">
                         <input name="reagentName" type="text" class="form-control"
                             [(ngModel)]="newOrderDetail.reagentName" placeholder="reagentName" required>
-                        <label for="reagentName">Reagent Name</label>
+                        <label for="reagentName">معرف</label>
                         <div class="valid-feedback">
                         </div>
                     </div>
 
-                    <button (click)="saveDetail()" type="submit" class="col-2 btn btn-success">Save</button>
+                    <button (click)="saveDetail()" type="submit" class="col-2 btn btn-success">ذخیره</button>
                 </ng-template>
             </ngb-panel>
         </ngb-accordion>
@@ -125,10 +125,10 @@
 
         <div class="row">
             <button *ngIf="viewAction == 100" (click)="create()" type="submit"
-                class="col-2 btn btn-primary">Create</button>
-            <button *ngIf="viewAction == 200" (click)="edit()" type="submit" class="col-2 btn btn-primary">Edit</button>
+                class="col-2 btn btn-primary">ایجاد</button>
+            <button *ngIf="viewAction == 200" (click)="edit()" type="submit" class="col-2 btn btn-primary">ویرایش</button>
             <span class="col-8"></span>
-            <button (click)="backToList()" type="submit" class="col-2 btn btn-secondary">Back To list</button>
+            <button (click)="backToList()" type="submit" class="col-2 btn btn-secondary">بازگشت به لیست</button>
         </div>
     </div>
 

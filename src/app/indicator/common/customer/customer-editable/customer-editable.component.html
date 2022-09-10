@@ -2,29 +2,29 @@
     <div class="container">
         <div class="row">
             <div class="col form-floating mb-3">
-                <input name="firstName" [(ngModel)]="customer.firstName" type="text" class="form-control" id="firstName" placeholder="firstName" required>
-                <label for="firstName">First Name</label>
+                <input name="firstName" [(ngModel)]="customer.firstName" type="text" class="form-control" id="firstName" placeholder="نام" required>
+                <label for="firstName">نام</label>
             </div>
             <div class="col form-floating mb-3">
-                <input name="lastName" [(ngModel)]="customer.lastName" type="text" class="form-control" id="lastName" placeholder="lastName" required>
-                <label for="lastName">Last Name</label>
+                <input name="lastName" [(ngModel)]="customer.lastName" type="text" class="form-control" id="lastName" placeholder="نام خانوادگی" required>
+                <label for="lastName">نام خانوادگی</label>
                 <div class="valid-feedback">
                 </div>
             </div>
         </div>
         <div class="form-floating mb-3">
-            <input name="phone" [(ngModel)]="customer.phone" type="number" class="form-control" id="phone" placeholder="phone">
-            <label for="phone">Phone</label>
+            <input name="phone" [(ngModel)]="customer.phone" type="number" class="form-control" id="phone" placeholder="تلفن">
+            <label for="phone">تلفن</label>
         </div>
         <div class="form-floating mb-3">
-            <textarea name="address" [(ngModel)]="customer.address" class="form-control" id="address" placeholder="address"></textarea>
-            <label for="address">Address</label>
+            <textarea name="address" [(ngModel)]="customer.address" class="form-control" id="address" placeholder="آدرس"></textarea>
+            <label for="address">آدرس</label>
         </div>
         <div class="row">
-            <button *ngIf="viewAction == 100" (click)="create()" type="submit" class="col-2 btn btn-primary">Create</button>
-            <button *ngIf="viewAction == 200" (click)="edit()" type="submit" class="col-2 btn btn-primary">Edit</button>
+            <button *ngIf="viewAction == 100" (click)="create()" type="submit" class="col-2 btn btn-primary">ایجاد</button>
+            <button *ngIf="viewAction == 200" (click)="edit()" type="submit" class="col-2 btn btn-primary">ویرایش</button>
             <span class="col-8"></span>
-            <button (click)="backToList()" type="submit" class="col-2 btn btn-secondary">Back To list</button>
+            <button (click)="backToList()" type="submit" class="col-2 btn btn-secondary">بازگشت به لیست</button>
         </div>
     </div>
 </form>

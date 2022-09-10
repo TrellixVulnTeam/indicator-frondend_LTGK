@@ -2,12 +2,12 @@
     <div class="container">
         <div class="row">
             <div class="col form-floating mb-3">
-                <input name="chassisNumber" [(ngModel)]="carInformation.chassisNumber" type="text" class="form-control" id="chassisNumber" placeholder="chassisNumber" required>
-                <label for="chassisNumber">Chassis Number</label>
+                <input name="chassisNumber" [(ngModel)]="carInformation.chassisNumber" type="text" class="form-control" id="chassisNumber" placeholder="شماره شاسی" required>
+                <label for="chassisNumber">شماره شاسی</label>
             </div>
             <div class="col form-floating mb-3">
-                <input name="engineNumber" [(ngModel)]="carInformation.engineNumber" type="text" class="form-control" id="engineNumber" placeholder="engineNumber" required>
-                <label for="engineNumber">Engine Number</label>
+                <input name="engineNumber" [(ngModel)]="carInformation.engineNumber" type="text" class="form-control" id="engineNumber" placeholder="شماره موتور" required>
+                <label for="engineNumber">شماره موتور</label>
                 <div class="valid-feedback">
                 </div>
             </div>
@@ -15,12 +15,12 @@
 
         <div class="row">
             <div class="col form-floating mb-3">
-                <input name="carYearModel" [(ngModel)]="carInformation.carYearModel" type="text" class="form-control" id="carYearModel" placeholder="carYearModel" required>
-                <label for="carYearModel">Car Year Model</label>
+                <input name="carYearModel" [(ngModel)]="carInformation.carYearModel" type="text" class="form-control" id="carYearModel" placeholder="سال ساخت/ مدل خودرو" required>
+                <label for="carYearModel">سال ساخت /مدل خودرو</label>
             </div>
             <div class="col form-floating mb-3">
-                <input name="location" [(ngModel)]="carInformation.location" type="text" class="form-control" id="location" placeholder="location" required>
-                <label for="location">Location</label>
+                <input name="location" [(ngModel)]="carInformation.location" type="text" class="form-control" id="location" placeholder="car location" required>
+                <label for="location">محل ماشین</label>
                 <div class="valid-feedback">
                 </div>
             </div>
@@ -28,22 +28,22 @@
 
         <div class="row">
             <div class="col form-floating mb-3">
-                <input name="arriveBoarderDate" [(ngModel)]="carInformation.arriveBoarderDateDisplay" type="date" class="form-control" id="arriveBoarderDate" placeholder="arriveBoarderDate" required>
-                <label for="arriveBoarderDate">Arrive Boarder Date</label>
+                <input name="arriveBoarderDate" [(ngModel)]="carInformation.arriveBoarderDateDisplay" type="date" class="form-control" id="arriveBoarderDate" placeholder="تاریخ رسیدن به مرز" required>
+                <label for="arriveBoarderDate">تاریخ رسیدن به مرز</label>
             </div>
             <div class="col form-floating mb-3">
-                <input name="arriveDocumentsDate" [(ngModel)]="carInformation.arriveDocumentsDateDisplay" type="date" class="form-control" id="arriveDocumentsDate" placeholder="arriveDocumentsDate" required>
-                <label for="arriveDocumentsDate">Arrive Documents Date</label>
+                <input name="arriveDocumentsDate" [(ngModel)]="carInformation.arriveDocumentsDateDisplay" type="date" class="form-control" id="arriveDocumentsDate" placeholder="تاریخ رسیدن اسناد" required>
+                <label for="arriveDocumentsDate">تاریخ رسیدن اسناد</label>
                 <div class="valid-feedback">
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <button *ngIf="viewAction == 100" (click)="create()" type="submit" class="col-2 btn btn-primary">Create</button>
-            <button *ngIf="viewAction == 200" (click)="edit()" type="submit" class="col-2 btn btn-primary">Edit</button>
+            <button *ngIf="viewAction == 100" (click)="create()" type="submit" class="col-2 btn btn-primary">ایجاد</button>
+            <button *ngIf="viewAction == 200" (click)="edit()" type="submit" class="col-2 btn btn-primary">ویرایش</button>
             <span class="col-8"></span>
-            <button (click)="backToList()" type="submit" class="col-2 btn btn-secondary">Back To list</button>
+            <button (click)="backToList()" type="submit" class="col-2 btn btn-secondary">بازگشت به لیست</button>
         </div>
     </div>
 </form>

@@ -3,26 +3,26 @@
         <div class="col form-floating mb-3">
             <input name="fileNo" [(ngModel)]="preInvoice.fileNo" type="text" class="form-control" id="fileNo"
                 placeholder="fileNo" required>
-            <label for="fileNo">Preinvoice Code</label>
+            <label for="fileNo">شماره پیش فاکتور</label>
         </div>
         <div class="col form-floating mb-3">
             <input name="documentNo" [(ngModel)]="preInvoice.documentNo" type="text" class="form-control" id="documentNo"
                 placeholder="documentNo" required>
-            <label for="documentNo">Document Code</label>
+            <label for="documentNo">شماره پرونده</label>
             <div class="valid-feedback">
             </div>
         </div>
         <div class="form-floating mb-3">
             <input name="preOrderUnitValue" [(ngModel)]="preInvoice.preOrderUnitValue" type="number" class="form-control" id="preOrderUnitValue"
                 placeholder="preOrderUnitValue">
-            <label for="preOrderUnitValue">Preorder Unit Value</label>
+            <label for="preOrderUnitValue">ارزش  واحد پیش فاکتور</label>
         </div>
         <div class="row">
             <button *ngIf="viewAction == 100" (click)="create()" type="submit"
-                class="col-2 btn btn-primary">Create</button>
-            <button *ngIf="viewAction == 200" (click)="edit()" type="submit" class="col-2 btn btn-primary">Edit</button>
+                class="col-2 btn btn-primary">ایجاد</button>
+            <button *ngIf="viewAction == 200" (click)="edit()" type="submit" class="col-2 btn btn-primary">ویرایش</button>
             <span class="col-8"></span>
-            <button (click)="backToList()" type="submit" class="col-2 btn btn-secondary">Back To list</button>
+            <button (click)="backToList()" type="submit" class="col-2 btn btn-secondary">بازگشت به لیست</button>
         </div>
     </div>
 </form>

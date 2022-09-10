@@ -4,17 +4,17 @@
 
             <div class="col form-floating input-group mb-3">
                 <input type="text" name="orderHeaderDocumentNo" [(ngModel)]="freightRate.orderHeaderDocumentNo"
-                    class="form-control" id="orderHeaderDocumentNo" placeholder="orderHeaderDocumentNo"
+                    class="form-control" id="orderHeaderDocumentNo" placeholder="شماره ثبت سفارش"
                     aria-label="orderHeaderDocumentNo" disabled>
-                <label for="orderHeaderDocumentNo">Order Document Number</label>
+                <label for="orderHeaderDocumentNo">شماره ثبت سفارش</label>
                 <button autocomplete="false" (click)="openOrderDetailModal()" type="submit"
                     class="btn btn-primary material-icons md-dark nav-link active bordered" data-bs-toggle="tooltip"
                     title="Get Order Detail list">assignment</button>
             </div>
             <div class="col form-floating mb-3">
                 <input name="orderDetailRowNo" [(ngModel)]="freightRate.orderDetailRowNo" type="text"
-                    class="form-control" id="orderDetailRowNo" placeholder="orderDetailRowNo" disabled>
-                <label for="orderDetailRowNo">Order Detail Row Number</label>
+                    class="form-control" id="orderDetailRowNo" placeholder="ردیف ثبت سفارش" disabled>
+                <label for="orderDetailRowNo">ردیف ثبت سفارش</label>
                 <div class="valid-feedback">
                 </div>
             </div>
@@ -23,8 +23,8 @@
         <div class="row">
             <div class="col form-floating mb-3">
                 <input name="freightRateNo" [(ngModel)]="freightRate.freightRateNo" type="text" class="form-control"
-                    id="freightRateNo" placeholder="freightRateNo" required>
-                <label for="freightRateNo">Freight Rate Number</label>
+                    id="freightRateNo" placeholder="شماره کوتاژ" required>
+                <label for="freightRateNo">شماره کوتاژ</label>
             </div><!-- -->
             <select name="importOrExport" class="col form-select" [(ngModel)]="freightRate.importExport">
                 <option value="{{item}}" *ngFor="let item of imexList">{{item}}</option>
@@ -39,20 +39,20 @@
             <div class="col form-check form-switch">
                 <input class="form-check-input" [(ngModel)]="freightRate.hasGreenCard" type="checkbox" role="switch"
                     id="hasGreenCard">
-                <label class="form-check-label" for="hasGreenCard">Has Green Card?</label>
+                <label class="form-check-label" for="hasGreenCard">آیا برگ سبز دارد</label>
             </div>
             <!--bool-->
         </div>
         <div class="row">
             <div class="col form-floating mb-3">
                 <input name="sataCode" [(ngModel)]="freightRate.sataCode" type="text" class="form-control" id="sataCode"
-                    placeholder="sataCode">
-                <label for="sataCode">Sata Code</label>
+                    placeholder="کد ساتا">
+                <label for="sataCode">کد ساتا</label>
             </div><!-- -->
             <div class="col form-floating mb-3">
                 <input name="contractNo" [(ngModel)]="freightRate.contractNo" type="text" class="form-control"
-                    id="contractNo" placeholder="contractNo">
-                <label for="contractNo">Contract Number</label>
+                    id="contractNo" placeholder="شماره قرارداد">
+                <label for="contractNo">شماره قرارداد</label>
                 <div class="valid-feedback">
                 </div><!-- -->
             </div>
@@ -60,26 +60,26 @@
         <div class="row">
             <div class="col form-floating mb-3">
                 <input name="taxAndDutyValue" [(ngModel)]="freightRate.taxAndDutyValue" type="number"
-                    class="form-control" id="taxAndDutyValue" placeholder="taxAndDutyValue">
-                <label for="taxAndDutyValue">Tax And Duty Value</label>
+                    class="form-control" id="taxAndDutyValue" placeholder="مبلغ حقوق و عوارض گمرکی">
+                <label for="taxAndDutyValue">مبلغ حقوق و عوارض گمرکی</label>
             </div><!-- number -->
             <div class="col form-check form-switch">
                 <input class="form-check-input" [(ngModel)]="freightRate.isPaidTaxAndDuty" type="checkbox" role="switch"
                     id="isPaidTaxAndDuty">
-                <label class="form-check-label" for="isPaidTaxAndDuty">Has Tax And Duty Been Paid?</label>
+                <label class="form-check-label" for="isPaidTaxAndDuty">آیا حقوق و عوارض گمرگی پرداخت شده</label>
             </div>
             <!--bool-->
         </div>
         <div class="row">
             <div class="col form-floating mb-3">
                 <input name="customerPayableValue" [(ngModel)]="freightRate.customerPayableValue" type="number"
-                    class="form-control" id="customerPayableValue" placeholder="customerPayableValue">
-                <label for="customerPayableValue">Customer Payable Value</label>
+                    class="form-control" id="customerPayableValue" placeholder="مبلغ قابل دریافت از مشتری">
+                <label for="customerPayableValue">مبلغ قابل دریافت از مشتری</label>
             </div><!-- number -->
             <div class="col form-floating mb-3">
                 <input name="firstInstallmentValue" [(ngModel)]="freightRate.firstInstallmentValue" type="number"
-                    class="form-control" id="firstInstallmentValue" placeholder="firstInstallmentValue">
-                <label for="firstInstallmentValue">First Installment Value</label>
+                    class="form-control" id="firstInstallmentValue" placeholder="مبلغ قابل دریافت از مشتری قسط اول">
+                <label for="firstInstallmentValue">مبلغ قابل دریافت از مشتری قسط اول</label>
                 <div class="valid-feedback">
                 </div><!-- number -->
             </div>
@@ -87,28 +87,28 @@
         <div class="row">
             <div class="col form-floating mb-3">
                 <input name="secondInstallmentValue" [(ngModel)]="freightRate.secondInstallmentValue" type="number"
-                    class="form-control" id="secondInstallmentValue" placeholder="secondInstallmentValue">
-                <label for="secondInstallmentValue">Second Installment Value</label>
+                    class="form-control" id="secondInstallmentValue" placeholder="مبلغ قابل دریافت از مشتری قسط دوم">
+                <label for="secondInstallmentValue">مبلغ قابل دریافت از مشتری قسط دوم</label>
             </div><!-- number -->
             <div class="col form-floating mb-3">
                 <input name="amortizedFreightRateNo" [(ngModel)]="freightRate.amortizedFreightRateNo" type="text"
-                    class="form-control" id="amortizedFreightRateNo" placeholder="amortizedFreightRateNo">
-                <label for="amortizedFreightRateNo">Amortized Freight Rate Number</label>
+                    class="form-control" id="amortizedFreightRateNo" placeholder="کوتاژ صادراتی مستهلک شده">
+                <label for="amortizedFreightRateNo">کوتاژ صادراتی مستهلک شده</label>
                 <div class="valid-feedback">
                 </div><!-- -->
             </div>
         </div>
         <div class="row">
             <div class="col form-floating mb-3">
-                <input name="amortizedFreightRateValue" [(ngModel)]="freightRate.freightRateNo" type="text"
-                    class="form-control" id="amortizedFreightRateValue" placeholder="amortizedFreightRateValue"
+                <input name="amortizedFreightRateValue" [(ngModel)]="freightRate.amortizedFreightRateValue" type="text"
+                    class="form-control" id="amortizedFreightRateValue" placeholder="معادل دلاری مستهلک شده"
                     required>
-                <label for="amortizedFreightRateValue">Amortized Freight Rate Value</label>
+                <label for="amortizedFreightRateValue">معادل دلاری مستهلک شده</label>
             </div><!-- number -->
             <div class="col form-check form-switch">
                 <input class="form-check-input" [(ngModel)]="freightRate.hasMailToVanak" type="checkbox" role="switch"
                     id="hasMailToVanak">
-                <label class="form-check-label" for="hasMailToVanak">Has Mail To Vanak?</label>
+                <label class="form-check-label" for="hasMailToVanak">نامه به ونک</label>
             </div>
             <!--bool-->
         </div>
@@ -127,26 +127,26 @@
             <div class="col form-check form-switch">
                 <input class="form-check-input" [(ngModel)]="freightRate.hasVanakInvoiceRequest" type="checkbox"
                     role="switch" id="hasVanakInvoiceRequest">
-                <label class="form-check-label" for="hasVanakInvoiceRequest">Has Vanak Invoice Request?</label>
+                <label class="form-check-label" for="hasVanakInvoiceRequest">درخواست ونک برای مبلغ دستمزد</label>
             </div>
             <!--bool-->
             <div class="col form-check form-switch">
                 <input class="form-check-input" [(ngModel)]="freightRate.isVanakPaid" type="checkbox" role="switch"
                     id="isVanakPaid">
-                <label class="form-check-label" for="isVanakPaid">Has Vanak Been Paid?</label>
+                <label class="form-check-label" for="isVanakPaid">ایا دستمزد ونک پرداخت شده؟</label>
             </div>
             <!--bool-->
         </div>
         <div class="row">
             <div class="col form-floating mb-3">
                 <input name="vanakTollNo" [(ngModel)]="freightRate.vanakTollNo" type="text" class="form-control"
-                    id="vanakTollNo" placeholder="vanakTollNo">
-                <label for="vanakTollNo">Vanak Toll NUmber</label>
+                    id="vanakTollNo" placeholder="شماره نامه ونک به راهداری">
+                <label for="vanakTollNo">شماره نامه ونک به راهداری</label>
             </div><!-- -->
             <div class="col form-floating mb-3">
                 <input name="tollStandardMailNo" [(ngModel)]="freightRate.tollStandardMailNo" type="text"
-                    class="form-control" id="tollStandardMailNo" placeholder="tollStandardMailNo">
-                <label for="tollStandardMailNo">Toll Standard Mail Number</label>
+                    class="form-control" id="tollStandardMailNo" placeholder="شماره نامه استاندارد در اتوماسیون راهداری">
+                <label for="tollStandardMailNo">شماره نامه استاندارد در اتوماسیون راهداری</label>
                 <div class="valid-feedback">
                 </div>
             </div><!-- -->
@@ -155,8 +155,7 @@
             <div class="col form-check form-switch">
                 <input class="form-check-input" [(ngModel)]="freightRate.isDonePollutionInspecting" type="checkbox"
                     role="switch" id="isDonePollutionInspecting">
-                <label class="form-check-label" for="isDonePollutionInspecting">Has Pollution Inspecting Been
-                    Done?</label>
+                <label class="form-check-label" for="isDonePollutionInspecting">بازدید آلاینده انجام شده؟</label>
             </div>
             <!--bool-->
             <div class="col form-check form-switch">
@@ -170,21 +169,21 @@
             <div class="col form-check form-switch">
                 <input class="form-check-input" [(ngModel)]="freightRate.isEnvironmentPaid" type="checkbox"
                     role="switch" id="isEnvironmentPaid">
-                <label class="form-check-label" for="isEnvironmentPaid">Has Environment Been Paid?</label>
+                <label class="form-check-label" for="isEnvironmentPaid">پرداخت دستمزد بازرسی محیط زیست انجام شده؟</label>
             </div>
             <!--bool-->
             <div class="col form-check form-switch">
                 <input class="form-check-input" [(ngModel)]="freightRate.isPollutionPaid" type="checkbox" role="switch"
                     id="isPollutionPaid">
-                <label class="form-check-label" for="isPollutionPaid">Has Pollution Been Paid?</label>
+                <label class="form-check-label" for="isPollutionPaid">پرداخت دستمزد بازرسی آلاینده انجام شده</label>
             </div>
             <!--bool-->
         </div>
         <div class="row">
             <div class="col form-floating mb-3">
                 <input name="environPollutionMailNo" [(ngModel)]="freightRate.environPollutionMailNo" type="text"
-                    class="form-control" id="environPollutionMailNo" placeholder="environPollutionMailNo">
-                <label for="environPollutionMailNo">Environment Pollution Mail Number</label>
+                    class="form-control" id="environPollutionMailNo" placeholder="شماره نامه آلایندگی و محیط زیست">
+                <label for="environPollutionMailNo">شماره نامه آلایندگی و محیط زیست</label>
             </div><!-- -->
             <div class="col form-floating mb-3">
                 <input name="environmentMailNo" [(ngModel)]="freightRate.environmentMailNo" type="text"
@@ -203,8 +202,7 @@
             <div class="col form-check form-switch">
                 <input class="form-check-input" [(ngModel)]="freightRate.isDoneStandardInspecting" type="checkbox"
                     role="switch" id="isDoneStandardInspecting">
-                <label class="form-check-label" for="isDoneStandardInspecting">Has Standard Inspecting Been
-                    Done?</label>
+                <label class="form-check-label" for="isDoneStandardInspecting">بازدید بازرس استاندارد انجام شده؟</label>
             </div>
             <!--bool-->
         </div>
@@ -213,7 +211,7 @@
                 <input name="standardInspectingDateDate" [(ngModel)]="freightRate.standardInspectingDateDateDisplay"
                     type="date" class="form-control" id="standardInspectingDateDate"
                     placeholder="standardInspectingDateDate" required>
-                <label for="standardInspectingDateDate">Standard Inspecting Date</label>
+                <label for="standardInspectingDateDate">بازدید بازرس استاندارد</label>
             </div><!-- Date -->
             <div class="col form-floating mb-3">
                 <input name="modelInquiry" [(ngModel)]="freightRate.modelInquiryDisplay" type="date"
@@ -226,24 +224,24 @@
                 <input name="environmentInspectingDate" [(ngModel)]="freightRate.environmentInspectingDateDisplay"
                     type="date" class="form-control" id="environmentInspectingDate"
                     placeholder="environmentInspectingDate" required>
-                <label for="environmentInspectingDate">Environment Inspecting Date</label>
+                <label for="environmentInspectingDate">بازدید محیط زیست</label>
             </div><!-- Date -->
             <div class="col form-floating mb-3">
                 <input name="freightRateDate" [(ngModel)]="freightRate.freightRateDateDisplay" type="date"
                     class="form-control" id="freightRateDate" placeholder="freightRateDate" required>
-                <label for="freightRateDate">Freight Rate Date</label>
+                <label for="freightRateDate">تاریخ کوتاژ</label>
             </div><!-- Date -->
         </div>
         <div class="row">
             <div class="col form-floating mb-3">
                 <input name="sendDate" [(ngModel)]="freightRate.sendDateDisplay" type="date" class="form-control"
                     id="sendDate" placeholder="sendDate" required>
-                <label for="sendDate">Send Date</label>
+                <label for="sendDate">ارسال به بانک</label>
             </div><!-- Date -->
             <div class="col form-floating mb-3">
                 <input name="contractDate" [(ngModel)]="freightRate.contractDateDisplay" type="date"
                     class="form-control" id="contractDate" placeholder="contractDate" required>
-                <label for="contractDate">Freight Rate Date</label>
+                <label for="contractDate">تاریخ قرارداد</label>
             </div><!-- Date -->
         </div>
         <div class="row">
@@ -251,19 +249,19 @@
                 <input name="environmentInspectingMailDate"
                     [(ngModel)]="freightRate.environmentInspectingMailDateDisplay" type="date" class="form-control"
                     id="environmentInspectingMailDate" placeholder="environmentInspectingMailDate" required>
-                <label for="environmentInspectingMailDate">Environment Inspecting Mail Date</label>
+                <label for="environmentInspectingMailDate">نامه به شرکت بازرسی محیط زیست</label>
             </div><!-- Date -->
             <div class="col form-floating mb-3">
                 <input name="tollMailDate" [(ngModel)]="freightRate.tollMailDateDisplay" type="date"
                     class="form-control" id="tollMailDate" placeholder="tollMailDate" required>
-                <label for="tollMailDate">Toll Mail Date</label>
+                <label for="tollMailDate">نامه رهداری به گمرک</label>
             </div><!-- Date -->
         </div>
         <div class="row">
             <div class="col form-floating mb-3">
                 <input name="clearanceCodeDate" [(ngModel)]="freightRate.clearanceCodeDateDisplay" type="date"
                     class="form-control" id="clearanceCodeDate" placeholder="clearanceCodeDate" required>
-                <label for="clearanceCodeDate">Send Date</label>
+                <label for="clearanceCodeDate">اعلام کد ترخیص</label>
             </div><!-- Date -->
         </div>
 

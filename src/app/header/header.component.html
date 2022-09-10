@@ -7,42 +7,42 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+            <a class="nav-link active" aria-current="page" routerLink="/home">خانه</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/admin"
             *ngIf="userService.roleMatch(['Admin'])"
-            >Admin Dashboard</a>
+            >داشبورد ادمین</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/preInvoice/index"
             *ngIf="userService.roleMatch(['Admin'])"
-            >PreInvoice</a>
+            >پیش فاکتور</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/order/index"
             *ngIf="userService.roleMatch(['Admin'])"
-            >Order</a>
+            >ثبت سفارش</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/customer/index"
             *ngIf="userService.roleMatch(['Admin'])"
-            >Customer</a>
+            >مشتری</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/carInformation/index"
             *ngIf="userService.roleMatch(['Admin'])"
-            >Car information</a>
+            >اطلاعات ماشین</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/freightRate/index"
             *ngIf="userService.roleMatch(['Admin'])"
-            >Freight Rate</a>
+            >کوتاژ</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/user"
             *ngIf="userService.roleMatch(['User'])"
-            >User Dashboard</a>
+            >داشبورد کاربر</a>
           </li>
          
         </ul>
